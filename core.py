@@ -129,21 +129,34 @@ def evaluate(code: str) -> Optional[Result]:
 
 
 def fetch_jpx_universe(markets=None, exclude_etf=True) -> pd.DataFrame:
-    """JPX上場銘柄一覧を取得して DataFrame(コード, 銘柄名, 市場)で返す。"""
+    """JPX上場銘柄一覧を取得して DataFrame で返す。
+
+    列: コード, 銘柄名, 市場, 業種(33業種区分), 業種大分類(17業種区分), 規模(規模区分)
+    """
     resp = requests.get(JPX_XLS_URL, timeout=60)
     resp.raise_for_status()
     df = pd.read_excel(io.BytesIO(resp.content))
     code_col = next(c for c in df.columns if "コード" in str(c))
     name_col = next((c for c in df.columns if "銘柄名" in str(c)), None)
     market_col = next((c for c in df.columns if "市場" in str(c)), None)
+    sec33_col = next((c for c in df.columns if "33業種区分" in str(c)), None)
+    sec17_col = next((c for c in df.columns if "17業種区分" in str(c)), None)
+    size_col = next((c for c in df.columns if "規模区分" in str(c)), None)
     if markets and market_col:
         df = df[df[market_col].astype(str).apply(lambda v: any(m in v for m in markets))]
     if exclude_etf and market_col:
         df = df[df[market_col].astype(str).str.contains("株式", na=False)]
+
+    def col(c):
+        return df[c].astype(str) if c else ""
+
     out = pd.DataFrame({
         "コード": df[code_col].astype(str).str.replace(r"\.0$", "", regex=True).str.strip(),
-        "銘柄名": df[name_col].astype(str) if name_col else "",
-        "市場": df[market_col].astype(str) if market_col else "",
+        "銘柄名": col(name_col),
+        "市場": col(market_col),
+        "業種": col(sec33_col),
+        "業種大分類": col(sec17_col),
+        "規模": col(size_col),
     })
     out = out[out["コード"].str.fullmatch(r"\d{4}")]
     return out.reset_index(drop=True)
@@ -189,9 +202,16 @@ def attach_universe_meta(df: pd.DataFrame, uni: pd.DataFrame) -> pd.DataFrame:
     """
     if df.empty:
         return df
-    meta = uni.assign(コード=uni["コード"].astype(str) + ".T")[["コード", "銘柄名", "市場"]]
+    cols = ["コード", "銘柄名", "市場"]
+    for extra in ["業種", "業種大分類", "規模"]:
+        if extra in uni.columns:
+            cols.append(extra)
+    meta = uni.assign(コード=uni["コード"].astype(str) + ".T")[cols]
     meta = meta.rename(columns={"銘柄名": "_銘柄名_jpx"})
-    out = df.merge(meta, on="コード", how="left")
+    # 既存の同名列があれば付け直しのため一旦落とす(市場含む。_x/_y衝突を防ぐ)
+    drop = [c for c in ["市場", "業種", "業種大分類", "規模"]
+            if c in df.columns and c in meta.columns]
+    out = df.drop(columns=drop).merge(meta, on="コード", how="left")
     jp = out["_銘柄名_jpx"].fillna("")
     cur = out["銘柄名"].fillna("") if "銘柄名" in out.columns else ""
     out["銘柄名"] = [c if str(c).strip() else j for c, j in zip(cur, jp)]

@@ -26,11 +26,15 @@ YAHOO_DISCLOSURE_BASE = "https://finance.yahoo.co.jp/quote/"
 
 # 表示時の列順(存在する列のみ採用)。金額は百万円表示にして決算短信と突き合わせやすくする。
 DISPLAY_ORDER = [
-    "コード", "銘柄名", "市場", "ネットキャッシュ比率",
+    "コード", "銘柄名", "市場", "業種", "規模", "ネットキャッシュ比率",
     "ネットキャッシュ(億円)", "時価総額(億円)",
+    "PER", "業種PER中央値", "PER乖離率", "PBR",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)",
     "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF",
 ]
+
+# 表示しない内部列(算出の元データ)
+HIDE_COLS = ["純利益", "純資産", "業種大分類"]
 
 
 def to_display(df: pd.DataFrame) -> pd.DataFrame:
@@ -60,6 +64,7 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
             d = d.drop(columns=["短信PDF直URL"])
         else:
             d["短信PDF"] = disclosure
+    d = d.drop(columns=[c for c in HIDE_COLS if c in d.columns])
     ordered = [c for c in DISPLAY_ORDER if c in d.columns]
     rest = [c for c in d.columns if c not in ordered]
     return d[ordered + rest]
@@ -95,6 +100,20 @@ with st.sidebar:
         m for m in st.session_state.df.get("市場", pd.Series(dtype=str)).dropna().unique()
     ) if "市場" in st.session_state.df.columns else []
     sel_markets = st.multiselect("市場区分", markets_all, default=markets_all)
+
+    # 業種(33業種)フィルタ
+    sectors_all = sorted(
+        s for s in st.session_state.df.get("業種", pd.Series(dtype=str)).dropna().unique()
+        if str(s).strip() and str(s) != "nan"
+    ) if "業種" in st.session_state.df.columns else []
+    sel_sectors = st.multiselect("業種(33業種)", sectors_all, default=[])
+
+    cheap_only = False
+    if "PER乖離率" in st.session_state.df.columns:
+        cheap_only = st.checkbox(
+            "同業比で割安のみ(PERが業種中央値より低い)", value=False,
+            help="PER乖離率 < 0 の銘柄に絞り込みます。",
+        )
 
     st.divider()
     st.header("最新データで再計算")
@@ -153,6 +172,10 @@ if "ネットキャッシュ比率" in df.columns:
     df = df[df["ネットキャッシュ比率"] >= min_ratio]
 if sel_markets and "市場" in df.columns:
     df = df[df["市場"].isin(sel_markets)]
+if sel_sectors and "業種" in df.columns:
+    df = df[df["業種"].isin(sel_sectors)]
+if cheap_only and "PER乖離率" in df.columns:
+    df = df[pd.to_numeric(df["PER乖離率"], errors="coerce") < 0]
 df = df.sort_values("ネットキャッシュ比率", ascending=False).reset_index(drop=True)
 
 c1, c2, c3 = st.columns(3)
@@ -185,6 +208,14 @@ st.dataframe(
             width="large",
         ),
         "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
+        "PER": st.column_config.NumberColumn("PER(倍)", format="%.1f",
+                                             help="時価総額÷純利益(黒字のみ)。"),
+        "業種PER中央値": st.column_config.NumberColumn("業種PER中央値", format="%.1f",
+                                              help="同じ33業種の黒字銘柄のPER中央値。"),
+        "PER乖離率": st.column_config.NumberColumn(
+            "PER乖離率", format="percent",
+            help="PER÷業種PER中央値−1。マイナス=同業比で割安。"),
+        "PBR": st.column_config.NumberColumn("PBR(倍)", format="%.2f"),
     },
 )
 st.caption(
@@ -208,3 +239,23 @@ if len(df):
         file_name=f"netcash_screening_{ts}.csv",
         mime="text/csv",
     )
+
+# ---- 業種別PER中央値の一覧 ----
+base = st.session_state.df
+if "業種" in base.columns and "PER" in base.columns:
+    with st.expander("📚 業種別(33業種)PER中央値ランキング", expanded=False):
+        per = pd.to_numeric(base["PER"], errors="coerce")
+        v = base[per.notna() & (per > 0)].copy()
+        v["PER"] = pd.to_numeric(v["PER"], errors="coerce")
+        agg = (
+            v.groupby("業種")["PER"]
+            .agg(銘柄数="count", PER中央値="median")
+            .reset_index()
+            .sort_values("PER中央値")
+        )
+        agg["PER中央値"] = agg["PER中央値"].round(1)
+        st.caption("黒字銘柄のみで集計。PER中央値が低い業種ほど相対的に割安に評価されている傾向。")
+        st.dataframe(
+            agg, width="stretch", hide_index=True,
+            column_config={"PER中央値": st.column_config.NumberColumn(format="%.1f")},
+        )
