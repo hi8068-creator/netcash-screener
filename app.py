@@ -29,7 +29,7 @@ DISPLAY_ORDER = [
     "コード", "銘柄名", "市場", "ネットキャッシュ比率",
     "ネットキャッシュ(億円)", "時価総額(億円)",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)",
-    "決算期", "財務(株探)", "短信PDF",
+    "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF",
 ]
 
 
@@ -37,7 +37,8 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
     """表示・ダウンロード用に整形。
 
     - 流動資産/投資有価証券/負債(円)を百万円に換算(決算短信の一般的な単位)
-    - 右端に財務確認リンク(株探)と公式の決算短信PDFリンク(Yahoo適時開示)を追加
+    - 右端に財務確認リンク(株探)と公式の決算短信PDFリンクを追加
+      (個別PDFのURLが分かる銘柄は直リンク、なければ適時開示一覧へ)
     """
     d = df.copy()
     for col in ["流動資産", "投資有価証券", "負債"]:
@@ -50,7 +51,15 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
         code = d["コード"].astype(str)
         code4 = code.str.replace(".T", "", regex=False)
         d["財務(株探)"] = KABUTAN_BASE + code4
-        d["短信PDF"] = YAHOO_DISCLOSURE_BASE + code + "/disclosure"
+        disclosure = YAHOO_DISCLOSURE_BASE + code + "/disclosure"
+        if "短信PDF直URL" in d.columns:
+            direct = d["短信PDF直URL"].fillna("").astype(str)
+            d["短信PDF"] = [
+                dr if dr.strip() else ds for dr, ds in zip(direct, disclosure)
+            ]
+            d = d.drop(columns=["短信PDF直URL"])
+        else:
+            d["短信PDF"] = disclosure
     ordered = [c for c in DISPLAY_ORDER if c in d.columns]
     rest = [c for c in d.columns if c not in ordered]
     return d[ordered + rest]
@@ -166,8 +175,14 @@ st.dataframe(
         ),
         "短信PDF": st.column_config.LinkColumn(
             "短信PDF(公式)",
-            help="Yahoo!ファイナンスの適時開示ページ。TDnet掲載の公式の決算短信PDFにリンクします。",
+            help="公式の決算短信PDF(TDnet掲載)。比率1.0以上の銘柄は個別PDFへ直リンク、"
+            "それ以外はYahoo!ファイナンスの適時開示一覧へ。",
             display_text="開く",
+        ),
+        "来期見通し(短信抜粋)": st.column_config.TextColumn(
+            "来期見通し(短信抜粋)",
+            help="決算短信の「今後の見通し」本文をそのまま抜粋(言い換えなし)。比率1.0以上の銘柄に付与。",
+            width="large",
         ),
         "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
     },
@@ -176,6 +191,7 @@ st.caption(
     "金額は百万円表示（決算短信の一般的な単位）。データ元のYahoo Financeは決算短信の千円/百万円表記に関わらず"
     "「円」の絶対額に正規化されるため、銘柄間で単位は揃っています。"
     "右端の「短信PDF(公式)」から実際の決算短信PDF（TDnet掲載）と照合できます。"
+    "「来期見通し(短信抜粋)」は比率1.0以上の銘柄に、短信本文の該当箇所をそのまま抜粋（言い換えなし）して掲載しています。"
 )
 
 if len(df):
