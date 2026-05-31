@@ -73,6 +73,17 @@ def apply(args):
                 amap[str(r["コード"]).zfill(4)] = v
         print(f"AI判定 {len(dec)}件を取り込み")
 
+    # 手動上書き(最優先)。誤分類の個別修正用。
+    if os.path.exists("industry60_overrides.csv"):
+        ov = pd.read_csv("industry60_overrides.csv", dtype={"コード": str})
+        n = 0
+        for _, r in ov.iterrows():
+            v = str(r.get("新業種", "")).strip()
+            if v and v != "nan":
+                amap[str(r["コード"]).zfill(4)] = v
+                n += 1
+        print(f"手動上書き {n}件を適用")
+
     d["新業種"] = d["_code4"].map(amap)
     d = d.drop(columns=["_code4"])
     d.to_csv(args.results, index=False, encoding="utf-8-sig")
