@@ -10,6 +10,7 @@
 import os
 from datetime import datetime
 
+import numpy as np
 import pandas as pd
 import streamlit as st
 
@@ -281,3 +282,83 @@ if "業種" in base.columns and "PER" in base.columns:
             agg, width="stretch", hide_index=True,
             column_config={"PER中央値": st.column_config.NumberColumn(format="%.1f")},
         )
+
+
+# ---- 連動分析(株価の連動) ----
+_CORR_OK = all(os.path.exists(os.path.join(os.path.dirname(__file__), f))
+               for f in ["returns.parquet", "peers_adj.csv", "peers_raw.csv", "cross_industry.csv"])
+
+
+@st.cache_data(show_spinner=False)
+def load_corr():
+    base_dir = os.path.dirname(__file__)
+    ret = pd.read_parquet(os.path.join(base_dir, "returns.parquet"))
+    padj = pd.read_csv(os.path.join(base_dir, "peers_adj.csv"), dtype={"コード": str, "連動銘柄": str})
+    praw = pd.read_csv(os.path.join(base_dir, "peers_raw.csv"), dtype={"コード": str, "連動銘柄": str})
+    cross = pd.read_csv(os.path.join(base_dir, "cross_industry.csv"))
+    return ret, padj, praw, cross
+
+
+def lead_lag(ret, a, b):
+    """a と b の先行・遅行。正なら a が先行(aの動きが翌日bに伝わる)。"""
+    if a not in ret.columns or b not in ret.columns:
+        return None
+    s = ret[[a, b]].dropna()
+    if len(s) < 30:
+        return None
+    x, y = s[a].values, s[b].values
+    a_leads = np.corrcoef(x[:-1], y[1:])[0, 1]   # a(t) vs b(t+1)
+    b_leads = np.corrcoef(y[:-1], x[1:])[0, 1]   # b(t) vs a(t+1)
+    return a_leads - b_leads
+
+
+if _CORR_OK:
+    st.divider()
+    st.subheader("🔗 連動分析(株価の連動)")
+    st.caption(
+        "直近1年の日次リターンの相関。『市場調整後』は各日の市場平均を差し引いた残差で計算し、"
+        "地合いを除いた“本当の連動”を見ます。相関は因果ではなく、期間によって変わるスナップショットです。"
+    )
+    ret, peers_adj, peers_raw, cross = load_corr()
+
+    base = st.session_state.df
+    code_name = {str(r["コード"]): f"{r['コード']} {r.get('銘柄名', '')}"
+                 for _, r in base.iterrows()}
+    avail = [c for c in peers_adj["コード"].unique() if c in code_name]
+    avail = sorted(avail, key=lambda c: code_name[c])
+
+    c1, c2 = st.columns([2, 1])
+    sel = c1.selectbox("銘柄を選ぶ", avail,
+                       format_func=lambda c: code_name.get(c, c),
+                       index=avail.index("7203.T") if "7203.T" in avail else 0)
+    mode = c2.radio("相関の種類", ["市場調整後", "素の相関"], horizontal=False)
+
+    peers = peers_adj if mode == "市場調整後" else peers_raw
+    sub = peers[peers["コード"] == sel].head(15).copy()
+
+    # ピアの業種・ネットキャッシュ比率・PERを付与
+    meta_cols = [c for c in ["業種", "ネットキャッシュ比率", "PER", "配当利回り(%)"] if c in base.columns]
+    meta = base.set_index("コード")[meta_cols] if meta_cols else None
+    if meta is not None:
+        sub = sub.merge(meta, left_on="連動銘柄", right_index=True, how="left")
+
+    # リードラグ
+    sub["先行/遅行"] = sub["連動銘柄"].map(
+        lambda p: (lambda d: "—" if d is None else
+                   ("選択銘柄が先行" if d > 0.02 else ("相手が先行" if d < -0.02 else "ほぼ同時")))(
+            lead_lag(ret, sel, p)))
+
+    st.markdown(f"**{code_name.get(sel, sel)}** と連動する銘柄（{mode}・上位15）")
+    st.dataframe(
+        sub.drop(columns=["コード"]), width="stretch", hide_index=True,
+        column_config={
+            "相関": st.column_config.NumberColumn(format="%.3f"),
+            "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
+            "PER": st.column_config.NumberColumn(format="%.1f"),
+        },
+    )
+
+    with st.expander("🎭 別業種なのに連動する『意外なペア』(市場調整後・上位300)", expanded=False):
+        st.caption("業種が違うのに高相関＝隠れたテーマ/共通要因の可能性。小型株は偶然の相関も混じるため要検証。")
+        st.dataframe(cross, width="stretch", hide_index=True,
+                     column_config={"相関": st.column_config.NumberColumn(format="%.3f")})

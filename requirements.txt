@@ -5,3 +5,5 @@ openpyxl>=3.1
 requests>=2.31
 xlrd>=2.0
 pdfminer.six>=20231228
+pyarrow>=14.0
+numpy>=1.26
