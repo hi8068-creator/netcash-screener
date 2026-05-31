@@ -27,7 +27,7 @@ YAHOO_DISCLOSURE_BASE = "https://finance.yahoo.co.jp/quote/"
 
 # 表示時の列順(存在する列のみ採用)。金額は百万円表示にして決算短信と突き合わせやすくする。
 DISPLAY_ORDER = [
-    "コード", "銘柄名", "市場", "業種", "規模", "ネットキャッシュ比率",
+    "コード", "銘柄名", "市場", "業種", "新業種", "規模", "ネットキャッシュ比率",
     "ネットキャッシュ(億円)", "時価総額(億円)",
     "PER", "業種PER中央値", "PER乖離率", "PBR",
     "前日終値", "配当利回り(%)", "配当", "予想PER", "forwardEPS", "目標株価",
@@ -110,6 +110,13 @@ with st.sidebar:
     ) if "業種" in st.session_state.df.columns else []
     sel_sectors = st.multiselect("業種(33業種)", sectors_all, default=[])
 
+    # 新60業種フィルタ
+    sectors60_all = sorted(
+        s for s in st.session_state.df.get("新業種", pd.Series(dtype=str)).dropna().unique()
+        if str(s).strip() and str(s) != "nan"
+    ) if "新業種" in st.session_state.df.columns else []
+    sel_sectors60 = st.multiselect("業種(新60業種・試験版)", sectors60_all, default=[])
+
     cheap_only = False
     if "PER乖離率" in st.session_state.df.columns:
         cheap_only = st.checkbox(
@@ -184,6 +191,8 @@ if sel_markets and "市場" in df.columns:
     df = df[df["市場"].isin(sel_markets)]
 if sel_sectors and "業種" in df.columns:
     df = df[df["業種"].isin(sel_sectors)]
+if sel_sectors60 and "新業種" in df.columns:
+    df = df[df["新業種"].isin(sel_sectors60)]
 if cheap_only and "PER乖離率" in df.columns:
     df = df[pd.to_numeric(df["PER乖離率"], errors="coerce") < 0]
 if min_yield > 0 and "配当利回り(%)" in df.columns:
@@ -223,6 +232,11 @@ st.dataframe(
             width="large",
         ),
         "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
+        "新業種": st.column_config.TextColumn(
+            "業種(新60・試験)",
+            help="ユーザー定義の新60業種(試験版)。社名キーワードによる自動分類で、"
+            "キーワード未一致は各業種の代表区分に既定割当のため誤りがあり得ます。",
+        ),
         "PER": st.column_config.NumberColumn("PER(倍)", format="%.1f",
                                              help="時価総額÷純利益(黒字のみ)。"),
         "業種PER中央値": st.column_config.NumberColumn("業種PER中央値", format="%.1f",
