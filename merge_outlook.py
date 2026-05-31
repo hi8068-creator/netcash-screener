@@ -12,8 +12,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="results.csv")
     ap.add_argument("--outlook", default="outlook_raw.csv")
-    ap.add_argument("--out", default="results.csv")
+    ap.add_argument("--out", default=None,
+                    help="未指定なら --results と同じファイルに上書き")
     args = ap.parse_args()
+    if args.out is None:
+        args.out = args.results
 
     res = pd.read_csv(args.results)
     out = pd.read_csv(args.outlook, dtype={"コード": str})

@@ -29,6 +29,7 @@ DISPLAY_ORDER = [
     "コード", "銘柄名", "市場", "業種", "規模", "ネットキャッシュ比率",
     "ネットキャッシュ(億円)", "時価総額(億円)",
     "PER", "業種PER中央値", "PER乖離率", "PBR",
+    "前日終値", "配当利回り(%)", "配当", "予想PER", "forwardEPS", "目標株価",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)",
     "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF",
 ]
@@ -115,6 +116,14 @@ with st.sidebar:
             help="PER乖離率 < 0 の銘柄に絞り込みます。",
         )
 
+    min_yield = 0.0
+    if "配当利回り(%)" in st.session_state.df.columns:
+        min_yield = st.slider("配当利回りの下限(%)", 0.0, 6.0, 0.0, 0.25)
+
+    max_per = 0
+    if "PER" in st.session_state.df.columns:
+        max_per = st.number_input("PER上限(0=制限なし)", 0, 200, 0, 5)
+
     st.divider()
     st.header("最新データで再計算")
     st.warning(
@@ -176,6 +185,11 @@ if sel_sectors and "業種" in df.columns:
     df = df[df["業種"].isin(sel_sectors)]
 if cheap_only and "PER乖離率" in df.columns:
     df = df[pd.to_numeric(df["PER乖離率"], errors="coerce") < 0]
+if min_yield > 0 and "配当利回り(%)" in df.columns:
+    df = df[pd.to_numeric(df["配当利回り(%)"], errors="coerce") >= min_yield]
+if max_per and "PER" in df.columns:
+    per_v = pd.to_numeric(df["PER"], errors="coerce")
+    df = df[(per_v > 0) & (per_v <= max_per)]
 df = df.sort_values("ネットキャッシュ比率", ascending=False).reset_index(drop=True)
 
 c1, c2, c3 = st.columns(3)
@@ -216,6 +230,14 @@ st.dataframe(
             "PER乖離率", format="percent",
             help="PER÷業種PER中央値−1。マイナス=同業比で割安。"),
         "PBR": st.column_config.NumberColumn("PBR(倍)", format="%.2f"),
+        "前日終値": st.column_config.NumberColumn("前日終値(円)", format="%.0f"),
+        "配当利回り(%)": st.column_config.NumberColumn("配当利回り(%)", format="%.2f"),
+        "配当": st.column_config.NumberColumn("配当(円)", format="%.1f"),
+        "予想PER": st.column_config.NumberColumn("予想PER(倍)", format="%.1f",
+                                             help="forwardPE(yfinance)。小型株は欠損あり。"),
+        "forwardEPS": st.column_config.NumberColumn("予想EPS(円)", format="%.1f"),
+        "目標株価": st.column_config.NumberColumn("目標株価(円)", format="%.0f",
+                                             help="アナリスト目標株価平均(yfinance)。小型株は欠損あり。"),
     },
 )
 st.caption(
