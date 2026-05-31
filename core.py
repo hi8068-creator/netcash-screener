@@ -114,6 +114,11 @@ def evaluate(code: str) -> Optional[Result]:
     market_cap, name = _market_cap_and_name(t)
     if not market_cap:
         return None
+    # 時価総額データの健全性チェック。
+    # Yahooがまれに発行済株式数を壊れた値(例: 3株)で返し、時価総額が極端に小さくなる。
+    # 実在の上場企業で時価総額が流動資産の1%未満はあり得ないため、壊れデータとして除外する。
+    if market_cap < 1e7 or (current_assets > 0 and market_cap < current_assets * 0.01):
+        return None
     net_cash = current_assets + inv * 0.7 - total_liabilities
     return Result(
         code=ticker,
