@@ -281,13 +281,19 @@ st.dataframe(
             "PER乖離率", format="percent",
             help="PER÷業種PER中央値−1。マイナス=同業比で割安。"),
         "PBR": st.column_config.NumberColumn("PBR(倍)", format="%.2f"),
-        "前日終値": st.column_config.NumberColumn("前日終値(円)", format="%.0f"),
+        # 大きな数値は桁区切り(localized)で見やすく
+        "時価総額(億円)": st.column_config.NumberColumn("時価総額(億円)", format="localized"),
+        "ネットキャッシュ(億円)": st.column_config.NumberColumn("ネットキャッシュ(億円)", format="localized"),
+        "流動資産(百万円)": st.column_config.NumberColumn("流動資産(百万円)", format="localized"),
+        "投資有価証券(百万円)": st.column_config.NumberColumn("投資有価証券(百万円)", format="localized"),
+        "負債(百万円)": st.column_config.NumberColumn("負債(百万円)", format="localized"),
+        "前日終値": st.column_config.NumberColumn("前日終値(円)", format="localized"),
         "配当利回り(%)": st.column_config.NumberColumn("配当利回り(%)", format="%.2f"),
         "配当": st.column_config.NumberColumn("配当(円)", format="%.1f"),
         "予想PER": st.column_config.NumberColumn("予想PER(倍)", format="%.1f",
                                              help="forwardPE(yfinance)。小型株は欠損あり。"),
-        "forwardEPS": st.column_config.NumberColumn("予想EPS(円)", format="%.1f"),
-        "目標株価": st.column_config.NumberColumn("目標株価(円)", format="%.0f",
+        "forwardEPS": st.column_config.NumberColumn("予想EPS(円)", format="localized"),
+        "目標株価": st.column_config.NumberColumn("目標株価(円)", format="localized",
                                              help="アナリスト目標株価平均(yfinance)。小型株は欠損あり。"),
     },
 )
@@ -401,7 +407,7 @@ if _CORR_OK:
                 return f.format(float(v))
             except Exception:
                 return "—"
-        cols[0].metric("時価総額", _fmt(si.get("時価総額(億円)"), "{:.0f}億"))
+        cols[0].metric("時価総額", _fmt(si.get("時価総額(億円)"), "{:,.0f}億"))
         cols[1].metric("ネットキャッシュ比率", _fmt(si.get("ネットキャッシュ比率"), "{:.2f}"))
         cols[2].metric("PER", _fmt(si.get("PER"), "{:.1f}"))
         cols[3].metric("配当利回り", _fmt(si.get("配当利回り(%)"), "{:.2f}%"))
@@ -436,7 +442,7 @@ if _CORR_OK:
             "PER": st.column_config.NumberColumn(format="%.1f"),
             "PBR": st.column_config.NumberColumn(format="%.2f"),
             "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
-            "時価総額(億円)": st.column_config.NumberColumn(format="%.0f"),
+            "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
         },
     )
 
