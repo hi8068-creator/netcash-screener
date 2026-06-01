@@ -469,9 +469,29 @@ st.caption(
 with st.sidebar:
     st.header("表示フィルタ")
 
+    # URL(クエリ)に絞り込みを保存/復元するためのヘルパ。
+    _qp = st.query_params
+
+    def Q(k, d, t=str):
+        v = _qp.get(k)
+        if v in (None, ""):
+            return d
+        try:
+            if t is float:
+                return float(v)
+            if t is int:
+                return int(float(v))
+            if t is bool:
+                return str(v) in ("1", "true", "True")
+            if t is list:
+                return [x for x in str(v).split("|") if x]
+            return v
+        except Exception:
+            return d
+
     # 基本フィルタ(常時表示)
     min_ratio = st.slider(
-        "ネットキャッシュ比率の下限", 0.0, 3.0, 1.0, 0.05,
+        "ネットキャッシュ比率の下限", 0.0, 3.0, min(3.0, max(0.0, Q("ratio", 1.0, float))), 0.05,
         help="1.0以上＝理屈上は現金等で時価総額をまかなえる割安水準。まずは1.0でOK。",
     )
 
@@ -479,7 +499,8 @@ with st.sidebar:
         m for m in st.session_state.df.get("市場", pd.Series(dtype=str)).dropna().unique()
     ) if "市場" in st.session_state.df.columns else []
     sel_markets = st.multiselect(
-        "市場区分", markets_all, default=markets_all,
+        "市場区分", markets_all,
+        default=([m for m in Q("mkt", [], list) if m in markets_all] or markets_all),
         help="東証の市場区分。こだわりが無ければ全選択のままでOK。",
     )
 
@@ -489,11 +510,11 @@ with st.sidebar:
         cap_series = pd.to_numeric(st.session_state.df["時価総額(億円)"], errors="coerce")
         cap_hi = int(min(5000, (cap_series.max() if cap_series.notna().any() else 1000)))
         min_cap = st.number_input(
-            "時価総額の下限(億円, 0=制限なし)", 0, cap_hi, 0, 50,
+            "時価総額の下限(億円, 0=制限なし)", 0, cap_hi, min(cap_hi, Q("capmin", 0, int)), 50,
             help="一定規模以上に絞る。例:500で中型以上(プロが見る規模)(0=制限なし)。",
         )
         max_cap = st.number_input(
-            "時価総額の上限(億円, 0=制限なし)", 0, cap_hi, 0, 50,
+            "時価総額の上限(億円, 0=制限なし)", 0, cap_hi, min(cap_hi, Q("capmax", 0, int)), 50,
             help="小さいほど小型株。例:300で中小型に絞れる(0=制限なし)。",
         )
 
@@ -516,17 +537,19 @@ with st.sidebar:
             s for s in st.session_state.df.get("新業種", pd.Series(dtype=str)).dropna().unique()
             if str(s).strip() and str(s) != "nan"
         ) if "新業種" in st.session_state.df.columns else []
-        sel_sectors60 = st.multiselect("業種(67分類)", sectors60_all, default=[])
+        sel_sectors60 = st.multiselect(
+            "業種(67分類)", sectors60_all,
+            default=[s for s in Q("sec", [], list) if s in sectors60_all])
 
         if "PER乖離率" in st.session_state.df.columns:
             cheap_only = st.checkbox(
-                "同業比で割安のみ(PERが業種中央値より低い)", value=False,
+                "同業比で割安のみ(PERが業種中央値より低い)", value=Q("cheap", False, bool),
                 help="PER乖離率 < 0 の銘柄に絞り込みます。",
             )
 
         if "配当利回り(%)" in st.session_state.df.columns:
             min_yield = st.slider(
-                "配当利回りの下限(%)", 0.0, 6.0, 0.0, 0.25,
+                "配当利回りの下限(%)", 0.0, 6.0, min(6.0, max(0.0, Q("ymin", 0.0, float))), 0.25,
                 help="年配当÷株価。3〜4%で高配当の目安。",
             )
 
@@ -534,35 +557,35 @@ with st.sidebar:
             st.caption("PERのレンジ(下限〜上限。0=制限なし)。例: 10〜15倍")
             pcol1, pcol2 = st.columns(2)
             min_per = pcol1.number_input(
-                "PER下限", 0, 200, 0, 5,
+                "PER下限", 0, 200, min(200, Q("permin", 0, int)), 5,
                 help="低すぎる(業績悪化の織り込み等)を除きたいときに。10前後が一例。",
             )
             max_per = pcol2.number_input(
-                "PER上限", 0, 200, 0, 5,
+                "PER上限", 0, 200, min(200, Q("permax", 0, int)), 5,
                 help="一般に15倍前後が標準、低いほど割安。",
             )
 
         if "PBR" in st.session_state.df.columns:
             max_pbr = st.number_input(
-                "PBR上限(0=制限なし)", 0.0, 20.0, 0.0, 0.5,
+                "PBR上限(0=制限なし)", 0.0, 20.0, min(20.0, max(0.0, Q("pbr", 0.0, float))), 0.5,
                 help="1倍＝解散価値。1倍割れは割安の目安。",
             )
 
         if "自己資本比率(%)" in st.session_state.df.columns:
             min_equity = st.slider(
-                "自己資本比率の下限(%)", 0, 100, 0, 5,
+                "自己資本比率の下限(%)", 0, 100, min(100, Q("eqmin", 0, int)), 5,
                 help="純資産÷総資産。50%以上で財務が健全の目安。",
             )
 
         if "配当性向(%)" in st.session_state.df.columns:
             max_payout = st.number_input(
-                "配当性向の上限(%, 0=制限なし)", 0, 200, 0, 5,
+                "配当性向の上限(%, 0=制限なし)", 0, 200, min(200, Q("paymax", 0, int)), 5,
                 help="配当÷利益。50%以下で無理のない配当の目安(高すぎは減配リスク)。",
             )
 
         if "増収増益(年)" in st.session_state.df.columns:
             min_growth = st.number_input(
-                "増収増益(連続)の下限(年, 0=制限なし)", 0, 5, 0, 1,
+                "増収増益(連続)の下限(年, 0=制限なし)", 0, 5, min(5, Q("grow", 0, int)), 1,
                 help="例:3で「直近3期連続の増収増益」に絞る。データは比率1.0以上の銘柄に付与。",
             )
 
@@ -570,8 +593,51 @@ with st.sidebar:
                                  "自己資本比率(%)", "増収増益(年)", "PER乖離率", "PER", "時価総額(億円)"]
                      if c in st.session_state.df.columns]
         if sort_opts:
-            sort_key = st.selectbox("並び替え", sort_opts, index=0)
-        sort_asc = st.checkbox("昇順", value=(sort_key in ("PER", "PER乖離率")))
+            _si = sort_opts.index(Q("sort", sort_opts[0])) if Q("sort", sort_opts[0]) in sort_opts else 0
+            sort_key = st.selectbox("並び替え", sort_opts, index=_si)
+        sort_asc = st.checkbox("昇順", value=Q("asc", (sort_key in ("PER", "PER乖離率")), bool))
+
+    # ---- 現在の絞り込みをURLに保存(ブックマーク/共有で再現) ----
+    _params = {}
+    if abs(min_ratio - 1.0) > 1e-9:
+        _params["ratio"] = str(round(min_ratio, 2))
+    if sel_markets and sorted(sel_markets) != sorted(markets_all):
+        _params["mkt"] = "|".join(sel_markets)
+    if sel_sectors60:
+        _params["sec"] = "|".join(sel_sectors60)
+    if min_cap:
+        _params["capmin"] = str(min_cap)
+    if max_cap:
+        _params["capmax"] = str(max_cap)
+    if cheap_only:
+        _params["cheap"] = "1"
+    if min_yield:
+        _params["ymin"] = str(min_yield)
+    if min_per:
+        _params["permin"] = str(min_per)
+    if max_per:
+        _params["permax"] = str(max_per)
+    if max_pbr:
+        _params["pbr"] = str(max_pbr)
+    if min_equity:
+        _params["eqmin"] = str(min_equity)
+    if max_payout:
+        _params["paymax"] = str(max_payout)
+    if min_growth:
+        _params["grow"] = str(min_growth)
+    if sort_opts and sort_key != sort_opts[0]:
+        _params["sort"] = sort_key
+    if sort_asc:
+        _params["asc"] = "1"
+    try:
+        if dict(st.query_params) != _params:
+            st.query_params.clear()
+            if _params:
+                st.query_params.update(_params)
+    except Exception:
+        pass
+    st.caption("🔖 いまの絞り込みはURLに保存されます。ブラウザでブックマークすれば、"
+               "その条件をいつでも再現・共有できます。条件を全て既定に戻すとURLもクリアされます。")
 
     with st.expander("⚙️ 最新データで再計算", expanded=False):
         st.caption(
