@@ -21,34 +21,51 @@ import streamlit.components.v1 as components
 import core
 
 
-def tradingview_chart(code: str, height: int = 420) -> None:
+def tradingview_chart(code: str, height: int = 520, interval: str = "D") -> None:
     """選択銘柄のTradingViewチャート(リアルタイム寄り)を埋め込む。
 
     東証コード "7203.T" → "TSE:7203"。各 components.html は独立iframeなので
-    コンテナidは固定で衝突しない。
+    コンテナidは銘柄ごとに変えて衝突を避ける。
     """
-    sym = "TSE:" + str(code).replace(".T", "")
+    code4 = str(code).replace(".T", "")
+    sym = "TSE:" + code4
+    cid = "tv_" + code4
     html = f"""
-    <div class="tradingview-widget-container">
-      <div id="tvchart"></div>
+    <div class="tradingview-widget-container" style="height:100%;">
+      <div id="{cid}" style="height:100%;"></div>
     </div>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script type="text/javascript">
       new TradingView.widget({{
         "autosize": true,
         "symbol": "{sym}",
-        "interval": "D",
+        "interval": "{interval}",
         "timezone": "Asia/Tokyo",
         "theme": "light",
         "style": "1",
         "locale": "ja",
         "hide_side_toolbar": true,
+        "hide_top_toolbar": false,
+        "withdateranges": true,
         "allow_symbol_change": false,
-        "container_id": "tvchart"
+        "container_id": "{cid}"
       }});
     </script>
     """
     components.html(html, height=height)
+
+
+def tradingview_grid(codes, labels=None, ncols=2, height=380, interval="D") -> None:
+    """複数銘柄のチャートをグリッド(既定2列)で並べて表示する。"""
+    codes = [c for c in codes if c]
+    labels = labels or {}
+    for i in range(0, len(codes), ncols):
+        row = codes[i:i + ncols]
+        cols = st.columns(len(row))
+        for col, c in zip(cols, row):
+            with col:
+                st.markdown(f"**{labels.get(c, c)}**")
+                tradingview_chart(c, height=height, interval=interval)
 
 st.set_page_config(page_title="ネットキャッシュ比率スクリーニング", layout="wide")
 
@@ -803,15 +820,25 @@ with tab_screen:
     else:
         st.info("条件に合う銘柄がありません。フィルタを緩めてください。")
 
-    with st.expander("📈 リアルタイム株価チャート（TradingView）", expanded=False):
+    with st.expander("📈 リアルタイム株価チャート（TradingView・複数並べて比較可）", expanded=False):
         if len(df):
             chart_codes = df["コード"].astype(str).tolist()
             chart_names = {str(r["コード"]): f"{r.get('銘柄名', '')}（{r['コード']}）"
                            for _, r in df.iterrows()}
-            pick = st.selectbox(
-                "銘柄を選ぶ", chart_codes,
+            picks = st.multiselect(
+                "銘柄を選ぶ（複数可・並べて表示）", chart_codes,
+                default=chart_codes[:2],
                 format_func=lambda c: chart_names.get(c, c), key="screen_chart")
-            tradingview_chart(pick)
+            cc1, cc2 = st.columns(2)
+            iv_label = cc1.radio("足", ["日足", "週足", "月足", "60分"], horizontal=True,
+                                 key="screen_iv")
+            ncol = cc2.radio("列数", [1, 2, 3], index=1, horizontal=True, key="screen_ncol")
+            iv = {"日足": "D", "週足": "W", "月足": "M", "60分": "60"}[iv_label]
+            if picks:
+                h = 520 if len(picks) == 1 else (420 if ncol == 1 else 380)
+                tradingview_grid(picks, labels=chart_names, ncols=ncol, height=h, interval=iv)
+            else:
+                st.info("上で銘柄を選ぶとチャートが表示されます。")
             st.caption("TradingViewの埋め込み。取引所により表示が遅延する場合があり、"
                        "一部の小型株は未対応のことがあります。")
         else:
@@ -950,10 +977,24 @@ with tab_corr:
             mcols[2].metric("配当利回り", _fmt(si.get("配当利回り(%)"), "{:.2f}%"))
             mcols[3].metric("業種(67)", str(si.get("新業種", "—")))
 
-        with st.expander("📈 リアルタイム株価チャート（TradingView）", expanded=False):
-            tradingview_chart(sel)
-            st.caption("TradingViewの埋め込み。取引所により表示が遅延する場合があり、"
-                       "一部の小型株は未対応のことがあります。")
+        with st.expander("📈 リアルタイム株価チャート（選択銘柄＋連動銘柄を並べて比較）",
+                         expanded=False):
+            peer_codes = sub["連動銘柄"].astype(str).tolist()
+            chart_opts = [sel] + [c for c in peer_codes if c != sel]
+            default_pick = chart_opts[:4]
+            cpicks = st.multiselect(
+                "並べる銘柄（既定=選択銘柄＋連動上位）", chart_opts, default=default_pick,
+                format_func=lambda c: code_name.get(c, c), key="corr_chart")
+            cc1, cc2 = st.columns(2)
+            iv_label = cc1.radio("足", ["日足", "週足", "月足", "60分"], horizontal=True,
+                                 key="corr_iv")
+            ncol = cc2.radio("列数", [1, 2, 3], index=1, horizontal=True, key="corr_ncol")
+            iv = {"日足": "D", "週足": "W", "月足": "M", "60分": "60"}[iv_label]
+            if cpicks:
+                h = 520 if len(cpicks) == 1 else 380
+                tradingview_grid(cpicks, labels=code_name, ncols=ncol, height=h, interval=iv)
+            st.caption("同じ足で並べると“連動して動いているか”を目で確認できます。"
+                       "取引所により表示遅延・小型株は未対応のことがあります。")
 
         # 比較表: 1行目に選択銘柄、続けて連動上位
         sub = sub.rename(columns={"連動銘柄": "コード2", "連動銘柄名": "銘柄名"})
