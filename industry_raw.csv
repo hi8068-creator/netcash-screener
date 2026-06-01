@@ -1,0 +1,3633 @@
+﻿コード,sector,industry
+3600,Consumer Cyclical,Textile Manufacturing
+7034,Industrials,Consulting Services
+5856,Industrials,Conglomerates
+9885,Consumer Cyclical,Apparel Manufacturing
+3189,Consumer Cyclical,Apparel Retail
+1897,Industrials,Engineering & Construction
+7297,Consumer Cyclical,Auto Parts
+2484,Consumer Cyclical,Internet Retail
+6513,Technology,Semiconductor Equipment & Materials
+6771,Technology,Communication Equipment
+2055,Consumer Defensive,Packaged Foods
+8617,Financial Services,Capital Markets
+4387,Technology,Software - Application
+6986,Technology,Electronic Components
+5956,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7399,Industrials,Tools & Accessories
+7427,Consumer Defensive,Packaged Foods
+6943,Industrials,Electrical Equipment & Parts
+5658,Industrials,Tools & Accessories
+2788,Consumer Cyclical,Auto & Truck Dealerships
+8881,Real Estate,Real Estate Services
+8917,Consumer Cyclical,Residential Construction
+5900,Industrials,Building Products & Equipment
+7879,Industrials,Building Products & Equipment
+5921,Basic Materials,Steel
+6222,Industrials,Specialty Industrial Machinery
+5753,Basic Materials,Copper
+5962,Industrials,Tools & Accessories
+8013,Consumer Cyclical,Apparel Retail
+8746,Financial Services,Capital Markets
+6390,Industrials,Farm & Heavy Construction Machinery
+5603,Industrials,Metal Fabrication
+8040,Consumer Cyclical,Apparel Manufacturing
+8138,Basic Materials,Specialty Chemicals
+6249,Industrials,Business Equipment & Supplies
+4102,Basic Materials,Chemicals
+7902,Technology,Electronic Components
+3787,Technology,Software - Application
+6155,Industrials,Specialty Industrial Machinery
+6049,Communication Services,Internet Content & Information
+8144,Technology,Consumer Electronics
+8891,Real Estate,Real Estate Services
+5280,Real Estate,Real Estate - Development
+6964,Technology,Electronic Components
+5909,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6257,Consumer Cyclical,Gambling
+5923,Industrials,Engineering & Construction
+3396,Consumer Cyclical,Internet Retail
+8904,Consumer Cyclical,Residential Construction
+8165,Consumer Cyclical,Internet Retail
+8772,Financial Services,Mortgage Finance
+7851,Industrials,Specialty Business Services
+4234,Basic Materials,Specialty Chemicals
+3261,Real Estate,Real Estate Services
+9767,Industrials,Building Products & Equipment
+5408,Basic Materials,Steel
+5928,Industrials,Building Products & Equipment
+7442,Consumer Cyclical,Specialty Retail
+2388,Industrials,Conglomerates
+4624,Basic Materials,Specialty Chemicals
+7219,Consumer Cyclical,Auto Parts
+7857,Communication Services,Advertising Agencies
+6467,Industrials,Specialty Industrial Machinery
+7266,Consumer Cyclical,Auto Parts
+9914,Industrials,Industrial Distribution
+8995,Real Estate,Real Estate - Diversified
+1994,Industrials,Building Products & Equipment
+9162,Communication Services,Advertising Agencies
+8046,Basic Materials,Steel
+5988,Consumer Cyclical,Auto Parts
+8147,Industrials,Industrial Distribution
+7624,Industrials,Industrial Distribution
+8119,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4341,Communication Services,Telecom Services
+7229,Consumer Cyclical,Auto Parts
+7538,Consumer Defensive,Food Distribution
+9929,Basic Materials,Paper & Paper Products
+7877,Basic Materials,Specialty Chemicals
+9872,Industrials,Building Products & Equipment
+6262,Industrials,Specialty Industrial Machinery
+4839,Communication Services,Broadcasting
+6228,Technology,Semiconductor Equipment & Materials
+2193,Communication Services,Internet Content & Information
+2499,Industrials,Specialty Business Services
+7991,Industrials,Business Equipment & Supplies
+7887,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7841,Consumer Cyclical,Leisure
+6346,Industrials,Specialty Industrial Machinery
+6054,Communication Services,Internet Content & Information
+5918,Industrials,Engineering & Construction
+4231,Basic Materials,Specialty Chemicals
+2917,Consumer Defensive,Packaged Foods
+1420,Consumer Cyclical,Residential Construction
+6867,Technology,Scientific & Technical Instruments
+3439,Consumer Cyclical,Auto Parts
+1758,Industrials,Engineering & Construction
+7871,Industrials,Building Products & Equipment
+7347,Financial Services,Asset Management
+8135,Consumer Cyclical,Leisure
+3320,Consumer Cyclical,Apparel Manufacturing
+9854,Consumer Cyclical,Specialty Retail
+3426,Industrials,Building Products & Equipment
+5541,Basic Materials,Other Industrial Metals & Mining
+6393,Industrials,Specialty Industrial Machinery
+4629,Basic Materials,Specialty Chemicals
+5971,Industrials,Tools & Accessories
+7531,Basic Materials,Steel
+4569,Healthcare,Drug Manufacturers - Specialty & Generic
+7434,Industrials,Building Products & Equipment
+3246,Real Estate,Real Estate - Diversified
+6342,Basic Materials,Lumber & Wood Production
+5984,Industrials,Specialty Industrial Machinery
+5697,Basic Materials,Steel
+3420,Industrials,Conglomerates
+1850,Industrials,Engineering & Construction
+7937,Consumer Cyclical,Luxury Goods
+4224,Industrials,Building Products & Equipment
+4705,Consumer Defensive,Education & Training Services
+7670,Industrials,Conglomerates
+6694,Technology,Consumer Electronics
+2795,Industrials,Specialty Industrial Machinery
+3758,Communication Services,Electronic Gaming & Multimedia
+5951,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7435,Industrials,Specialty Industrial Machinery
+7422,Consumer Cyclical,Footwear & Accessories
+3236,Real Estate,Real Estate - Diversified
+5819,Industrials,Electrical Equipment & Parts
+3161,Consumer Cyclical,Textile Manufacturing
+7175,Financial Services,Capital Markets
+5946,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+8938,Real Estate,Real Estate Services
+6292,Industrials,Specialty Industrial Machinery
+3668,Communication Services,Electronic Gaming & Multimedia
+6748,Industrials,Electrical Equipment & Parts
+9972,Industrials,Specialty Industrial Machinery
+6335,Industrials,Specialty Industrial Machinery
+7021,Industrials,Specialty Industrial Machinery
+2814,Consumer Defensive,Packaged Foods
+6899,Technology,Electronic Components
+7997,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4360,Basic Materials,Chemicals
+5187,Healthcare,Medical Devices
+5446,Basic Materials,Steel
+3632,Communication Services,Electronic Gaming & Multimedia
+6718,Technology,Communication Equipment
+9876,Consumer Cyclical,Apparel Manufacturing
+8869,Real Estate,Real Estate Services
+5282,Basic Materials,Building Materials
+3537,Basic Materials,Specialty Chemicals
+8595,Financial Services,Asset Management
+6497,Industrials,Metal Fabrication
+2168,Industrials,Staffing & Employment Services
+7264,Consumer Cyclical,Auto Parts
+5079,Industrials,Engineering & Construction
+7122,Industrials,Railroads
+8281,Consumer Cyclical,Specialty Retail
+3765,Communication Services,Electronic Gaming & Multimedia
+1853,Industrials,Engineering & Construction
+7218,Consumer Cyclical,Auto Parts
+7908,Technology,Electronic Components
+4627,Basic Materials,Specialty Chemicals
+4243,Basic Materials,Specialty Chemicals
+4625,Basic Materials,Specialty Chemicals
+7521,Industrials,Conglomerates
+5986,Basic Materials,Steel
+6743,Industrials,Specialty Industrial Machinery
+6150,Industrials,Metal Fabrication
+7975,Industrials,Business Equipment & Supplies
+5966,Industrials,Tools & Accessories
+3477,Consumer Cyclical,Residential Construction
+7464,Industrials,Security & Protection Services
+4365,,
+3639,Communication Services,Electronic Gaming & Multimedia
+7865,Consumer Cyclical,Leisure
+2491,Communication Services,Advertising Agencies
+5078,Real Estate,Real Estate Services
+3054,Technology,Computer Hardware
+3297,Real Estate,Real Estate Services
+5915,Industrials,Engineering & Construction
+8584,Financial Services,Credit Services
+7279,Industrials,Conglomerates
+9895,Industrials,Tools & Accessories
+6159,Industrials,Specialty Industrial Machinery
+2489,Communication Services,Internet Content & Information
+8159,Technology,Electronic Components
+3954,Consumer Cyclical,Packaging & Containers
+143A,Communication Services,Advertising Agencies
+4644,Communication Services,Internet Content & Information
+3710,Technology,Software - Application
+8076,Basic Materials,Steel
+7486,Energy,Oil & Gas Refining & Marketing
+7985,Industrials,Specialty Industrial Machinery
+7957,Industrials,Business Equipment & Supplies
+3131,Technology,Electronics & Computer Distribution
+5969,Industrials,Tools & Accessories
+7885,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+3134,Consumer Cyclical,Internet Retail
+6325,Industrials,Farm & Heavy Construction Machinery
+6797,Industrials,Security & Protection Services
+7628,Consumer Cyclical,Auto Parts
+6276,Industrials,Specialty Industrial Machinery
+7472,Industrials,Industrial Distribution
+6151,Industrials,Specialty Industrial Machinery
+7537,Technology,Electronics & Computer Distribution
+6820,Technology,Communication Equipment
+2221,Consumer Defensive,Confectioners
+8141,Technology,Electronics & Computer Distribution
+3583,Consumer Cyclical,Department Stores
+9932,Industrials,Industrial Distribution
+6778,Technology,Communication Equipment
+4170,Communication Services,Advertising Agencies
+5945,Industrials,Tools & Accessories
+6158,Industrials,Specialty Industrial Machinery
+3386,Healthcare,Diagnostics & Research
+3892,Basic Materials,Paper & Paper Products
+3944,Consumer Cyclical,Packaging & Containers
+7928,Industrials,Tools & Accessories
+2497,Technology,Software - Application
+3851,Communication Services,Electronic Gaming & Multimedia
+3895,Basic Materials,Paper & Paper Products
+9867,Technology,Electronic Components
+5997,Industrials,Building Products & Equipment
+7953,Industrials,Building Products & Equipment
+5363,Basic Materials,Building Materials
+1887,Industrials,Engineering & Construction
+1793,Industrials,Engineering & Construction
+7872,Consumer Cyclical,Luxury Goods
+3417,Healthcare,Pharmaceutical Retailers
+3277,Real Estate,Real Estate Services
+6349,Industrials,Specialty Industrial Machinery
+7614,Consumer Defensive,Food Distribution
+8075,Basic Materials,Steel
+6360,Industrials,Specialty Industrial Machinery
+9414,Communication Services,Broadcasting
+6907,Technology,Electronic Components
+3641,Communication Services,Publishing
+2654,Consumer Defensive,Packaged Foods
+1376,Basic Materials,Agricultural Inputs
+3953,Consumer Cyclical,Packaging & Containers
+5440,Basic Materials,Steel
+4829,Technology,Software - Application
+2449,Industrials,Consulting Services
+6358,Industrials,Farm & Heavy Construction Machinery
+5958,Industrials,Building Products & Equipment
+3597,Consumer Cyclical,Apparel Manufacturing
+8093,Technology,Electronics & Computer Distribution
+5388,Basic Materials,Building Materials
+4548,Healthcare,Medical Devices
+3388,Technology,Scientific & Technical Instruments
+7859,Technology,Electronic Components
+6485,Industrials,Building Products & Equipment
+8123,Consumer Cyclical,Textile Manufacturing
+5304,Basic Materials,Specialty Chemicals
+8935,Real Estate,Real Estate - Diversified
+6419,Consumer Cyclical,Leisure
+9425,Technology,Electronics & Computer Distribution
+7896,Industrials,Building Products & Equipment
+5368,Industrials,Specialty Industrial Machinery
+6619,Industrials,Electrical Equipment & Parts
+6482,Industrials,Specialty Industrial Machinery
+7820,Industrials,Building Products & Equipment
+1905,Industrials,Engineering & Construction
+3958,Industrials,Specialty Business Services
+6919,Technology,Electronic Components
+2999,Consumer Cyclical,Residential Construction
+7565,Technology,Electronics & Computer Distribution
+2700,Consumer Defensive,Packaged Foods
+8150,Technology,Semiconductors
+3176,Industrials,Industrial Distribution
+7677,Industrials,Railroads
+8084,Technology,Semiconductors
+8844,Real Estate,Real Estate Services
+4119,Basic Materials,Specialty Chemicals
+7602,Consumer Cyclical,Auto & Truck Dealerships
+7551,Consumer Cyclical,Auto Parts
+3321,Technology,Electronic Components
+6165,Industrials,Tools & Accessories
+9820,Industrials,Specialty Business Services
+3513,Basic Materials,Paper & Paper Products
+4308,Communication Services,Entertainment
+6149,Industrials,Specialty Industrial Machinery
+7681,Healthcare,Medical Distribution
+1768,Industrials,Engineering & Construction
+7925,Basic Materials,Chemicals
+6418,Industrials,Business Equipment & Supplies
+7265,Industrials,Pollution & Treatment Controls
+6091,Industrials,Engineering & Construction
+7235,Consumer Cyclical,Auto Parts
+8045,Consumer Defensive,Packaged Foods
+548A,Technology,Information Technology Services
+6118,Industrials,Specialty Industrial Machinery
+6730,Technology,Semiconductors
+6245,Industrials,Specialty Industrial Machinery
+6858,Technology,Scientific & Technical Instruments
+8103,Industrials,Industrial Distribution
+5871,Technology,Computer Hardware
+3577,Consumer Cyclical,Textile Manufacturing
+7446,Basic Materials,Specialty Chemicals
+3674,Communication Services,Internet Content & Information
+4301,Communication Services,Entertainment
+5464,Basic Materials,Steel
+7544,Consumer Defensive,Grocery Stores
+8700,Financial Services,Capital Markets
+4628,Basic Materials,Specialty Chemicals
+9478,Communication Services,Publishing
+4996,Basic Materials,Agricultural Inputs
+6365,Industrials,Specialty Industrial Machinery
+189A,Healthcare,Medical Care Facilities
+2385,Healthcare,Biotechnology
+9980,Consumer Cyclical,Apparel Manufacturing
+5757,Industrials,Metal Fabrication
+6678,Healthcare,Medical Devices
+6463,Consumer Cyclical,Auto Parts
+9760,Industrials,Conglomerates
+1899,Industrials,Engineering & Construction
+3943,Consumer Cyclical,Packaging & Containers
+1724,Technology,Communication Equipment
+2329,Communication Services,Entertainment
+3580,Consumer Cyclical,Textile Manufacturing
+6022,Industrials,Aerospace & Defense
+6915,Technology,Electronic Components
+1807,Industrials,Engineering & Construction
+7314,Industrials,Business Equipment & Supplies
+3653,Technology,Software - Application
+9857,Industrials,Electrical Equipment & Parts
+2911,Consumer Defensive,Packaged Foods
+8152,Basic Materials,Specialty Chemicals
+373A,Consumer Cyclical,Specialty Retail
+8202,Consumer Cyclical,Specialty Retail
+3802,Industrials,Specialty Business Services
+8104,Basic Materials,Building Materials
+4925,Consumer Defensive,Household & Personal Products
+4299,Technology,Software - Application
+6804,Industrials,Electrical Equipment & Parts
+3434,Consumer Cyclical,Auto Parts
+248A,Technology,Software - Application
+1826,Industrials,Engineering & Construction
+6382,Consumer Cyclical,Auto Parts
+8572,Financial Services,Credit Services
+9625,Communication Services,Advertising Agencies
+4936,Consumer Defensive,Household & Personal Products
+6494,Industrials,Specialty Industrial Machinery
+7689,Communication Services,Advertising Agencies
+2735,Consumer Defensive,Grocery Stores
+6229,Industrials,Specialty Industrial Machinery
+2425,Healthcare,Medical Care Facilities
+6882,Industrials,Electrical Equipment & Parts
+9845,Industrials,Industrial Distribution
+7952,Consumer Cyclical,Leisure
+6894,Industrials,Electrical Equipment & Parts
+7607,Industrials,Specialty Industrial Machinery
+1770,Industrials,Engineering & Construction
+6488,Industrials,Specialty Industrial Machinery
+4120,Basic Materials,Specialty Chemicals
+6647,Industrials,Electrical Equipment & Parts
+7847,Consumer Cyclical,Leisure
+9253,Industrials,Staffing & Employment Services
+3291,Consumer Cyclical,Residential Construction
+167A,Technology,Electronics & Computer Distribution
+7487,Basic Materials,Paper & Paper Products
+8622,Financial Services,Capital Markets
+5129,Technology,Software - Infrastructure
+5218,Technology,Electronic Components
+3816,Technology,Software - Application
+7128,Industrials,Industrial Distribution
+7510,Technology,Semiconductor Equipment & Materials
+1866,Industrials,Engineering & Construction
+8616,Financial Services,Capital Markets
+3139,Consumer Defensive,Packaged Foods
+220A,Technology,Software - Application
+9475,Communication Services,Publishing
+4761,Technology,Information Technology Services
+3435,Industrials,Metal Fabrication
+8705,Financial Services,Capital Markets
+1798,Industrials,Engineering & Construction
+5449,Basic Materials,Steel
+1879,Industrials,Engineering & Construction
+4534,Healthcare,Drug Manufacturers - Specialty & Generic
+2009,Consumer Defensive,Packaged Foods
+6338,Technology,Semiconductors
+5461,Basic Materials,Steel
+6104,Industrials,Specialty Industrial Machinery
+2693,Industrials,Specialty Industrial Machinery
+7185,Financial Services,Capital Markets
+7946,Industrials,Specialty Business Services
+4547,Healthcare,Drug Manufacturers - Specialty & Generic
+6832,Technology,Semiconductors
+7313,Consumer Cyclical,Auto Parts
+1847,Real Estate,Real Estate - Development
+2483,Industrials,Specialty Business Services
+1867,Industrials,Engineering & Construction
+7228,Consumer Cyclical,Auto Parts
+4406,Basic Materials,Specialty Chemicals
+6265,Industrials,Specialty Industrial Machinery
+9996,Consumer Defensive,Food Distribution
+9339,Consumer Defensive,Education & Training Services
+1811,Industrials,Engineering & Construction
+8041,Consumer Defensive,Farm Products
+5458,Basic Materials,Steel
+9908,Industrials,Rental & Leasing Services
+7567,Industrials,Electrical Equipment & Parts
+6030,Consumer Cyclical,Travel Services
+9755,Industrials,Engineering & Construction
+5189,Consumer Cyclical,Auto Parts
+8101,Consumer Cyclical,Textile Manufacturing
+2108,Consumer Defensive,Confectioners
+4918,Consumer Defensive,Household & Personal Products
+3512,Industrials,Conglomerates
+3089,Technology,Semiconductor Equipment & Materials
+5976,Basic Materials,Steel
+1430,Consumer Cyclical,Residential Construction
+8871,Real Estate,Real Estate - Development
+6706,Technology,Communication Equipment
+1716,Industrials,Engineering & Construction
+3766,Technology,Information Technology Services
+6034,Healthcare,Medical Care Facilities
+5820,Industrials,Electrical Equipment & Parts
+6038,Communication Services,Advertising Agencies
+7287,Consumer Cyclical,Auto Parts
+9906,Industrials,Specialty Industrial Machinery
+6737,Technology,Computer Hardware
+4591,Healthcare,Biotechnology
+5906,Technology,Consumer Electronics
+7922,Industrials,Specialty Business Services
+6430,Technology,Computer Hardware
+4429,Technology,Software - Application
+3932,Communication Services,Electronic Gaming & Multimedia
+3437,Industrials,Specialty Industrial Machinery
+9955,Consumer Defensive,Farm Products
+6337,Technology,Semiconductor Equipment & Materials
+7523,Consumer Cyclical,Personal Services
+4116,Basic Materials,Specialty Chemicals
+9647,Industrials,Engineering & Construction
+6316,Industrials,Farm & Heavy Construction Machinery
+3377,Consumer Cyclical,Auto & Truck Dealerships
+7444,Consumer Cyclical,Department Stores
+2613,Consumer Defensive,Packaged Foods
+1822,Industrials,Engineering & Construction
+6572,Technology,Information Technology Services
+8098,Basic Materials,Specialty Chemicals
+6496,Industrials,Specialty Industrial Machinery
+4229,Basic Materials,Specialty Chemicals
+7031,Industrials,Specialty Business Services
+8185,Consumer Cyclical,Apparel Retail
+1981,Industrials,Building Products & Equipment
+5816,Industrials,Electrical Equipment & Parts
+1788,Industrials,Engineering & Construction
+2481,Communication Services,Publishing
+7192,Financial Services,Mortgage Finance
+6918,Technology,Computer Hardware
+8737,Financial Services,Asset Management
+6417,Consumer Cyclical,Gambling
+1786,Industrials,Engineering & Construction
+1972,Industrials,Building Products & Equipment
+6540,Industrials,Engineering & Construction
+3908,Technology,Information Technology Services
+7370,Communication Services,Advertising Agencies
+5451,Basic Materials,Steel
+6927,Technology,Consumer Electronics
+7983,Industrials,Tools & Accessories
+4316,Technology,Information Technology Services
+7613,Technology,Electronic Components
+8877,Real Estate,Real Estate - Development
+9726,Consumer Cyclical,Travel Services
+6848,Technology,Scientific & Technical Instruments
+6484,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+5125,Communication Services,Entertainment
+6279,Industrials,Specialty Industrial Machinery
+9363,Industrials,Integrated Freight & Logistics
+1888,Industrials,Engineering & Construction
+7955,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+3553,Basic Materials,Chemicals
+7833,Industrials,Specialty Business Services
+2763,Technology,Communication Equipment
+7460,Consumer Cyclical,Textile Manufacturing
+7527,Technology,Software - Application
+9902,Industrials,Industrial Distribution
+2053,Consumer Defensive,Packaged Foods
+3682,Technology,Information Technology Services
+2961,Industrials,Specialty Industrial Machinery
+4059,Communication Services,Internet Content & Information
+2121,Communication Services,Electronic Gaming & Multimedia
+4635,Basic Materials,Specialty Chemicals
+1443,Industrials,Engineering & Construction
+7722,Industrials,Specialty Industrial Machinery
+8091,Consumer Defensive,Packaged Foods
+9888,Basic Materials,Steel
+4754,Industrials,Security & Protection Services
+6047,Technology,Software - Application
+5542,Basic Materials,Steel
+9248,Industrials,Engineering & Construction
+7292,Consumer Cyclical,Auto Parts
+5959,Industrials,Building Products & Equipment
+4990,Basic Materials,Specialty Chemicals
+7077,Communication Services,Internet Content & Information
+4772,Communication Services,Entertainment
+7208,Consumer Cyclical,Auto Parts
+3431,Industrials,Engineering & Construction
+7539,Industrials,Building Products & Equipment
+8742,Financial Services,Capital Markets
+9408,Technology,Information Technology Services
+3930,Communication Services,Internet Content & Information
+8014,Industrials,Conglomerates
+6870,Industrials,Security & Protection Services
+6897,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4620,Basic Materials,Specialty Chemicals
+9466,Communication Services,Advertising Agencies
+4934,Consumer Defensive,Household & Personal Products
+4623,Basic Materials,Specialty Chemicals
+4388,Technology,Communication Equipment
+3826,Technology,Software - Application
+3839,Technology,Information Technology Services
+2408,Communication Services,Publishing
+7351,Technology,Software - Infrastructure
+4095,Basic Materials,Specialty Chemicals
+6063,Healthcare,Medical Care Facilities
+1795,Industrials,Engineering & Construction
+3903,Communication Services,Electronic Gaming & Multimedia
+6626,Technology,Electronic Components
+196A,Financial Services,Mortgage Finance
+3071,Consumer Cyclical,Internet Retail
+5357,Basic Materials,Building Materials
+4992,Basic Materials,Agricultural Inputs
+6794,Technology,Consumer Electronics
+5695,Basic Materials,Specialty Chemicals
+8137,Technology,Electronics & Computer Distribution
+3911,Communication Services,Electronic Gaming & Multimedia
+331A,Communication Services,Advertising Agencies
+4512,Healthcare,Drug Manufacturers - Specialty & Generic
+5410,Basic Materials,Steel
+9404,Communication Services,Broadcasting
+9990,Consumer Cyclical,Luxury Goods
+1799,Industrials,Engineering & Construction
+3143,Consumer Defensive,Food Distribution
+5967,Industrials,Tools & Accessories
+6637,Industrials,Electrical Equipment & Parts
+2330,Consumer Cyclical,Leisure
+304A,Technology,Information Technology Services
+6384,Industrials,Specialty Industrial Machinery
+6517,Industrials,Specialty Industrial Machinery
+3622,Communication Services,Advertising Agencies
+9563,Technology,Information Technology Services
+6505,Industrials,Specialty Industrial Machinery
+6905,Industrials,Electrical Equipment & Parts
+2819,Consumer Defensive,Packaged Foods
+5527,Real Estate,Real Estate Services
+5983,Industrials,Electrical Equipment & Parts
+8747,Financial Services,Capital Markets
+8052,Industrials,Industrial Distribution
+4351,Industrials,Specialty Business Services
+7600,Healthcare,Medical Devices
+7046,Technology,Information Technology Services
+7140,Healthcare,Medical Care Facilities
+6580,Industrials,Specialty Business Services
+6676,Technology,Computer Hardware
+7916,Industrials,Specialty Business Services
+7878,Consumer Cyclical,Luxury Goods
+7965,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+1780,Industrials,Engineering & Construction
+3352,Consumer Cyclical,Auto & Truck Dealerships
+6599,Technology,Computer Hardware
+4994,Consumer Cyclical,Packaging & Containers
+5131,Industrials,Specialty Business Services
+8023,Technology,Electronics & Computer Distribution
+7837,Real Estate,Real Estate - Development
+3416,Consumer Cyclical,Internet Retail
+4728,Communication Services,Electronic Gaming & Multimedia
+7782,Healthcare,Medical Instruments & Supplies
+8127,Consumer Cyclical,Apparel Manufacturing
+7213,Technology,Electronic Components
+7299,Consumer Cyclical,Auto Parts
+8158,Basic Materials,Chemicals
+3079,Healthcare,Medical Devices
+6161,Industrials,Specialty Industrial Machinery
+8999,Real Estate,Real Estate Services
+7466,Consumer Cyclical,Auto Parts
+8066,Industrials,Conglomerates
+8226,Technology,Information Technology Services
+3299,Real Estate,Real Estate - Development
+5957,Industrials,Tools & Accessories
+4725,Technology,Information Technology Services
+3550,Consumer Cyclical,Footwear & Accessories
+9739,Technology,Information Technology Services
+7989,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+3375,Technology,Electronics & Computer Distribution
+6552,Communication Services,Electronic Gaming & Multimedia
+3646,Communication Services,Internet Content & Information
+7940,Basic Materials,Specialty Chemicals
+4736,Technology,Information Technology Services
+8946,Real Estate,Real Estate Services
+3266,Financial Services,Asset Management
+7634,Healthcare,Medical Distribution
+6664,Technology,Scientific & Technical Instruments
+8059,Industrials,Specialty Industrial Machinery
+3800,Technology,Software - Application
+9193,Industrials,Marine Shipping
+5911,Industrials,Engineering & Construction
+7296,Consumer Cyclical,Auto Parts
+5240,Technology,Software - Infrastructure
+4094,Basic Materials,Specialty Chemicals
+3023,Basic Materials,Other Industrial Metals & Mining
+6923,Consumer Cyclical,Auto Parts
+3267,Industrials,Engineering & Construction
+3799,Technology,Information Technology Services
+2479,Technology,Electronic Components
+9409,Communication Services,Broadcasting
+4076,Technology,Information Technology Services
+7849,Communication Services,Publishing
+7425,Basic Materials,Steel
+3760,Communication Services,Electronic Gaming & Multimedia
+6741,Industrials,Electrical Equipment & Parts
+3306,Industrials,Conglomerates
+6247,Industrials,Specialty Industrial Machinery
+4893,Healthcare,Biotechnology
+5184,Consumer Cyclical,Auto Parts
+9799,Technology,Information Technology Services
+8077,Industrials,Industrial Distribution
+8011,Consumer Cyclical,Apparel Manufacturing
+9330,Communication Services,Advertising Agencies
+6844,Technology,Electronic Components
+2883,Industrials,Specialty Industrial Machinery
+6069,Communication Services,Advertising Agencies
+2806,Consumer Defensive,Packaged Foods
+7501,Consumer Cyclical,Specialty Retail
+6248,Industrials,Specialty Industrial Machinery
+3772,Real Estate,Real Estate - Diversified
+6033,Communication Services,Electronic Gaming & Multimedia
+6489,Industrials,Pollution & Treatment Controls
+8707,Financial Services,Capital Markets
+2411,Communication Services,Advertising Agencies
+6769,Technology,Semiconductors
+7938,Consumer Cyclical,Footwear & Accessories
+4616,Basic Materials,Specialty Chemicals
+4880,Healthcare,Biotechnology
+7447,Consumer Cyclical,Apparel Manufacturing
+6809,Industrials,Security & Protection Services
+1964,Industrials,Specialty Industrial Machinery
+7962,Industrials,Business Equipment & Supplies
+7804,Communication Services,Advertising Agencies
+9986,Industrials,Industrial Distribution
+5302,Basic Materials,Specialty Chemicals
+9753,Technology,Information Technology Services
+8118,Consumer Cyclical,Textile Manufacturing
+7483,Industrials,Conglomerates
+6864,Technology,Electronic Components
+130A,Healthcare,Biotechnology
+3611,Consumer Cyclical,Apparel Manufacturing
+1911,Consumer Cyclical,Residential Construction
+2349,Technology,Information Technology Services
+9827,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7813,Healthcare,Medical Instruments & Supplies
+3948,Industrials,Specialty Business Services
+6763,Industrials,Electrical Equipment & Parts
+4769,Technology,Information Technology Services
+7723,Technology,Scientific & Technical Instruments
+7417,Industrials,Industrial Distribution
+4619,Consumer Cyclical,Auto Parts
+6345,Industrials,Farm & Heavy Construction Machinery
+8945,Real Estate,Real Estate Services
+8043,Consumer Defensive,Packaged Foods
+3636,Technology,Information Technology Services
+6405,Industrials,Specialty Industrial Machinery
+4356,Technology,Information Technology Services
+6901,Consumer Cyclical,Auto Parts
+7590,Consumer Cyclical,Home Improvement Retail
+6209,Consumer Cyclical,Auto Parts
+1810,Industrials,Engineering & Construction
+9698,Technology,Software - Application
+6282,Industrials,Tools & Accessories
+9994,Consumer Defensive,Beverages - Brewers
+256A,Industrials,Engineering & Construction
+6267,Industrials,Specialty Industrial Machinery
+7039,Industrials,Consulting Services
+8006,Consumer Defensive,Food Distribution
+7749,Healthcare,Medical Instruments & Supplies
+3571,Consumer Cyclical,Textile Manufacturing
+3670,Technology,Information Technology Services
+7067,Communication Services,Advertising Agencies
+4069,Technology,Software - Application
+3913,Technology,Software - Application
+7800,Consumer Cyclical,Packaging & Containers
+7459,Healthcare,Medical Distribution
+1514,Energy,Thermal Coal
+2831,Consumer Defensive,Packaged Foods
+7112,Consumer Cyclical,Apparel Manufacturing
+3848,Technology,Software - Application
+4997,Basic Materials,Agricultural Inputs
+6156,Industrials,Tools & Accessories
+1997,Industrials,Engineering & Construction
+4883,Healthcare,Drug Manufacturers - Specialty & Generic
+6157,Industrials,Tools & Accessories
+6445,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+5186,Industrials,Specialty Industrial Machinery
+6926,Technology,Electronic Components
+5122,Basic Materials,Specialty Chemicals
+7305,Basic Materials,Steel
+6246,Industrials,Specialty Industrial Machinery
+7087,Technology,Semiconductors
+9991,Industrials,Rental & Leasing Services
+3159,Consumer Cyclical,Specialty Retail
+1960,Industrials,Engineering & Construction
+3627,Technology,Software - Infrastructure
+3482,Real Estate,Real Estate Services
+2153,Industrials,Engineering & Construction
+2908,Consumer Defensive,Packaged Foods
+3529,Consumer Cyclical,Apparel Manufacturing
+9441,Consumer Cyclical,Specialty Retail
+4719,Technology,Software - Application
+6291,Industrials,Pollution & Treatment Controls
+9622,Industrials,Engineering & Construction
+9341,Healthcare,Medical Devices
+9780,Industrials,Specialty Business Services
+6103,Industrials,Specialty Industrial Machinery
+6863,Technology,Scientific & Technical Instruments
+5939,Industrials,Electrical Equipment & Parts
+7525,Industrials,Specialty Industrial Machinery
+4247,Basic Materials,Specialty Chemicals
+6286,Industrials,Specialty Industrial Machinery
+8219,Consumer Cyclical,Apparel Retail
+1762,Industrials,Engineering & Construction
+3559,Technology,Electronic Components
+3355,Industrials,Industrial Distribution
+4270,Technology,Software - Infrastructure
+6898,Technology,Consumer Electronics
+5619,Healthcare,Health Information Services
+6230,Industrials,Building Products & Equipment
+7931,Industrials,Electrical Equipment & Parts
+3825,Utilities,Utilities - Regulated Electric
+3665,Consumer Cyclical,Internet Retail
+198A,Technology,Software - Application
+4287,Technology,Computer Hardware
+5982,Industrials,Specialty Industrial Machinery
+7482,Consumer Cyclical,Packaging & Containers
+6998,Industrials,Metal Fabrication
+8154,Technology,Electronic Components
+1835,Industrials,Engineering & Construction
+7294,Consumer Cyclical,Auto Parts
+1828,Industrials,Engineering & Construction
+8018,Consumer Cyclical,Apparel Retail
+6364,Industrials,Specialty Industrial Machinery
+4265,Industrials,Staffing & Employment Services
+9476,Communication Services,Publishing
+1914,Industrials,Engineering & Construction
+3302,Industrials,Farm & Heavy Construction Machinery
+7477,Consumer Cyclical,Specialty Retail
+7713,Technology,Electronic Components
+8085,Industrials,Industrial Distribution
+244A,Technology,Information Technology Services
+6309,Industrials,Specialty Industrial Machinery
+4978,Healthcare,Biotechnology
+2185,Technology,Information Technology Services
+5943,Industrials,Building Products & Equipment
+4540,Healthcare,Drug Manufacturers - Specialty & Generic
+3698,Communication Services,Electronic Gaming & Multimedia
+5142,Basic Materials,Chemicals
+3421,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+192A,Financial Services,Capital Markets
+4434,Technology,Software - Infrastructure
+7433,Technology,Electronic Components
+6322,Industrials,Specialty Industrial Machinery
+5576,Technology,Information Technology Services
+4471,Basic Materials,Specialty Chemicals
+6125,Industrials,Specialty Industrial Machinery
+4767,Communication Services,Advertising Agencies
+7807,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6912,Industrials,Electrical Equipment & Parts
+5237,Industrials,Building Products & Equipment
+9413,Communication Services,Broadcasting
+9344,Industrials,Staffing & Employment Services
+4394,Technology,Information Technology Services
+6592,Consumer Cyclical,Auto Parts
+8029,Consumer Cyclical,Apparel Manufacturing
+7769,Consumer Cyclical,Luxury Goods
+6493,Consumer Cyclical,Auto Parts
+8708,Financial Services,Capital Markets
+7860,Communication Services,Entertainment
+7079,Healthcare,Health Information Services
+2792,Consumer Cyclical,Apparel Retail
+4376,Industrials,Specialty Business Services
+4524,Healthcare,Drug Manufacturers - Specialty & Generic
+4752,Technology,Information Technology Services
+3940,Technology,Information Technology Services
+1976,Industrials,Engineering & Construction
+4112,Basic Materials,Specialty Chemicals
+6742,Technology,Scientific & Technical Instruments
+4372,Technology,Software - Application
+3768,Industrials,Consulting Services
+6239,Energy,Oil & Gas Refining & Marketing
+483A,Technology,Information Technology Services
+4240,Technology,Electronic Components
+9651,Technology,Software - Application
+9258,Communication Services,Advertising Agencies
+1301,Consumer Defensive,Packaged Foods
+4521,Healthcare,Drug Manufacturers - Specialty & Generic
+6336,Industrials,Specialty Industrial Machinery
+2612,Consumer Defensive,Packaged Foods
+8918,Real Estate,Real Estate - Diversified
+8081,Industrials,Conglomerates
+3680,Technology,Software - Infrastructure
+9345,Consumer Defensive,Education & Training Services
+6082,Consumer Cyclical,Internet Retail
+7545,Consumer Cyclical,Specialty Retail
+4072,Technology,Information Technology Services
+6989,Technology,Electronic Components
+550A,Technology,Information Technology Services
+7844,Communication Services,Electronic Gaming & Multimedia
+6874,Technology,Scientific & Technical Instruments
+6137,Industrials,Specialty Industrial Machinery
+4998,Basic Materials,Agricultural Inputs
+3461,Industrials,Specialty Business Services
+7254,Consumer Cyclical,Auto Parts
+8078,Industrials,Conglomerates
+1450,Industrials,Engineering & Construction
+3020,Technology,Electronics & Computer Distribution
+7050,Communication Services,Advertising Agencies
+3841,Technology,Software - Application
+9376,Consumer Cyclical,Travel Services
+1928,Consumer Cyclical,Residential Construction
+4172,Healthcare,Health Information Services
+6050,Technology,Information Technology Services
+7240,Consumer Cyclical,Auto Parts
+1966,Industrials,Engineering & Construction
+5990,Industrials,Tools & Accessories
+8613,Financial Services,Capital Markets
+2461,Communication Services,Advertising Agencies
+6635,Technology,Electronic Components
+5356,Basic Materials,Building Materials
+7114,Consumer Defensive,Food Distribution
+4093,Basic Materials,Chemicals
+2415,Consumer Defensive,Education & Training Services
+7595,Technology,Software - Application
+1377,Consumer Defensive,Farm Products
+423A,Industrials,Business Equipment & Supplies
+8887,Real Estate,Real Estate - Development
+7239,Consumer Cyclical,Auto Parts
+1787,Industrials,Metal Fabrication
+5535,Real Estate,Real Estate Services
+4017,Consumer Cyclical,Internet Retail
+6630,Consumer Defensive,Household & Personal Products
+4378,Technology,Software - Infrastructure
+5138,Communication Services,Internet Content & Information
+3965,Technology,Software - Application
+2750,Consumer Defensive,Confectioners
+5950,Industrials,Tools & Accessories
+5702,Basic Materials,Aluminum
+7276,Consumer Cyclical,Auto Parts
+5018,Basic Materials,Specialty Chemicals
+9987,Healthcare,Medical Distribution
+5659,Industrials,Tools & Accessories
+8927,Real Estate,Real Estate - Diversified
+2493,Technology,Information Technology Services
+5423,Basic Materials,Steel
+2186,Technology,Software - Application
+2475,Industrials,Staffing & Employment Services
+5273,Industrials,Building Products & Equipment
+7222,Consumer Cyclical,Auto Manufacturers
+6307,Industrials,Specialty Business Services
+6824,Technology,Scientific & Technical Instruments
+2722,Consumer Defensive,Discount Stores
+2733,Consumer Cyclical,Department Stores
+3490,Real Estate,Real Estate Services
+4362,Basic Materials,Specialty Chemicals
+6888,Technology,Information Technology Services
+2122,Communication Services,Advertising Agencies
+9709,Technology,Information Technology Services
+3059,Consumer Cyclical,Footwear & Accessories
+6995,Consumer Cyclical,Auto Parts
+4027,Basic Materials,Specialty Chemicals
+6459,Industrials,Specialty Industrial Machinery
+3598,Consumer Cyclical,Apparel Manufacturing
+9856,Consumer Cyclical,Auto & Truck Dealerships
+3245,Real Estate,Real Estate Services
+6351,Industrials,Specialty Industrial Machinery
+1967,Industrials,Engineering & Construction
+4178,Technology,Software - Infrastructure
+4249,Basic Materials,Specialty Chemicals
+3183,Healthcare,Medical Distribution
+3950,Consumer Cyclical,Packaging & Containers
+4951,Consumer Defensive,Household & Personal Products
+3624,Communication Services,Internet Content & Information
+9715,Technology,Information Technology Services
+6850,Technology,Scientific & Technical Instruments
+2784,Healthcare,Medical Distribution
+4977,Basic Materials,Specialty Chemicals
+442A,Consumer Cyclical,Apparel Manufacturing
+7863,Industrials,Specialty Business Services
+6662,Technology,Software - Infrastructure
+4881,Healthcare,Biotechnology
+6677,Technology,Electronic Components
+2916,Consumer Defensive,Confectioners
+3201,Consumer Cyclical,Textile Manufacturing
+9273,Healthcare,Drug Manufacturers - Specialty & Generic
+1382,Consumer Defensive,Farm Products
+547A,Financial Services,Credit Services
+5602,Basic Materials,Steel
+1992,Technology,Communication Equipment
+1941,Industrials,Engineering & Construction
+2815,Consumer Defensive,Packaged Foods
+6663,Technology,Electronic Components
+5590,Technology,Software - Infrastructure
+7927,Technology,Electronic Components
+5445,Basic Materials,Steel
+8624,Financial Services,Asset Management
+7172,Industrials,Rental & Leasing Services
+8508,Financial Services,Financial Conglomerates
+6198,Industrials,Staffing & Employment Services
+8065,Basic Materials,Steel
+4882,Healthcare,Drug Manufacturers - General
+7270,Consumer Cyclical,Auto Manufacturers
+6466,Industrials,Specialty Industrial Machinery
+2477,Communication Services,Internet Content & Information
+8934,Real Estate,Real Estate Services
+6340,Industrials,Specialty Industrial Machinery
+8928,Real Estate,Real Estate Services
+3678,Communication Services,Publishing
+9629,Technology,Software - Application
+5660,Basic Materials,Steel
+2152,Consumer Defensive,Education & Training Services
+7949,Industrials,Building Products & Equipment
+7673,Technology,Communication Equipment
+7803,Communication Services,Electronic Gaming & Multimedia
+3172,Consumer Cyclical,Internet Retail
+6333,Industrials,Specialty Industrial Machinery
+3963,Industrials,Specialty Business Services
+5035,Technology,Information Technology Services
+9127,Industrials,Marine Shipping
+6391,Industrials,Specialty Industrial Machinery
+9212,Basic Materials,Specialty Chemicals
+2915,Consumer Defensive,Packaged Foods
+7231,Consumer Cyclical,Auto Parts
+9849,Industrials,Conglomerates
+4667,Technology,Software - Infrastructure
+6070,Industrials,Staffing & Employment Services
+6932,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+8051,Industrials,Specialty Industrial Machinery
+5463,Basic Materials,Steel
+5563,Basic Materials,Steel
+6167,Industrials,Tools & Accessories
+5947,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4526,Consumer Defensive,Packaged Foods
+9225,Industrials,Specialty Business Services
+5941,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+5868,Technology,Information Technology Services
+9768,Industrials,Engineering & Construction
+1938,Industrials,Engineering & Construction
+9930,Industrials,Specialty Industrial Machinery
+5185,Consumer Cyclical,Auto Parts
+7480,Industrials,Electrical Equipment & Parts
+1720,Industrials,Engineering & Construction
+9265,Healthcare,Medical Distribution
+1435,Real Estate,Real Estate Services
+2332,Technology,Information Technology Services
+5192,Industrials,Specialty Industrial Machinery
+5973,Basic Materials,Steel
+6191,Consumer Cyclical,Travel Services
+2737,Technology,Semiconductors
+4491,Technology,Software - Application
+6455,Industrials,Farm & Heavy Construction Machinery
+3333,Consumer Cyclical,Specialty Retail
+1930,Industrials,Engineering & Construction
+4097,Basic Materials,Specialty Chemicals
+8704,Financial Services,Capital Markets
+5262,Industrials,Building Products & Equipment
+2335,Technology,Information Technology Services
+1662,Energy,Oil & Gas E&P
+3991,Communication Services,Internet Content & Information
+6272,Industrials,Specialty Industrial Machinery
+6379,Industrials,Engineering & Construction
+4914,Basic Materials,Specialty Chemicals
+4220,Basic Materials,Chemicals
+6803,Technology,Computer Hardware
+4310,Financial Services,Asset Management
+6203,Industrials,Specialty Industrial Machinery
+7976,Industrials,Business Equipment & Supplies
+1852,Industrials,Engineering & Construction
+2341,Communication Services,Publishing
+7864,Consumer Cyclical,Packaging & Containers
+4012,Technology,Information Technology Services
+4465,Consumer Defensive,Household & Personal Products
+7702,Healthcare,Medical Instruments & Supplies
+2305,Consumer Cyclical,Personal Services
+5268,Industrials,Building Products & Equipment
+6770,Technology,Electronic Components
+6395,Industrials,Farm & Heavy Construction Machinery
+6675,Technology,Communication Equipment
+206A,Healthcare,Biotechnology
+2975,Real Estate,Real Estate Services
+2342,Healthcare,Biotechnology
+6788,Industrials,Pollution & Treatment Controls
+4053,Technology,Information Technology Services
+4516,Healthcare,Drug Manufacturers - Specialty & Generic
+3934,Communication Services,Telecom Services
+4750,Industrials,Engineering & Construction
+6143,Industrials,Specialty Industrial Machinery
+2114,Consumer Defensive,Confectioners
+4577,Healthcare,Drug Manufacturers - Specialty & Generic
+3773,Technology,Communication Equipment
+4956,Basic Materials,Specialty Chemicals
+4284,Technology,Software - Application
+4792,Industrials,Consulting Services
+6381,Industrials,Specialty Industrial Machinery
+4659,Industrials,Specialty Business Services
+7921,Industrials,Specialty Business Services
+6339,Industrials,Specialty Industrial Machinery
+9438,Healthcare,Health Information Services
+3465,Real Estate,Real Estate Services
+6643,Industrials,Electrical Equipment & Parts
+8898,Real Estate,Real Estate Services
+9621,Industrials,Engineering & Construction
+7255,Consumer Cyclical,Auto Parts
+4840,Industrials,Conglomerates
+3288,Real Estate,Real Estate - Diversified
+3284,Consumer Cyclical,Residential Construction
+7717,Industrials,Specialty Industrial Machinery
+7951,Consumer Cyclical,Leisure
+1518,Energy,Thermal Coal
+4171,Industrials,Specialty Business Services
+1814,Real Estate,Real Estate - Development
+1844,Industrials,Engineering & Construction
+4238,Technology,Semiconductor Equipment & Materials
+4931,Consumer Cyclical,Specialty Retail
+9233,Industrials,Engineering & Construction
+7514,Consumer Cyclical,Specialty Retail
+4673,Industrials,Engineering & Construction
+137A,Technology,Software - Infrastructure
+3918,Technology,Information Technology Services
+4167,Technology,Software - Application
+4922,Consumer Defensive,Household & Personal Products
+2325,Industrials,Waste Management
+6772,Technology,Electronic Components
+3834,Communication Services,Telecom Services
+3445,Technology,Semiconductors
+2876,Consumer Defensive,Packaged Foods
+6853,Technology,Scientific & Technical Instruments
+2292,Consumer Defensive,Farm Products
+9782,Communication Services,Advertising Agencies
+2169,Technology,Software - Application
+4595,Healthcare,Drug Manufacturers - Specialty & Generic
+2907,Consumer Defensive,Packaged Foods
+6250,Industrials,Tools & Accessories
+5011,Industrials,Engineering & Construction
+6822,Technology,Communication Equipment
+3042,Technology,Software - Infrastructure
+6420,Industrials,Specialty Industrial Machinery
+8227,Consumer Cyclical,Apparel Retail
+2454,Communication Services,Internet Content & Information
+4317,Communication Services,Entertainment
+6546,Industrials,Specialty Industrial Machinery
+7217,Consumer Cyclical,Auto Parts
+6535,Communication Services,Advertising Agencies
+6392,Industrials,Specialty Industrial Machinery
+9687,Technology,Software - Application
+5126,Technology,Software - Infrastructure
+5484,Basic Materials,Steel
+2652,Consumer Cyclical,Internet Retail
+9904,Consumer Cyclical,Luxury Goods
+4891,Healthcare,Biotechnology
+7725,Technology,Electronic Components
+302A,Industrials,Staffing & Employment Services
+4334,Communication Services,Electronic Gaming & Multimedia
+6238,Consumer Cyclical,Leisure
+4668,Consumer Defensive,Education & Training Services
+6378,Industrials,Specialty Industrial Machinery
+8285,Industrials,Conglomerates
+7095,Communication Services,Advertising Agencies
+2692,Consumer Defensive,Food Distribution
+4218,Industrials,Business Equipment & Supplies
+6849,Healthcare,Medical Devices
+1827,Industrials,Engineering & Construction
+7072,Technology,Information Technology Services
+4958,Basic Materials,Specialty Chemicals
+7942,Consumer Cyclical,Packaging & Containers
+7981,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6786,Technology,Software - Application
+1491,Basic Materials,Gold
+7846,Industrials,Business Equipment & Supplies
+6750,Technology,Computer Hardware
+4586,Healthcare,Drug Manufacturers - Specialty & Generic
+8129,Healthcare,Medical Distribution
+1381,Consumer Defensive,Farm Products
+6908,Technology,Electronic Components
+2438,Consumer Cyclical,Personal Services
+7500,Technology,Scientific & Technical Instruments
+2670,Consumer Cyclical,Apparel Retail
+4599,Healthcare,Biotechnology
+4025,Basic Materials,Chemicals
+6190,Healthcare,Biotechnology
+3904,Communication Services,Electronic Gaming & Multimedia
+5974,Utilities,Utilities - Regulated Gas
+6929,Technology,Electronic Components
+8518,Financial Services,Asset Management
+4694,Healthcare,Diagnostics & Research
+4248,Consumer Cyclical,Packaging & Containers
+1968,Industrials,Engineering & Construction
+7377,Industrials,Specialty Business Services
+9729,Industrials,Rental & Leasing Services
+6432,Industrials,Farm & Heavy Construction Machinery
+9763,Industrials,Rental & Leasing Services
+8614,Financial Services,Capital Markets
+4424,Technology,Software - Application
+3138,Consumer Cyclical,Internet Retail
+4391,Technology,Software - Infrastructure
+6518,Industrials,Specialty Industrial Machinery
+1934,Industrials,Engineering & Construction
+2183,Healthcare,Biotechnology
+4427,Technology,Information Technology Services
+1861,Industrials,Engineering & Construction
+6332,Industrials,Pollution & Treatment Controls
+7999,Industrials,Business Equipment & Supplies
+4416,Technology,Software - Application
+7883,Industrials,Specialty Business Services
+6369,Industrials,Specialty Industrial Machinery
+9107,Industrials,Marine Shipping
+6138,Industrials,Metal Fabrication
+7277,Consumer Cyclical,Auto Parts
+1433,Industrials,Engineering & Construction
+3623,Technology,Software - Infrastructure
+2301,Industrials,Staffing & Employment Services
+4251,Technology,Electronic Components
+9837,Consumer Cyclical,Apparel Retail
+7506,Consumer Cyclical,Department Stores
+9692,Technology,Software - Application
+8012,Basic Materials,Specialty Chemicals
+1950,Industrials,Infrastructure Operations
+6875,Technology,Semiconductors
+3909,Technology,Software - Application
+1870,Industrials,Engineering & Construction
+3723,Communication Services,Electronic Gaming & Multimedia
+2981,Real Estate,Real Estate - Development
+6877,Industrials,Tools & Accessories
+7042,Consumer Cyclical,Personal Services
+1904,Industrials,Building Products & Equipment
+3842,Communication Services,Telecom Services
+6140,Industrials,Tools & Accessories
+6081,Communication Services,Internet Content & Information
+1929,Industrials,Engineering & Construction
+9605,Communication Services,Entertainment
+6620,Financial Services,Asset Management
+6287,Industrials,Business Equipment & Supplies
+7038,Industrials,Specialty Business Services
+4401,Basic Materials,Specialty Chemicals
+6306,Industrials,Farm & Heavy Construction Machinery
+9612,Industrials,Engineering & Construction
+7811,Industrials,Specialty Business Services
+3625,Technology,Information Technology Services
+1982,Industrials,Engineering & Construction
+7986,Basic Materials,Steel
+2669,Consumer Defensive,Packaged Foods
+3242,Real Estate,Real Estate - Diversified
+3035,Industrials,Business Equipment & Supplies
+6199,Technology,Information Technology Services
+4042,Basic Materials,Chemicals
+4849,Industrials,Staffing & Employment Services
+166A,Technology,Software - Application
+3998,Consumer Defensive,Education & Training Services
+9242,Industrials,Staffing & Employment Services
+264A,Consumer Defensive,Education & Training Services
+6458,Industrials,Building Products & Equipment
+7413,Consumer Defensive,Packaged Foods
+542A,Consumer Defensive,Household & Personal Products
+3001,Industrials,Conglomerates
+3486,Real Estate,Real Estate Services
+3467,Real Estate,Real Estate Services
+8037,Energy,Oil & Gas Refining & Marketing
+4064,Basic Materials,Specialty Chemicals
+5355,Industrials,Conglomerates
+9165,Industrials,Specialty Business Services
+7990,Consumer Cyclical,Leisure
+7984,Industrials,Business Equipment & Supplies
+3733,Healthcare,Health Information Services
+9740,Industrials,Security & Protection Services
+8157,Industrials,Conglomerates
+4206,Industrials,Conglomerates
+7226,Industrials,Farm & Heavy Construction Machinery
+1663,Utilities,Utilities - Regulated Gas
+7309,Consumer Cyclical,Leisure
+2136,Industrials,Staffing & Employment Services
+5444,Basic Materials,Steel
+6612,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4929,Consumer Defensive,Household & Personal Products
+9743,Industrials,Specialty Business Services
+177A,Healthcare,Biotechnology
+6648,Industrials,Specialty Industrial Machinery
+3926,Communication Services,Internet Content & Information
+7244,Consumer Cyclical,Auto Parts
+3371,Technology,Information Technology Services
+4052,Technology,Software - Application
+3195,Consumer Cyclical,Internet Retail
+4262,Real Estate,Real Estate Services
+4634,Basic Materials,Specialty Chemicals
+6255,Industrials,Specialty Industrial Machinery
+6470,Consumer Cyclical,Auto Parts
+7416,Consumer Cyclical,Apparel Retail
+6277,Industrials,Specialty Industrial Machinery
+343A,Consumer Cyclical,Travel Services
+6185,Communication Services,Advertising Agencies
+7284,Consumer Cyclical,Auto Parts
+5965,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+3817,Technology,Information Technology Services
+4479,Financial Services,Asset Management
+387A,Technology,Software - Application
+9240,Technology,Information Technology Services
+1783,Real Estate,Real Estate - Diversified
+2296,Consumer Defensive,Packaged Foods
+4114,Basic Materials,Chemicals
+4530,Healthcare,Drug Manufacturers - Specialty & Generic
+6171,Industrials,Engineering & Construction
+4633,Basic Materials,Specialty Chemicals
+5367,Industrials,Specialty Industrial Machinery
+265A,Technology,Software - Infrastructure
+6633,Technology,Software - Application
+3107,Technology,Electronics & Computer Distribution
+4044,Basic Materials,Specialty Chemicals
+3996,Technology,Information Technology Services
+8079,Consumer Defensive,Packaged Foods
+3969,Technology,Software - Application
+7819,Consumer Defensive,Household & Personal Products
+415A,Communication Services,Internet Content & Information
+6586,Industrials,Tools & Accessories
+7057,Industrials,Engineering & Construction
+9347,Real Estate,Real Estate Services
+3028,Consumer Cyclical,Specialty Retail
+4886,Healthcare,Drug Manufacturers - Specialty & Generic
+7596,Consumer Defensive,Grocery Stores
+3181,Consumer Cyclical,Specialty Retail
+3132,Technology,Electronics & Computer Distribution
+410A,Technology,Software - Infrastructure
+3659,Communication Services,Electronic Gaming & Multimedia
+5970,Consumer Cyclical,Auto Parts
+9036,Industrials,Integrated Freight & Logistics
+9401,Communication Services,Broadcasting
+3675,Communication Services,Advertising Agencies
+5888,Consumer Cyclical,Recreational Vehicles
+4198,Technology,Information Technology Services
+3070,Consumer Cyclical,Apparel Retail
+3912,Communication Services,Electronic Gaming & Multimedia
+4031,Basic Materials,Agricultural Inputs
+3374,Industrials,Electrical Equipment & Parts
+2498,Industrials,Specialty Business Services
+7102,Industrials,Railroads
+4440,Technology,Software - Application
+6363,Industrials,Specialty Industrial Machinery
+7856,Consumer Cyclical,Textile Manufacturing
+5284,Basic Materials,Building Materials
+1438,Industrials,Engineering & Construction
+9788,Industrials,Engineering & Construction
+1979,Industrials,Building Products & Equipment
+6424,Technology,Scientific & Technical Instruments
+2370,Healthcare,Biotechnology
+4124,Basic Materials,Chemicals
+3945,Basic Materials,Paper & Paper Products
+1882,Industrials,Engineering & Construction
+3858,Technology,Software - Infrastructure
+7374,Industrials,Staffing & Employment Services
+2433,Communication Services,Advertising Agencies
+4892,Healthcare,Drug Manufacturers - Specialty & Generic
+6902,Consumer Cyclical,Auto Parts
+4205,Basic Materials,Specialty Chemicals
+4078,Basic Materials,Specialty Chemicals
+7049,Industrials,Specialty Business Services
+7979,Healthcare,Medical Instruments & Supplies
+7608,Consumer Cyclical,Leisure
+5103,Basic Materials,Specialty Chemicals
+4028,Basic Materials,Specialty Chemicals
+7505,Technology,Information Technology Services
+4687,Technology,Software - Infrastructure
+7911,Industrials,Conglomerates
+3569,Consumer Cyclical,Textile Manufacturing
+7360,Financial Services,Capital Markets
+5936,Industrials,Building Products & Equipment
+8283,Consumer Defensive,Household & Personal Products
+5013,Basic Materials,Chemicals
+7048,Consumer Cyclical,Travel Services
+4113,Basic Materials,Specialty Chemicals
+3915,Technology,Software - Infrastructure
+1808,Consumer Cyclical,Residential Construction
+4488,Technology,Software - Infrastructure
+1717,Industrials,Engineering & Construction
+4826,Technology,Software - Application
+4197,Industrials,Specialty Business Services
+4447,Technology,Software - Application
+4884,Healthcare,Biotechnology
+5244,Technology,Software - Application
+5161,Consumer Cyclical,Auto Parts
+6859,Technology,Scientific & Technical Instruments
+2060,Consumer Defensive,Packaged Foods
+7943,Industrials,Building Products & Equipment
+7836,Technology,Electronic Components
+4642,Industrials,Engineering & Construction
+4664,Industrials,Specialty Business Services
+2440,Communication Services,Internet Content & Information
+3648,Technology,Software - Application
+6223,Industrials,Specialty Industrial Machinery
+3662,Communication Services,Internet Content & Information
+9716,Industrials,Engineering & Construction
+2480,Industrials,Specialty Business Services
+4556,Healthcare,Medical Instruments & Supplies
+3937,Technology,Information Technology Services
+7963,Healthcare,Medical Devices
+4445,Real Estate,Real Estate Services
+7043,Industrials,Staffing & Employment Services
+4272,Basic Materials,Chemicals
+6371,Industrials,Specialty Industrial Machinery
+6145,Industrials,Specialty Industrial Machinery
+9934,Industrials,Industrial Distribution
+2436,Communication Services,Advertising Agencies
+2003,Consumer Defensive,Farm Products
+5834,Industrials,Rental & Leasing Services
+9467,Communication Services,Internet Content & Information
+4685,Industrials,Conglomerates
+4662,Technology,Information Technology Services
+1813,Industrials,Engineering & Construction
+6090,Healthcare,Diagnostics & Research
+2311,Industrials,Engineering & Construction
+5821,Industrials,Conglomerates
+9702,Technology,Software - Application
+4926,Consumer Defensive,Household & Personal Products
+4335,Technology,Information Technology Services
+2910,Consumer Defensive,Packaged Foods
+241A,Technology,Software - Application
+4263,Healthcare,Health Information Services
+1736,Industrials,Industrial Distribution
+4169,Technology,Software - Application
+4414,Technology,Software - Infrastructure
+7058,Industrials,Security & Protection Services
+9213,Industrials,Conglomerates
+4008,Basic Materials,Specialty Chemicals
+2207,Consumer Defensive,Confectioners
+2676,Industrials,Conglomerates
+4671,Healthcare,Diagnostics & Research
+1766,Real Estate,Real Estate Services
+5589,Consumer Cyclical,Auto & Truck Dealerships
+6029,Healthcare,Medical Care Facilities
+6289,Industrials,Farm & Heavy Construction Machinery
+3988,Technology,Information Technology Services
+7609,Technology,Semiconductor Equipment & Materials
+7917,Consumer Cyclical,Packaging & Containers
+2120,Communication Services,Internet Content & Information
+3907,Communication Services,Electronic Gaming & Multimedia
+3076,Industrials,Conglomerates
+7980,Healthcare,Medical Instruments & Supplies
+2602,Consumer Defensive,Packaged Foods
+6294,Industrials,Farm & Heavy Construction Machinery
+4361,Basic Materials,Specialty Chemicals
+9543,Utilities,Utilities - Regulated Gas
+4068,Technology,Information Technology Services
+5729,Basic Materials,Chemicals
+4476,Technology,Software - Application
+3835,Technology,Software - Application
+2983,Real Estate,Real Estate - Development
+6644,Technology,Scientific & Technical Instruments
+7970,Basic Materials,Specialty Chemicals
+7211,Consumer Cyclical,Auto Manufacturers
+7687,Consumer Defensive,Food Distribution
+9244,Communication Services,Advertising Agencies
+2359,Technology,Information Technology Services
+5121,Consumer Cyclical,Auto Parts
+6448,Industrials,Business Equipment & Supplies
+2930,Consumer Defensive,Household & Personal Products
+2437,Consumer Cyclical,Personal Services
+2488,Technology,Information Technology Services
+4212,Industrials,Building Products & Equipment
+1719,Industrials,Engineering & Construction
+7148,Financial Services,Financial Conglomerates
+3974,Technology,Information Technology Services
+7438,Industrials,Specialty Industrial Machinery
+4464,Basic Materials,Specialty Chemicals
+4832,Technology,Information Technology Services
+157A,Technology,Software - Application
+7727,Technology,Scientific & Technical Instruments
+4041,Basic Materials,Chemicals
+2767,Consumer Cyclical,Gambling
+3361,Utilities,Utilities - Regulated Gas
+7988,Consumer Cyclical,Auto Parts
+4814,Technology,Information Technology Services
+261A,Industrials,Engineering & Construction
+9558,Technology,Software - Infrastructure
+9982,Consumer Cyclical,Apparel Manufacturing
+4346,Industrials,Specialty Business Services
+6408,Industrials,Specialty Industrial Machinery
+2391,Technology,Information Technology Services
+5025,Technology,Software - Application
+6659,Technology,Software - Infrastructure
+7343,Financial Services,Insurance - Diversified
+2790,Consumer Cyclical,Home Improvement Retail
+2982,Real Estate,Real Estate Services
+6328,Industrials,Conglomerates
+7513,Consumer Cyclical,Specialty Retail
+8005,Consumer Cyclical,Internet Retail
+8022,Consumer Cyclical,Specialty Retail
+4462,Basic Materials,Specialty Chemicals
+6554,Industrials,Conglomerates
+291A,Consumer Defensive,Education & Training Services
+4746,Technology,Software - Application
+9219,Technology,Information Technology Services
+3608,Consumer Cyclical,Apparel Manufacturing
+3440,Industrials,Conglomerates
+9214,Healthcare,Medical Care Facilities
+3970,Technology,Information Technology Services
+7744,Technology,Consumer Electronics
+7555,Consumer Defensive,Farm Products
+6073,Consumer Cyclical,Residential Construction
+7575,Healthcare,Medical Devices
+5208,Technology,Electronic Components
+5015,Energy,Oil & Gas Refining & Marketing
+7971,Industrials,Building Products & Equipment
+7358,Consumer Cyclical,Personal Services
+6670,Technology,Computer Hardware
+4380,Consumer Defensive,Grocery Stores
+1952,Industrials,Building Products & Equipment
+9663,Industrials,Engineering & Construction
+3548,Consumer Cyclical,Apparel Retail
+472A,Communication Services,Internet Content & Information
+4574,Healthcare,Drug Manufacturers - Specialty & Generic
+4221,Basic Materials,Specialty Chemicals
+9332,Industrials,Staffing & Employment Services
+6823,Healthcare,Medical Devices
+6356,Consumer Cyclical,Auto Parts
+2540,Consumer Defensive,Beverages - Wineries & Distilleries
+3002,Consumer Cyclical,Apparel Manufacturing
+8841,Real Estate,Real Estate Services
+2594,Consumer Defensive,Packaged Foods
+6094,Communication Services,Advertising Agencies
+2810,Consumer Defensive,Packaged Foods
+1945,Industrials,Engineering & Construction
+9468,Communication Services,Publishing
+6193,Technology,Information Technology Services
+4496,Technology,Software - Infrastructure
+3947,Consumer Cyclical,Packaging & Containers
+6798,Technology,Electronic Components
+4686,Technology,Software - Infrastructure
+7707,Healthcare,Medical Devices
+3280,Real Estate,Real Estate - Diversified
+3917,Technology,Software - Application
+9791,Industrials,Specialty Business Services
+4763,Industrials,Consulting Services
+7066,Industrials,Conglomerates
+5195,Industrials,Specialty Industrial Machinery
+4743,Technology,Information Technology Services
+9742,Technology,Information Technology Services
+6731,Technology,Computer Hardware
+2978,Real Estate,Real Estate Services
+4617,Basic Materials,Specialty Chemicals
+149A,Technology,Software - Application
+4439,Industrials,Conglomerates
+6925,Industrials,Specialty Industrial Machinery
+9632,Industrials,Specialty Business Services
+416A,Energy,Oil & Gas Refining & Marketing
+7060,Technology,Information Technology Services
+4507,Healthcare,Drug Manufacturers - Specialty & Generic
+3779,Consumer Cyclical,Internet Retail
+4674,Technology,Information Technology Services
+7875,Communication Services,Publishing
+5139,Technology,Software - Application
+4974,Healthcare,Biotechnology
+6413,Technology,Computer Hardware
+3179,Consumer Cyclical,Internet Retail
+5901,Consumer Cyclical,Packaging & Containers
+6960,Healthcare,Medical Devices
+1776,Industrials,Engineering & Construction
+4216,Industrials,Building Products & Equipment
+4486,Technology,Information Technology Services
+6357,Industrials,Specialty Industrial Machinery
+7093,Technology,Information Technology Services
+3667,Communication Services,Electronic Gaming & Multimedia
+2286,Consumer Defensive,Packaged Foods
+2148,Communication Services,Advertising Agencies
+9340,Healthcare,Medical Instruments & Supplies
+6403,Industrials,Waste Management
+8908,Real Estate,Real Estate Services
+6563,Industrials,Staffing & Employment Services
+4020,Technology,Software - Application
+480A,Industrials,Consulting Services
+8074,Industrials,Specialty Industrial Machinery
+2708,Consumer Defensive,Food Distribution
+6460,Communication Services,Electronic Gaming & Multimedia
+5987,Industrials,Metal Fabrication
+4290,Industrials,Specialty Business Services
+3151,Healthcare,Medical Distribution
+334A,Technology,Software - Application
+9101,Industrials,Marine Shipping
+5949,Consumer Cyclical,Auto Parts
+7893,Industrials,Specialty Business Services
+4845,Technology,Software - Application
+3672,Communication Services,Electronic Gaming & Multimedia
+5570,Communication Services,Internet Content & Information
+5582,Technology,Software - Infrastructure
+6093,Industrials,Specialty Business Services
+6904,Technology,Communication Equipment
+1963,Industrials,Engineering & Construction
+7822,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6135,Industrials,Specialty Industrial Machinery
+4428,Technology,Software - Application
+332A,Technology,Software - Application
+4973,Basic Materials,Specialty Chemicals
+7637,Industrials,Metal Fabrication
+9381,Industrials,Integrated Freight & Logistics
+5922,Industrials,Metal Fabrication
+3153,Industrials,Industrial Distribution
+9346,Industrials,Staffing & Employment Services
+4074,Technology,Software - Application
+5471,Basic Materials,Steel
+2307,Technology,Software - Application
+4450,Technology,Information Technology Services
+1726,Industrials,Engineering & Construction
+1885,Industrials,Engineering & Construction
+3004,Industrials,Conglomerates
+7715,Technology,Scientific & Technical Instruments
+5331,Industrials,Conglomerates
+7522,Consumer Cyclical,Restaurants
+6266,Technology,Semiconductor Equipment & Materials
+9353,Industrials,Marine Shipping
+4175,Communication Services,Electronic Gaming & Multimedia
+2266,Consumer Defensive,Packaged Foods
+7740,Consumer Cyclical,Leisure
+1871,Industrials,Engineering & Construction
+6486,Industrials,Specialty Industrial Machinery
+4045,Basic Materials,Specialty Chemicals
+2429,Industrials,Staffing & Employment Services
+7745,Technology,Scientific & Technical Instruments
+3106,Industrials,Conglomerates
+340A,Industrials,Specialty Business Services
+6298,Technology,Electronic Components
+6087,Industrials,Specialty Industrial Machinery
+6436,Technology,Scientific & Technical Instruments
+7731,Consumer Cyclical,Leisure
+5247,Technology,Information Technology Services
+6080,Financial Services,Capital Markets
+2926,Consumer Defensive,Packaged Foods
+6044,Industrials,Specialty Business Services
+7138,Communication Services,Internet Content & Information
+4370,Technology,Software - Application
+6835,Technology,Communication Equipment
+3686,Communication Services,Entertainment
+6837,Technology,Electronic Components
+5134,Technology,Software - Application
+4477,Technology,Software - Application
+1414,Industrials,Engineering & Construction
+3865,Basic Materials,Paper & Paper Products
+6046,Communication Services,Internet Content & Information
+1718,Industrials,Engineering & Construction
+3920,Technology,Information Technology Services
+2689,Healthcare,Medical Distribution
+2892,Consumer Defensive,Packaged Foods
+3836,Technology,Software - Application
+3173,Industrials,Tools & Accessories
+9405,Communication Services,Broadcasting
+3560,Consumer Cyclical,Specialty Retail
+1418,Industrials,Specialty Business Services
+7912,Industrials,Conglomerates
+5071,Industrials,Specialty Business Services
+6176,Communication Services,Publishing
+7078,Communication Services,Advertising Agencies
+4420,Technology,Electronics & Computer Distribution
+6258,Industrials,Specialty Industrial Machinery
+3452,Real Estate,Real Estate Services
+3925,Technology,Information Technology Services
+9551,Industrials,Pollution & Treatment Controls
+4576,Healthcare,Biotechnology
+4046,Basic Materials,Specialty Chemicals
+9765,Industrials,Engineering & Construction
+3844,Technology,Information Technology Services
+5288,Basic Materials,Building Materials
+6113,Industrials,Specialty Industrial Machinery
+3036,Basic Materials,Other Industrial Metals & Mining
+3294,Real Estate,Real Estate Services
+2811,Consumer Defensive,Packaged Foods
+2764,Consumer Cyclical,Restaurants
+2173,Communication Services,Advertising Agencies
+3475,Real Estate,Real Estate - Diversified
+4917,Consumer Defensive,Household & Personal Products
+5867,Industrials,Consulting Services
+9790,Technology,Software - Application
+4641,Industrials,Staffing & Employment Services
+9832,Consumer Cyclical,Auto Parts
+9610,Industrials,Staffing & Employment Services
+4366,Basic Materials,Chemicals
+6331,Industrials,Pollution & Treatment Controls
+3798,Technology,Information Technology Services
+7456,Basic Materials,Other Precious Metals & Mining
+4733,Technology,Information Technology Services
+3634,Technology,Information Technology Services
+4318,Industrials,Staffing & Employment Services
+7779,Healthcare,Medical Devices
+3169,Consumer Cyclical,Department Stores
+6952,Technology,Consumer Electronics
+1939,Industrials,Engineering & Construction
+5644,Industrials,Metal Fabrication
+5851,Industrials,Metal Fabrication
+9869,Consumer Defensive,Food Distribution
+6347,Industrials,Specialty Industrial Machinery
+190A,Healthcare,Biotechnology
+8117,Consumer Cyclical,Auto Parts
+6035,Industrials,Consulting Services
+7552,Consumer Cyclical,Specialty Retail
+2294,Consumer Defensive,Food Distribution
+7994,Industrials,Business Equipment & Supplies
+7476,Healthcare,Medical Distribution
+5599,Technology,Software - Infrastructure
+7490,Industrials,Conglomerates
+6273,Industrials,Specialty Industrial Machinery
+3542,Consumer Cyclical,Internet Retail
+1833,Industrials,Engineering & Construction
+7809,Consumer Cyclical,Leisure
+7987,Industrials,Specialty Business Services
+8130,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6180,Communication Services,Internet Content & Information
+8061,Industrials,Industrial Distribution
+9640,Technology,Information Technology Services
+2760,Technology,Electronic Components
+6237,Industrials,Specialty Industrial Machinery
+7269,Consumer Cyclical,Auto Manufacturers
+5133,Technology,Information Technology Services
+2206,Consumer Defensive,Packaged Foods
+1434,Industrials,Engineering & Construction
+5033,Technology,Software - Application
+4972,Basic Materials,Specialty Chemicals
+4204,Industrials,Conglomerates
+1721,Industrials,Engineering & Construction
+4665,Industrials,Conglomerates
+2327,Technology,Information Technology Services
+6284,Industrials,Specialty Industrial Machinery
+9236,Industrials,Consulting Services
+7734,Industrials,Security & Protection Services
+2001,Consumer Defensive,Packaged Foods
+4344,Technology,Software - Application
+1926,Industrials,Engineering & Construction
+6961,Technology,Electronic Components
+7821,Basic Materials,Building Materials
+7610,Consumer Cyclical,Specialty Retail
+6744,Industrials,Security & Protection Services
+2922,Consumer Defensive,Packaged Foods
+5930,Industrials,Building Products & Equipment
+5942,Industrials,Specialty Industrial Machinery
+5955,Industrials,Tools & Accessories
+5250,Technology,Software - Infrastructure
+1444,Consumer Cyclical,Residential Construction
+3984,Technology,Information Technology Services
+9087,Industrials,Specialty Business Services
+2002,Consumer Defensive,Packaged Foods
+6516,Industrials,Electrical Equipment & Parts
+6814,Technology,Scientific & Technical Instruments
+7131,Consumer Cyclical,Packaging & Containers
+9319,Industrials,Specialty Business Services
+1401,Industrials,Engineering & Construction
+5975,Consumer Cyclical,Auto Parts
+4433,Industrials,Staffing & Employment Services
+3657,Technology,Information Technology Services
+8275,Technology,Information Technology Services
+9684,Communication Services,Electronic Gaming & Multimedia
+5242,Technology,Software - Application
+9368,Industrials,Specialty Business Services
+7414,Industrials,Metal Fabrication
+3156,Technology,Semiconductors
+6840,Technology,Computer Hardware
+6810,Technology,Consumer Electronics
+4326,Communication Services,Advertising Agencies
+3252,Real Estate,Real Estate Services
+7683,Consumer Cyclical,Apparel Retail
+2315,Technology,Information Technology Services
+3983,Technology,Software - Application
+3935,Communication Services,Electronic Gaming & Multimedia
+6579,Communication Services,Internet Content & Information
+3656,Communication Services,Electronic Gaming & Multimedia
+9830,Industrials,Industrial Distribution
+6013,Industrials,Pollution & Treatment Controls
+9474,Communication Services,Internet Content & Information
+4261,Technology,Information Technology Services
+9685,Technology,Software - Application
+4395,Communication Services,Telecom Services
+3489,Real Estate,Real Estate Services
+7974,Communication Services,Electronic Gaming & Multimedia
+8739,Financial Services,Asset Management
+7874,Consumer Defensive,Household & Personal Products
+6653,Technology,Electronic Components
+4421,Technology,Information Technology Services
+8008,Consumer Cyclical,Apparel Manufacturing
+6136,Industrials,Tools & Accessories
+7246,Consumer Cyclical,Auto Parts
+4927,Consumer Defensive,Household & Personal Products
+6728,Industrials,Specialty Industrial Machinery
+7080,Industrials,Staffing & Employment Services
+3040,Technology,Software - Infrastructure
+2432,Industrials,Conglomerates
+500A,Communication Services,Publishing
+6928,Technology,Electronic Components
+6195,Communication Services,Advertising Agencies
+6947,Technology,Software - Application
+5279,Industrials,Engineering & Construction
+6668,Industrials,Electrical Equipment & Parts
+7504,Consumer Cyclical,Packaging & Containers
+478A,Technology,Software - Infrastructure
+3645,Communication Services,Internet Content & Information
+7242,Consumer Cyclical,Auto Parts
+2004,Consumer Defensive,Packaged Foods
+3180,Consumer Defensive,Household & Personal Products
+9564,Industrials,Conglomerates
+7325,Financial Services,Insurance - Life
+368A,Healthcare,Medical Instruments & Supplies
+3929,Communication Services,Entertainment
+1965,Industrials,Engineering & Construction
+6177,Communication Services,Advertising Agencies
+2326,Technology,Software - Infrastructure
+6543,Communication Services,Advertising Agencies
+2986,Real Estate,Real Estate Services
+520A,Healthcare,Biotechnology
+3690,Communication Services,Advertising Agencies
+3457,Real Estate,Real Estate Services
+4057,Communication Services,Internet Content & Information
+8060,Industrials,Business Equipment & Supplies
+6045,Communication Services,Advertising Agencies
+3652,Technology,Electronic Components
+7278,Consumer Cyclical,Auto Parts
+1975,Industrials,Engineering & Construction
+2674,Consumer Cyclical,Specialty Retail
+2303,Technology,Software - Application
+6317,Industrials,Specialty Industrial Machinery
+6144,Industrials,Specialty Industrial Machinery
+2586,Consumer Defensive,Food Distribution
+5310,Industrials,Electrical Equipment & Parts
+7282,Consumer Cyclical,Auto Parts
+3771,Technology,Software - Application
+7775,Healthcare,Medical Instruments & Supplies
+2109,Consumer Defensive,Confectioners
+7353,Consumer Defensive,Education & Training Services
+1959,Industrials,Engineering & Construction
+2782,Consumer Defensive,Discount Stores
+6302,Industrials,Specialty Industrial Machinery
+6951,Technology,Scientific & Technical Instruments
+6807,Technology,Electronic Components
+7164,Financial Services,Credit Services
+9746,Technology,Information Technology Services
+3985,Communication Services,Internet Content & Information
+4389,Technology,Software - Application
+9416,Communication Services,Telecom Services
+6768,Technology,Electronic Components
+7373,Industrials,Specialty Business Services
+3168,Basic Materials,Other Industrial Metals & Mining
+8007,Basic Materials,Building Materials
+3024,Industrials,Metal Fabrication
+7110,Consumer Cyclical,Internet Retail
+5621,Technology,Software - Infrastructure
+6402,Industrials,Specialty Industrial Machinery
+4768,Technology,Information Technology Services
+6745,Industrials,Building Products & Equipment
+7839,Consumer Cyclical,Footwear & Accessories
+5714,Basic Materials,Other Industrial Metals & Mining
+2875,Consumer Defensive,Packaged Foods
+6806,Technology,Electronic Components
+5933,Technology,Scientific & Technical Instruments
+7701,Technology,Scientific & Technical Instruments
+8771,Financial Services,Credit Services
+7781,Industrials,Staffing & Employment Services
+3916,Technology,Information Technology Services
+8111,Consumer Cyclical,Apparel Manufacturing
+7966,Basic Materials,Specialty Chemicals
+8131,Energy,Oil & Gas Refining & Marketing
+3087,Consumer Cyclical,Restaurants
+9682,Technology,Information Technology Services
+3566,Consumer Cyclical,Apparel Retail
+3640,Technology,Semiconductors
+6560,Industrials,Consulting Services
+6480,Industrials,Tools & Accessories
+6638,Technology,Electronics & Computer Distribution
+5162,Consumer Cyclical,Auto Parts
+6578,Industrials,Conglomerates
+5290,Basic Materials,Building Materials
+3921,Technology,Software - Application
+7064,Industrials,Staffing & Employment Services
+6492,Industrials,Specialty Industrial Machinery
+3776,Communication Services,Telecom Services
+2805,Consumer Defensive,Packaged Foods
+9537,Utilities,Utilities - Regulated Gas
+6465,Industrials,Specialty Industrial Machinery
+6724,Technology,Computer Hardware
+6914,Technology,Electronic Components
+3080,Consumer Defensive,Discount Stores
+7035,Technology,Software - Application
+3900,Industrials,Staffing & Employment Services
+9889,Technology,Information Technology Services
+1944,Industrials,Engineering & Construction
+3441,Industrials,Metal Fabrication
+8218,Consumer Cyclical,Home Improvement Retail
+4571,Healthcare,Biotechnology
+2924,Consumer Defensive,Farm Products
+9562,Consumer Defensive,Education & Training Services
+3676,Technology,Information Technology Services
+7762,Consumer Cyclical,Footwear & Accessories
+8113,Consumer Defensive,Household & Personal Products
+6240,Industrials,Specialty Industrial Machinery
+2659,Consumer Cyclical,Department Stores
+4800,Communication Services,Internet Content & Information
+4403,Basic Materials,Specialty Chemicals
+336A,Communication Services,Internet Content & Information
+7115,Industrials,Specialty Industrial Machinery
+6201,Industrials,Farm & Heavy Construction Machinery
+6474,Industrials,Tools & Accessories
+9644,Industrials,Consulting Services
+3443,Industrials,Engineering & Construction
+4187,Basic Materials,Specialty Chemicals
+6498,Industrials,Specialty Industrial Machinery
+1429,Industrials,Engineering & Construction
+3719,Industrials,Consulting Services
+7823,Consumer Defensive,Household & Personal Products
+4166,Technology,Software - Application
+2428,Technology,Software - Infrastructure
+2813,Consumer Defensive,Packaged Foods
+6196,Financial Services,Capital Markets
+9795,Consumer Defensive,Education & Training Services
+228A,Technology,Software - Infrastructure
+255A,Technology,Scientific & Technical Instruments
+3360,Healthcare,Medical Instruments & Supplies
+4274,Basic Materials,Chemicals
+7792,Healthcare,Medical Devices
+4174,Technology,Software - Application
+4932,Consumer Defensive,Household & Personal Products
+9962,Industrials,Tools & Accessories
+9364,Industrials,Integrated Freight & Logistics
+6566,Industrials,Waste Management
+4888,Healthcare,Biotechnology
+4709,Technology,Information Technology Services
+6539,Industrials,Staffing & Employment Services
+4393,Communication Services,Electronic Gaming & Multimedia
+7619,Technology,Electronics & Computer Distribution
+8153,Consumer Cyclical,Restaurants
+6577,Consumer Cyclical,Travel Services
+3423,Industrials,Engineering & Construction
+3726,Consumer Cyclical,Internet Retail
+4919,Consumer Defensive,Household & Personal Products
+7721,Technology,Scientific & Technical Instruments
+150A,Industrials,Conglomerates
+6194,Industrials,Staffing & Employment Services
+7224,Industrials,Conglomerates
+4275,Basic Materials,Specialty Chemicals
+4885,Basic Materials,Chemicals
+4967,Consumer Defensive,Household & Personal Products
+2991,Real Estate,Real Estate Services
+3647,Utilities,Utilities - Renewable
+9824,Technology,Electronics & Computer Distribution
+2267,Consumer Defensive,Beverages - Non-Alcoholic
+2304,Industrials,Specialty Business Services
+7191,Financial Services,Credit Services
+6651,Industrials,Electrical Equipment & Parts
+151A,Industrials,Conglomerates
+6334,Industrials,Specialty Industrial Machinery
+3901,Communication Services,Internet Content & Information
+3150,Utilities,Utilities - Regulated Electric
+3444,Industrials,Specialty Industrial Machinery
+3928,Communication Services,Electronic Gaming & Multimedia
+6988,Basic Materials,Specialty Chemicals
+4811,Technology,Software - Infrastructure
+9331,Industrials,Staffing & Employment Services
+4558,Consumer Cyclical,Department Stores
+7094,Industrials,Specialty Business Services
+1848,Industrials,Engineering & Construction
+2288,Consumer Defensive,Packaged Foods
+9237,Industrials,Consulting Services
+250A,Consumer Defensive,Packaged Foods
+2146,Industrials,Staffing & Employment Services
+2354,Technology,Information Technology Services
+6088,Industrials,Consulting Services
+2753,Consumer Cyclical,Restaurants
+4323,Technology,Software - Application
+8115,Consumer Cyclical,Footwear & Accessories
+5903,Industrials,Specialty Industrial Machinery
+7716,Healthcare,Medical Instruments & Supplies
+7956,Consumer Defensive,Household & Personal Products
+3922,Communication Services,Internet Content & Information
+6841,Industrials,Specialty Industrial Machinery
+6454,Industrials,Tools & Accessories
+2573,Consumer Defensive,Beverages - Non-Alcoholic
+2929,Healthcare,Drug Manufacturers - Specialty & Generic
+2112,Consumer Defensive,Confectioners
+5482,Basic Materials,Steel
+2139,Communication Services,Advertising Agencies
+4783,Technology,Information Technology Services
+4013,Technology,Software - Application
+4890,Healthcare,Medical Devices
+3992,Technology,Software - Infrastructure
+7014,Industrials,Aerospace & Defense
+9307,Industrials,Specialty Business Services
+2751,Consumer Cyclical,Specialty Retail
+2376,Communication Services,Publishing
+5533,Real Estate,Real Estate Services
+5929,Industrials,Building Products & Equipment
+4498,Technology,Information Technology Services
+4933,Consumer Defensive,Household & Personal Products
+9367,Industrials,Marine Shipping
+9927,Consumer Cyclical,Specialty Retail
+3591,Consumer Cyclical,Apparel Manufacturing
+5257,Technology,Software - Application
+4203,Basic Materials,Specialty Chemicals
+3075,Consumer Cyclical,Restaurants
+5721,Industrials,Conglomerates
+7134,Consumer Cyclical,Auto & Truck Dealerships
+6184,Consumer Cyclical,Personal Services
+3744,Technology,Software - Application
+4523,Healthcare,Drug Manufacturers - Specialty & Generic
+9423,Real Estate,Real Estate Services
+3635,Communication Services,Electronic Gaming & Multimedia
+5991,Consumer Cyclical,Auto Parts
+9735,Industrials,Security & Protection Services
+5214,Technology,Electronic Components
+2130,Communication Services,Advertising Agencies
+9216,Industrials,Specialty Business Services
+4481,Technology,Software - Application
+4722,Technology,Information Technology Services
+3221,Consumer Cyclical,Restaurants
+4838,Communication Services,Broadcasting
+4151,Healthcare,Drug Manufacturers - Specialty & Generic
+6037,Communication Services,Internet Content & Information
+7832,Consumer Cyclical,Leisure
+3495,Real Estate,Real Estate Services
+5105,Consumer Cyclical,Auto Parts
+4528,Healthcare,Drug Manufacturers - General
+3837,Technology,Information Technology Services
+3626,Technology,Information Technology Services
+303A,Technology,Software - Application
+4596,Healthcare,Biotechnology
+4208,Basic Materials,Specialty Chemicals
+4582,Healthcare,Drug Manufacturers - Specialty & Generic
+8132,Energy,Oil & Gas Refining & Marketing
+3747,Financial Services,Capital Markets
+8089,Industrials,Industrial Distribution
+1515,Basic Materials,Copper
+5256,Technology,Software - Application
+145A,Technology,Software - Infrastructure
+5269,Basic Materials,Building Materials
+2980,Real Estate,Real Estate Services
+2531,Consumer Defensive,Beverages - Brewers
+5580,Technology,Software - Infrastructure
+4848,Industrials,Staffing & Employment Services
+5572,Technology,Software - Infrastructure
+254A,Financial Services,Asset Management
+4816,Communication Services,Entertainment
+7793,Industrials,Specialty Business Services
+4751,Communication Services,Advertising Agencies
+3562,Industrials,Business Equipment & Supplies
+3116,Consumer Cyclical,Auto Parts
+6101,Industrials,Tools & Accessories
+3088,Healthcare,Pharmaceutical Retailers
+2208,Consumer Defensive,Confectioners
+9421,Communication Services,Telecom Services
+3649,Healthcare,Health Information Services
+9818,Utilities,Utilities - Regulated Gas
+6235,Industrials,Specialty Industrial Machinery
+2726,Consumer Cyclical,Apparel Retail
+5034,Communication Services,Internet Content & Information
+9941,Consumer Defensive,Food Distribution
+9068,Industrials,Integrated Freight & Logistics
+476A,Industrials,Consulting Services
+7183,Financial Services,Credit Services
+5108,Consumer Cyclical,Auto Parts
+9256,Consumer Defensive,Education & Training Services
+7059,Industrials,Staffing & Employment Services
+4912,Consumer Defensive,Household & Personal Products
+9880,Technology,Electronics & Computer Distribution
+7867,Consumer Cyclical,Leisure
+4597,Healthcare,Drug Manufacturers - Specialty & Generic
+6658,Technology,Electronic Components
+4345,Industrials,Rental & Leasing Services
+1333,Consumer Defensive,Packaged Foods
+1980,Industrials,Specialty Industrial Machinery
+5031,Technology,Software - Application
+2117,Consumer Defensive,Confectioners
+7570,Industrials,Building Products & Equipment
+6800,Technology,Electronic Components
+2780,Real Estate,Real Estate Services
+219A,Healthcare,Biotechnology
+2217,Consumer Defensive,Confectioners
+5699,Industrials,Waste Management
+7694,Industrials,Specialty Business Services
+8151,Technology,Scientific & Technical Instruments
+6134,Industrials,Specialty Industrial Machinery
+299A,Communication Services,Internet Content & Information
+3788,Technology,Information Technology Services
+5337,Industrials,Building Products & Equipment
+350A,Utilities,Utilities - Renewable
+7840,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+146A,Real Estate,Real Estate - Development
+9928,Technology,Software - Application
+3558,Consumer Cyclical,Internet Retail
+3329,Consumer Cyclical,Restaurants
+4193,Technology,Software - Application
+3140,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+6845,Industrials,Specialty Industrial Machinery
+1921,Industrials,Engineering & Construction
+6018,Industrials,Specialty Industrial Machinery
+4264,Industrials,Security & Protection Services
+1898,Industrials,Engineering & Construction
+7177,Financial Services,Capital Markets
+4985,Consumer Defensive,Household & Personal Products
+6994,Industrials,Electrical Equipment & Parts
+7818,Consumer Defensive,Household & Personal Products
+4375,Technology,Software - Application
+6551,Industrials,Staffing & Employment Services
+1969,Industrials,Building Products & Equipment
+6707,Technology,Semiconductors
+4404,Consumer Defensive,Packaged Foods
+3791,Communication Services,Entertainment
+6869,Healthcare,Medical Devices
+6526,Industrials,Electrical Equipment & Parts
+7357,Communication Services,Advertising Agencies
+9159,Communication Services,Advertising Agencies
+3664,Communication Services,Entertainment
+4979,Basic Materials,Agricultural Inputs
+4825,Communication Services,Internet Content & Information
+9948,Consumer Cyclical,Department Stores
+2269,Consumer Defensive,Packaged Foods
+5713,Basic Materials,Other Industrial Metals & Mining
+8929,Real Estate,Real Estate Services
+4168,Technology,Software - Application
+2809,Consumer Defensive,Packaged Foods
+4966,Basic Materials,Specialty Chemicals
+2667,Technology,Scientific & Technical Instruments
+8070,Industrials,Conglomerates
+5698,Industrials,Waste Management
+4320,Healthcare,Health Information Services
+7481,Consumer Defensive,Food Distribution
+7033,Industrials,Consulting Services
+3931,Communication Services,Publishing
+5631,Industrials,Specialty Industrial Machinery
+5703,Basic Materials,Aluminum
+5857,Industrials,Waste Management
+6471,Consumer Cyclical,Auto Parts
+5869,Consumer Defensive,Education & Training Services
+2593,Consumer Defensive,Beverages - Non-Alcoholic
+3271,Real Estate,Real Estate - Diversified
+3538,Consumer Cyclical,Auto & Truck Dealerships
+8105,Consumer Cyclical,Apparel Manufacturing
+4928,Consumer Defensive,Household & Personal Products
+4658,Industrials,Specialty Business Services
+4237,Technology,Electronic Components
+1417,Industrials,Engineering & Construction
+9417,Technology,Software - Infrastructure
+2331,Industrials,Security & Protection Services
+1723,Technology,Electronic Components
+6962,Technology,Electronic Components
+6785,Technology,Electronic Components
+7443,Consumer Defensive,Farm Products
+4099,Basic Materials,Specialty Chemicals
+4109,Basic Materials,Specialty Chemicals
+4820,Healthcare,Health Information Services
+6996,Technology,Electronic Components
+2410,Industrials,Staffing & Employment Services
+5393,Industrials,Conglomerates
+7261,Consumer Cyclical,Auto Manufacturers
+5574,Technology,Software - Infrastructure
+4975,Basic Materials,Specialty Chemicals
+2998,Financial Services,Asset Management
+7826,Technology,Electronic Components
+1961,Industrials,Engineering & Construction
+4579,Healthcare,Biotechnology
+6440,Industrials,Specialty Industrial Machinery
+9556,Industrials,Consulting Services
+7081,Industrials,Rental & Leasing Services
+5027,Technology,Software - Application
+4182,Basic Materials,Specialty Chemicals
+6617,Industrials,Electrical Equipment & Parts
+6584,Consumer Cyclical,Auto Parts
+6775,Technology,Electronic Components
+479A,Technology,Software - Infrastructure
+4527,Consumer Defensive,Household & Personal Products
+3741,Technology,Software - Infrastructure
+7939,Industrials,Specialty Business Services
+3763,Technology,Software - Application
+2317,Technology,Information Technology Services
+6099,Healthcare,Medical Care Facilities
+8139,Consumer Cyclical,Luxury Goods
+8198,Consumer Defensive,Grocery Stores
+4398,Technology,Information Technology Services
+4575,Healthcare,Biotechnology
+2127,Financial Services,Capital Markets
+6396,Industrials,Specialty Industrial Machinery
+6616,Technology,Semiconductors
+1840,Consumer Cyclical,Residential Construction
+4075,Technology,Software - Application
+3393,Technology,Information Technology Services
+9816,Real Estate,Real Estate Services
+4812,Technology,Information Technology Services
+4293,Communication Services,Advertising Agencies
+7606,Consumer Cyclical,Apparel Retail
+4536,Healthcare,Drug Manufacturers - General
+4199,Technology,Software - Application
+6622,Industrials,Specialty Industrial Machinery
+3105,Industrials,Conglomerates
+300A,Communication Services,Advertising Agencies
+3989,Communication Services,Internet Content & Information
+324A,Consumer Cyclical,Travel Services
+3936,Technology,Software - Application
+5586,Technology,Software - Infrastructure
+7068,Communication Services,Advertising Agencies
+2379,Communication Services,Internet Content & Information
+4015,Technology,Software - Application
+9238,Communication Services,Advertising Agencies
+2459,Communication Services,Internet Content & Information
+4684,Technology,Software - Application
+4118,Basic Materials,Specialty Chemicals
+6058,Communication Services,Advertising Agencies
+335A,Technology,Software - Application
+5287,Industrials,Building Products & Equipment
+5028,Technology,Software - Infrastructure
+3823,Technology,Software - Application
+147A,Technology,Software - Infrastructure
+6856,Technology,Scientific & Technical Instruments
+148A,Industrials,Specialty Business Services
+4446,Technology,Software - Application
+9602,Communication Services,Entertainment
+4493,Technology,Software - Infrastructure
+9960,Technology,Electronic Components
+2749,Industrials,Specialty Business Services
+519A,Technology,Software - Infrastructure
+4055,Technology,Information Technology Services
+9517,Utilities,Utilities - Renewable
+3712,Technology,Software - Application
+2801,Consumer Defensive,Packaged Foods
+4063,Basic Materials,Chemicals
+7636,Consumer Cyclical,Specialty Retail
+7236,Consumer Cyclical,Auto Parts
+9759,Technology,Software - Application
+7461,Basic Materials,Building Materials
+3323,Communication Services,Telecom Services
+7283,Consumer Cyclical,Auto Parts
+7719,Industrials,Specialty Industrial Machinery
+2804,Consumer Defensive,Packaged Foods
+4192,Technology,Software - Application
+7089,Industrials,Staffing & Employment Services
+3762,Technology,Information Technology Services
+6055,Industrials,Engineering & Construction
+4813,Technology,Information Technology Services
+3804,Technology,Software - Application
+3708,Basic Materials,Paper & Paper Products
+6254,Industrials,Specialty Industrial Machinery
+9936,Consumer Cyclical,Restaurants
+9560,Consumer Defensive,Education & Training Services
+5612,Industrials,Building Products & Equipment
+7774,Healthcare,Biotechnology
+5334,Consumer Cyclical,Auto Parts
+6023,Industrials,Specialty Industrial Machinery
+4382,Technology,Software - Application
+6086,Industrials,Specialty Business Services
+4495,Technology,Software - Application
+4286,Communication Services,Advertising Agencies
+173A,Technology,Software - Infrastructure
+366A,Healthcare,Health Information Services
+4584,Healthcare,Biotechnology
+4923,Consumer Defensive,Household & Personal Products
+1431,Real Estate,Real Estate - Diversified
+5285,Basic Materials,Building Materials
+8282,Consumer Cyclical,Specialty Retail
+5905,Consumer Cyclical,Packaging & Containers
+5333,Industrials,Specialty Industrial Machinery
+4347,Communication Services,Entertainment
+9385,Communication Services,Advertising Agencies
+7906,Consumer Cyclical,Leisure
+3840,Industrials,Specialty Business Services
+3593,Healthcare,Medical Instruments & Supplies
+6727,Technology,Computer Hardware
+9691,Technology,Software - Application
+2201,Consumer Defensive,Confectioners
+3031,Consumer Cyclical,Internet Retail
+6545,Healthcare,Health Information Services
+1951,Industrials,Engineering & Construction
+1801,Industrials,Engineering & Construction
+4189,Basic Materials,Chemicals
+9436,Communication Services,Telecom Services
+5885,Technology,Computer Hardware
+1942,Industrials,Engineering & Construction
+3845,Communication Services,Internet Content & Information
+4165,Technology,Software - Application
+4828,Technology,Software - Application
+7378,Consumer Cyclical,Personal Services
+3633,Technology,Software - Infrastructure
+8919,Consumer Cyclical,Residential Construction
+8783,Financial Services,Asset Management
+3660,Consumer Cyclical,Specialty Retail
+5992,Consumer Cyclical,Auto Parts
+4583,Healthcare,Biotechnology
+6548,Consumer Cyclical,Travel Services
+7259,Consumer Cyclical,Auto Parts
+8167,Consumer Defensive,Grocery Stores
+4043,Basic Materials,Specialty Chemicals
+2321,Technology,Software - Application
+6473,Consumer Cyclical,Auto Parts
+1909,Industrials,Security & Protection Services
+4538,Healthcare,Drug Manufacturers - Specialty & Generic
+4441,Technology,Communication Equipment
+6614,Technology,Semiconductors
+7729,Technology,Semiconductor Equipment & Materials
+9435,Industrials,Conglomerates
+9989,Healthcare,Pharmaceutical Retailers
+4056,Technology,Information Technology Services
+4549,Healthcare,Medical Devices
+253A,Industrials,Engineering & Construction
+4437,Real Estate,Real Estate Services
+6330,Industrials,Engineering & Construction
+9039,Industrials,Trucking
+1948,Industrials,Engineering & Construction
+5029,Technology,Software - Application
+8097,Energy,Oil & Gas Refining & Marketing
+7995,Industrials,Specialty Industrial Machinery
+4396,Technology,Information Technology Services
+6573,Communication Services,Advertising Agencies
+5384,Technology,Semiconductor Equipment & Materials
+369A,Industrials,Engineering & Construction
+9561,Technology,Software - Application
+3683,Technology,Software - Infrastructure
+3317,Consumer Cyclical,Restaurants
+8923,Real Estate,Real Estate - Diversified
+274A,Consumer Cyclical,Restaurants
+4896,Healthcare,Biotechnology
+7730,Healthcare,Medical Instruments & Supplies
+7317,Industrials,Specialty Industrial Machinery
+9342,Real Estate,Real Estate Services
+6301,Industrials,Farm & Heavy Construction Machinery
+5575,Technology,Software - Application
+6696,Technology,Communication Equipment
+4242,Basic Materials,Specialty Chemicals
+446A,Industrials,Consulting Services
+9554,Communication Services,Advertising Agencies
+6855,Technology,Semiconductor Equipment & Materials
+4676,Communication Services,Broadcasting
+9757,Industrials,Consulting Services
+4968,Basic Materials,Specialty Chemicals
+6323,Technology,Semiconductor Equipment & Materials
+6555,Technology,Information Technology Services
+6490,Industrials,Specialty Industrial Machinery
+7291,Consumer Cyclical,Auto Parts
+7564,Consumer Cyclical,Apparel Retail
+6407,Industrials,Specialty Industrial Machinery
+3964,Consumer Cyclical,Internet Retail
+6268,Industrials,Specialty Industrial Machinery
+7944,Consumer Cyclical,Leisure
+4425,Technology,Software - Infrastructure
+3038,Consumer Defensive,Grocery Stores
+7345,Financial Services,Asset Management
+3539,Consumer Defensive,Grocery Stores
+9913,Technology,Electronic Components
+1436,Industrials,Engineering & Construction
+7812,Industrials,Specialty Business Services
+2270,Consumer Defensive,Packaged Foods
+5254,Technology,Software - Application
+6315,Technology,Semiconductor Equipment & Materials
+3696,Industrials,Conglomerates
+6866,Technology,Scientific & Technical Instruments
+2156,Communication Services,Advertising Agencies
+4397,Technology,Software - Application
+4180,Technology,Software - Infrastructure
+9882,Consumer Cyclical,Auto & Truck Dealerships
+8836,Real Estate,Real Estate Services
+4092,Basic Materials,Specialty Chemicals
+9697,Communication Services,Electronic Gaming & Multimedia
+6954,Industrials,Specialty Industrial Machinery
+9744,Industrials,Staffing & Employment Services
+2997,Real Estate,Real Estate Services
+2163,Industrials,Staffing & Employment Services
+4288,Technology,Software - Infrastructure
+5616,Consumer Cyclical,Internet Retail
+5351,Industrials,Building Products & Equipment
+4499,Communication Services,Advertising Agencies
+1446,Industrials,Engineering & Construction
+4371,Technology,Information Technology Services
+421A,Industrials,Staffing & Employment Services
+4019,Technology,Software - Application
+9658,Technology,Information Technology Services
+2124,Industrials,Staffing & Employment Services
+8056,Technology,Information Technology Services
+3694,Technology,Software - Infrastructure
+3191,Consumer Cyclical,Home Improvement Retail
+4369,Basic Materials,Specialty Chemicals
+7368,Communication Services,Advertising Agencies
+6955,Industrials,Electrical Equipment & Parts
+2685,Consumer Cyclical,Apparel Manufacturing
+5252,Technology,Software - Application
+4194,Communication Services,Internet Content & Information
+4444,Technology,Information Technology Services
+4484,Technology,Software - Application
+4073,Technology,Software - Infrastructure
+4246,Consumer Cyclical,Auto Parts
+3914,Technology,Software - Infrastructure
+3177,Consumer Cyclical,Specialty Retail
+7036,Communication Services,Advertising Agencies
+4021,Basic Materials,Chemicals
+6632,Consumer Cyclical,Auto Parts
+2211,Consumer Defensive,Confectioners
+6965,Technology,Electronic Components
+3979,Technology,Information Technology Services
+7599,Consumer Cyclical,Auto & Truck Dealerships
+7581,Consumer Cyclical,Restaurants
+6861,Technology,Scientific & Technical Instruments
+6819,Consumer Cyclical,Leisure
+2970,Real Estate,Real Estate Services
+3433,Industrials,Specialty Business Services
+6200,Consumer Defensive,Education & Training Services
+6208,Industrials,Specialty Industrial Machinery
+2375,Technology,Information Technology Services
+6368,Industrials,Pollution & Treatment Controls
+6457,Industrials,Specialty Industrial Machinery
+7760,Technology,Scientific & Technical Instruments
+4539,Healthcare,Drug Manufacturers - Specialty & Generic
+6645,Technology,Electronic Components
+6503,Industrials,Electrical Equipment & Parts
+7735,Technology,Semiconductor Equipment & Materials
+5341,Consumer Defensive,Household & Personal Products
+2180,Communication Services,Advertising Agencies
+4419,Technology,Software - Infrastructure
+6754,Technology,Scientific & Technical Instruments
+5884,Consumer Defensive,Food Distribution
+7198,Financial Services,Mortgage Finance
+5588,Technology,Software - Infrastructure
+6963,Technology,Semiconductors
+9439,Consumer Cyclical,Personal Services
+9065,Industrials,Integrated Freight & Logistics
+1384,Consumer Defensive,Farm Products
+4594,Healthcare,Biotechnology
+8931,Real Estate,Real Estate - Development
+4592,Healthcare,Biotechnology
+4563,Healthcare,Biotechnology
+3661,Communication Services,Internet Content & Information
+4256,Technology,Software - Application
+4937,Consumer Cyclical,Internet Retail
+4894,Healthcare,Biotechnology
+3237,Real Estate,Real Estate Services
+2937,Consumer Defensive,Packaged Foods
+4377,Industrials,Staffing & Employment Services
+8095,Industrials,Conglomerates
+7776,Healthcare,Biotechnology
+4071,Technology,Software - Application
+4765,Financial Services,Asset Management
+330A,Industrials,Staffing & Employment Services
+6522,Technology,Communication Equipment
+6757,Industrials,Specialty Industrial Machinery
+4196,Communication Services,Advertising Agencies
+7202,Consumer Cyclical,Auto Manufacturers
+6182,Technology,Information Technology Services
+7088,Industrials,Staffing & Employment Services
+6504,Industrials,Electrical Equipment & Parts
+6941,Technology,Semiconductor Equipment & Materials
+4887,Healthcare,Drug Manufacturers - Specialty & Generic
+9424,Communication Services,Telecom Services
+7096,Healthcare,Biotechnology
+3695,Technology,Software - Infrastructure
+4598,Healthcare,Biotechnology
+4082,Basic Materials,Specialty Chemicals
+3854,Technology,Information Technology Services
+3727,Technology,Software - Application
+7868,Industrials,Specialty Business Services
+6506,Industrials,Electrical Equipment & Parts
+4771,Industrials,Specialty Business Services
+2597,Consumer Defensive,Packaged Foods
+4570,Healthcare,Biotechnology
+276A,Technology,Software - Infrastructure
+2894,Consumer Defensive,Packaged Foods
+8230,Consumer Cyclical,Specialty Retail
+6597,Technology,Computer Hardware
+4442,Technology,Information Technology Services
+3521,Real Estate,Real Estate Services
+1815,Industrials,Engineering & Construction
+3769,Technology,Software - Infrastructure
+6674,Consumer Cyclical,Auto Parts
+5332,Industrials,Building Products & Equipment
+280A,Technology,Semiconductor Equipment & Materials
+1419,Consumer Cyclical,Residential Construction
+4578,Healthcare,Drug Manufacturers - General
+4422,Industrials,Consulting Services
+4412,Technology,Software - Application
+4418,Technology,Information Technology Services
+5817,Technology,Communication Equipment
+338A,Technology,Software - Infrastructure
+4431,Technology,Software - Application
+9412,Communication Services,Broadcasting
+5985,Consumer Cyclical,Auto Parts
+6568,Basic Materials,Chemicals
+3091,Consumer Cyclical,Restaurants
+4386,Technology,Information Technology Services
+7041,Industrials,Staffing & Employment Services
+5032,Communication Services,Entertainment
+4379,Technology,Software - Application
+6226,Industrials,Engineering & Construction
+6383,Industrials,Specialty Industrial Machinery
+6278,Industrials,Tools & Accessories
+6702,Technology,Information Technology Services
+4478,Technology,Software - Application
+9343,Technology,Software - Application
+7463,Basic Materials,Building Materials
+4766,Industrials,Staffing & Employment Services
+4587,Healthcare,Biotechnology
+3276,Real Estate,Real Estate Services
+9946,Consumer Defensive,Grocery Stores
+3496,Real Estate,Real Estate Services
+4732,Consumer Cyclical,Auto & Truck Dealerships
+138A,Consumer Cyclical,Restaurants
+6376,Industrials,Specialty Industrial Machinery
+6367,Industrials,Building Products & Equipment
+215A,Industrials,Staffing & Employment Services
+4022,Basic Materials,Specialty Chemicals
+7073,Consumer Defensive,Education & Training Services
+7082,Communication Services,Internet Content & Information
+9793,Industrials,Waste Management
+153A,Technology,Software - Infrastructure
+8032,Basic Materials,Paper & Paper Products
+4058,Technology,Software - Application
+9246,Industrials,Consulting Services
+155A,Technology,Information Technology Services
+3415,Consumer Cyclical,Apparel Retail
+4107,Basic Materials,Specialty Chemicals
+4519,Healthcare,Drug Manufacturers - General
+7356,Communication Services,Internet Content & Information
+7794,Consumer Cyclical,Luxury Goods
+156A,Communication Services,Advertising Agencies
+6481,Industrials,Specialty Industrial Machinery
+3372,Consumer Cyclical,Restaurants
+4016,Technology,Information Technology Services
+3093,Consumer Cyclical,Specialty Retail
+4482,Communication Services,Internet Content & Information
+2668,Consumer Cyclical,Apparel Manufacturing
+3850,Technology,Software - Infrastructure
+4415,Communication Services,Telecom Services
+5344,Technology,Electronic Components
+505A,Industrials,Staffing & Employment Services
+6736,Technology,Consumer Electronics
+4179,Technology,Software - Application
+7120,Technology,Information Technology Services
+5038,Healthcare,Health Information Services
+6387,Technology,Semiconductor Equipment & Materials
+3405,Basic Materials,Chemicals
+9686,Industrials,Security & Protection Services
+296A,Industrials,Specialty Business Services
+6083,Industrials,Specialty Business Services
+7711,Industrials,Electrical Equipment & Parts
+323A,Technology,Software - Application
+6532,Industrials,Consulting Services
+9303,Industrials,Integrated Freight & Logistics
+3446,Healthcare,Medical Instruments & Supplies
+3843,Communication Services,Internet Content & Information
+5132,Technology,Software - Infrastructure
+2229,Consumer Defensive,Packaged Foods
+4889,Healthcare,Medical Devices
+3987,Technology,Software - Infrastructure
+2160,Healthcare,Biotechnology
+3853,Technology,Software - Application
+3968,Technology,Information Technology Services
+6629,Technology,Electronic Components
+460A,Technology,Information Technology Services
+6836,Technology,Computer Hardware
+6524,Technology,Electronic Components
+3148,Healthcare,Pharmaceutical Retailers
+8697,Financial Services,Financial Data & Stock Exchanges
+4014,Technology,Software - Application
+2736,Consumer Cyclical,Luxury Goods
+4847,Technology,Software - Infrastructure
+475A,Healthcare,Health Information Services
+5136,Technology,Software - Application
+1802,Industrials,Engineering & Construction
+1812,Industrials,Engineering & Construction
+2464,Consumer Defensive,Education & Training Services
+3807,Financial Services,Financial Data & Stock Exchanges
+5802,Consumer Cyclical,Auto Parts
+3687,Technology,Software - Application
+8225,Consumer Cyclical,Specialty Retail
+6862,Technology,Computer Hardware
+4564,Healthcare,Biotechnology
+5592,Healthcare,Health Information Services
+8125,Industrials,Farm & Heavy Construction Machinery
+7611,Consumer Cyclical,Restaurants
+7376,Industrials,Specialty Business Services
+6652,Industrials,Electrical Equipment & Parts
+9272,Consumer Cyclical,Internet Retail
+431A,Technology,Information Technology Services
+3891,Technology,Electronic Components
+4543,Healthcare,Medical Instruments & Supplies
+3993,Technology,Software - Infrastructure
+3679,Communication Services,Internet Content & Information
+4490,Industrials,Consulting Services
+4258,Technology,Information Technology Services
+2413,Healthcare,Health Information Services
+7187,Real Estate,Real Estate Services
+4554,Healthcare,Drug Manufacturers - Specialty & Generic
+2222,Consumer Defensive,Confectioners
+9419,Communication Services,Telecom Services
+7972,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+4971,Basic Materials,Specialty Chemicals
+9271,Consumer Cyclical,Apparel Retail
+7806,Consumer Defensive,Household & Personal Products
+3359,Consumer Cyclical,Packaging & Containers
+3939,Healthcare,Health Information Services
+6507,Industrials,Specialty Industrial Machinery
+8160,Consumer Cyclical,Restaurants
+9552,Financial Services,Capital Markets
+9168,Industrials,Consulting Services
+6305,Industrials,Farm & Heavy Construction Machinery
+4392,Technology,Communication Equipment
+4186,Technology,Electronic Components
+3065,Consumer Cyclical,Restaurants
+9418,Industrials,Conglomerates
+6590,Technology,Electronic Components
+3697,Technology,Software - Application
+288A,Consumer Cyclical,Internet Retail
+5381,Basic Materials,Specialty Chemicals
+4776,Technology,Software - Application
+3498,Industrials,Conglomerates
+9766,Communication Services,Electronic Gaming & Multimedia
+4051,Technology,Software - Infrastructure
+9241,Communication Services,Advertising Agencies
+9445,Communication Services,Telecom Services
+4177,Industrials,Staffing & Employment Services
+6834,Technology,Electronic Components
+6508,Industrials,Specialty Industrial Machinery
+6721,Technology,Scientific & Technical Instruments
+4714,Consumer Defensive,Education & Training Services
+7747,Healthcare,Medical Instruments & Supplies
+3994,Technology,Software - Application
+2664,Healthcare,Pharmaceutical Retailers
+5210,Consumer Cyclical,Packaging & Containers
+3053,Consumer Cyclical,Restaurants
+6946,Industrials,Electrical Equipment & Parts
+5537,Real Estate,Real Estate Services
+290A,Industrials,Aerospace & Defense
+7741,Healthcare,Medical Instruments & Supplies
+4461,Basic Materials,Specialty Chemicals
+9325,Industrials,Specialty Business Services
+269A,Technology,Software - Infrastructure
+1803,Industrials,Engineering & Construction
+7751,Technology,Computer Hardware
+378A,Communication Services,Advertising Agencies
+2175,Healthcare,Health Information Services
+3803,Technology,Information Technology Services
+7453,Consumer Cyclical,Department Stores
+9025,Industrials,Integrated Freight & Logistics
+8020,Industrials,Conglomerates
+7388,Financial Services,Insurance Brokers
+4374,Technology,Software - Infrastructure
+4611,Basic Materials,Specialty Chemicals
+438A,Technology,Software - Infrastructure
+277A,Industrials,Consulting Services
+3092,Consumer Cyclical,Internet Retail
+4368,Basic Materials,Chemicals
+3223,Consumer Cyclical,Restaurants
+3469,Real Estate,Real Estate - Diversified
+6227,Technology,Electronic Components
+2371,Communication Services,Internet Content & Information
+6838,Industrials,Conglomerates
+5253,Technology,Software - Application
+4438,Healthcare,Health Information Services
+3048,Consumer Cyclical,Specialty Retail
+246A,Industrials,Consulting Services
+247A,Consumer Defensive,Household & Personal Products
+6890,Technology,Semiconductors
+456A,Consumer Cyclical,Apparel Manufacturing
+5591,Technology,Software - Infrastructure
+8016,Consumer Cyclical,Apparel Manufacturing
+2938,Consumer Defensive,Farm Products
+4559,Healthcare,Drug Manufacturers - Specialty & Generic
+4475,Technology,Software - Infrastructure
+2962,Industrials,Metal Fabrication
+7810,Consumer Cyclical,Luxury Goods
+2158,Technology,Information Technology Services
+6981,Technology,Electronic Components
+6361,Industrials,Specialty Industrial Machinery
+325A,Consumer Cyclical,Apparel Manufacturing
+3815,Communication Services,Internet Content & Information
+184A,Consumer Defensive,Education & Training Services
+9708,Consumer Cyclical,Lodging
+8136,Consumer Cyclical,Specialty Retail
+3224,Consumer Cyclical,Restaurants
+4176,Communication Services,Internet Content & Information
+5137,Technology,Software - Infrastructure
+6016,Industrials,Specialty Industrial Machinery
+3104,Consumer Cyclical,Textile Manufacturing
+6327,Industrials,Specialty Industrial Machinery
+5243,Technology,Software - Application
+8789,Financial Services,Financial Conglomerates
+3777,Technology,Software - Application
+3064,Consumer Cyclical,Internet Retail
+2134,Financial Services,Asset Management
+9337,Technology,Software - Application
+4704,Technology,Software - Infrastructure
+142A,Industrials,Staffing & Employment Services
+7827,Industrials,Conglomerates
+5246,Technology,Software - Application
+3402,Consumer Cyclical,Textile Manufacturing
+6656,Technology,Semiconductor Equipment & Materials
+2345,Technology,Software - Application
+6036,Basic Materials,Specialty Chemicals
+3449,Industrials,Metal Fabrication
+3565,Technology,Information Technology Services
+554A,Technology,Software - Application
+402A,Industrials,Aerospace & Defense
+6479,Technology,Electronic Components
+5715,Basic Materials,Other Industrial Metals & Mining
+6042,Consumer Cyclical,Auto Parts
+8850,Real Estate,Real Estate - Diversified
+3166,Consumer Cyclical,Home Improvement Retail
+4463,Basic Materials,Chemicals
+5578,Technology,Information Technology Services
+5258,Technology,Software - Infrastructure
+7196,Financial Services,Mortgage Finance
+2216,Consumer Defensive,Confectioners
+4762,Technology,Software - Application
+4452,Consumer Defensive,Household & Personal Products
+4718,Consumer Defensive,Education & Training Services
+5845,Industrials,Specialty Business Services
+4833,Industrials,Consulting Services
+9950,Consumer Cyclical,Restaurants
+4819,Technology,Information Technology Services
+6969,Technology,Electronic Components
+3110,Consumer Cyclical,Textile Manufacturing
+3185,Consumer Cyclical,Internet Retail
+7643,Consumer Defensive,Grocery Stores
+7352,Industrials,Specialty Business Services
+212A,Consumer Cyclical,Leisure
+3358,Consumer Cyclical,Restaurants
+8035,Technology,Semiconductor Equipment & Materials
+4487,Real Estate,Real Estate Services
+4390,Communication Services,Telecom Services
+9215,Technology,Software - Application
+4588,Healthcare,Biotechnology
+9983,Consumer Cyclical,Apparel Retail
+7752,Industrials,Business Equipment & Supplies
+6777,Technology,Scientific & Technical Instruments
+7992,Industrials,Business Equipment & Supplies
+341A,Industrials,Engineering & Construction
+6920,Technology,Semiconductor Equipment & Materials
+3691,Communication Services,Internet Content & Information
+3135,Consumer Cyclical,Internet Retail
+2590,Consumer Defensive,Beverages - Non-Alcoholic
+4449,Consumer Cyclical,Internet Retail
+4716,Technology,Software - Infrastructure
+5587,Industrials,Specialty Business Services
+6433,Industrials,Metal Fabrication
+7621,Consumer Cyclical,Restaurants
+3561,Consumer Cyclical,Restaurants
+9639,Real Estate,Real Estate - Diversified
+3663,Technology,Software - Application
+6971,Industrials,Conglomerates
+7678,Consumer Cyclical,Restaurants
+3671,Healthcare,Health Information Services
+2492,Technology,Software - Application
+6558,Industrials,Staffing & Employment Services
+3692,Technology,Software - Application
+6613,Technology,Semiconductors
+8566,Financial Services,Credit Services
+9312,Industrials,Integrated Freight & Logistics
+7777,Healthcare,Medical Devices
+9245,Communication Services,Internet Content & Information
+2154,Industrials,Staffing & Employment Services
+7932,Consumer Cyclical,Footwear & Accessories
+9553,Technology,Software - Application
+1860,Industrials,Engineering & Construction
+2702,Consumer Cyclical,Restaurants
+7638,Consumer Cyclical,Luxury Goods
+6146,Technology,Semiconductor Equipment & Materials
+9900,Consumer Cyclical,Restaurants
+4054,Technology,Software - Application
+429A,Technology,Semiconductor Equipment & Materials
+6776,Consumer Cyclical,Auto Parts
+135A,Technology,Software - Infrastructure
+9254,Communication Services,Advertising Agencies
+7630,Consumer Cyclical,Restaurants
+278A,Industrials,Aerospace & Defense
+5704,Industrials,Specialty Business Services
+6871,Technology,Semiconductor Equipment & Materials
+4568,Healthcare,Drug Manufacturers - General
+5726,Basic Materials,Other Industrial Metals & Mining
+3923,Technology,Information Technology Services
+4047,Basic Materials,Specialty Chemicals
+6072,Industrials,Specialty Business Services
+6232,Technology,Computer Hardware
+3198,Consumer Cyclical,Restaurants
+5706,Industrials,Conglomerates
+6031,Technology,Software - Infrastructure
+3933,Technology,Software - Application
+4572,Healthcare,Biotechnology
+8173,Consumer Cyclical,Specialty Retail
+2681,Consumer Cyclical,Specialty Retail
+7069,Communication Services,Advertising Agencies
+218A,Technology,Computer Hardware
+1878,Real Estate,Real Estate - Diversified
+2678,Consumer Cyclical,Internet Retail
+3399,Consumer Cyclical,Restaurants
+2656,Communication Services,Advertising Agencies
+7044,Communication Services,Advertising Agencies
+3796,Technology,Software - Application
+6762,Technology,Electronic Components
+6098,Communication Services,Internet Content & Information
+7272,Consumer Cyclical,Auto Manufacturers
+6588,Technology,Computer Hardware
+6779,Technology,Electronic Components
+6942,Technology,Information Technology Services
+2338,Technology,Information Technology Services
+2871,Consumer Defensive,Packaged Foods
+7936,Consumer Cyclical,Footwear & Accessories
+2936,Consumer Defensive,Packaged Foods
+3077,Consumer Cyclical,Restaurants
+3353,Industrials,Conglomerates
+4443,Technology,Software - Application
+9470,Consumer Defensive,Education & Training Services
+4661,Consumer Cyclical,Leisure
+2877,Consumer Defensive,Packaged Foods
+9028,Consumer Cyclical,Auto & Truck Dealerships
+2351,Technology,Software - Infrastructure
+6324,Industrials,Specialty Industrial Machinery
+5597,Technology,Software - Infrastructure
+6701,Technology,Information Technology Services
+287A,Industrials,Conglomerates
+1893,Industrials,Engineering & Construction
+5803,Industrials,Conglomerates
+6666,Technology,Electronic Components
+556A,Consumer Defensive,Packaged Foods
+6366,Industrials,Engineering & Construction
+4430,Technology,Software - Infrastructure
+2282,Consumer Defensive,Packaged Foods
+4531,Basic Materials,Chemicals
+4626,Basic Materials,Specialty Chemicals
+6370,Industrials,Pollution & Treatment Controls
+7805,Industrials,Specialty Business Services
+4448,Technology,Software - Application
+464A,Industrials,Aerospace & Defense
+4255,Technology,Software - Application
+2901,Healthcare,Medical Care Facilities
+3810,Communication Services,Electronic Gaming & Multimedia
+7649,Healthcare,Pharmaceutical Retailers
+8698,Financial Services,Capital Markets
+407A,Industrials,Engineering & Construction
+6027,Industrials,Consulting Services
+8864,Real Estate,Real Estate Services
+3981,Communication Services,Internet Content & Information
+3046,Healthcare,Medical Instruments & Supplies
+9259,Consumer Defensive,Grocery Stores
+2215,Consumer Defensive,Packaged Foods
+3501,Consumer Cyclical,Textile Manufacturing
+4384,Industrials,Specialty Business Services
+5727,Basic Materials,Other Industrial Metals & Mining
+4413,Technology,Information Technology Services
+7726,Industrials,Tools & Accessories
+9262,Consumer Defensive,Packaged Foods
+208A,Industrials,Engineering & Construction
+3030,Consumer Cyclical,Restaurants
+6537,Consumer Cyclical,Personal Services
+6594,Industrials,Specialty Industrial Machinery
+7692,Utilities,Utilities - Diversified
+6525,Technology,Semiconductor Equipment & Materials
+7733,Healthcare,Medical Devices
+6976,Technology,Electronic Components
+6857,Technology,Semiconductor Equipment & Materials
+7695,Consumer Cyclical,Internet Retail
+285A,Technology,Semiconductors
+3997,Technology,Information Technology Services
+9449,Communication Services,Telecom Services
+2334,Technology,Software - Application
+2220,Consumer Defensive,Packaged Foods
+1332,Consumer Defensive,Packaged Foods
+5842,Financial Services,Asset Management
+4980,Technology,Electronic Components
+9713,Consumer Cyclical,Lodging
+7214,Consumer Cyclical,Auto Parts
+2533,Consumer Defensive,Beverages - Wineries & Distilleries
+8253,Financial Services,Credit Services
+6538,Industrials,Staffing & Employment Services
+3409,Consumer Cyclical,Textile Manufacturing
+9227,Basic Materials,Chemicals
+6231,Industrials,Electrical Equipment & Parts
+7419,Consumer Cyclical,Specialty Retail
+8291,Consumer Cyclical,Auto & Truck Dealerships
+2212,Consumer Defensive,Packaged Foods
+365A,Consumer Cyclical,Textile Manufacturing
+4259,Technology,Software - Application
+5891,Consumer Cyclical,Restaurants
+6040,Consumer Cyclical,Resorts & Casinos
+5805,Industrials,Electrical Equipment & Parts
+4552,Healthcare,Drug Manufacturers - General
+4417,Technology,Software - Infrastructure
+559A,Consumer Defensive,Beverages - Brewers
+9428,Communication Services,Telecom Services
+2268,Consumer Defensive,Food Distribution
+6544,Industrials,Specialty Business Services
+3113,Financial Services,Asset Management
+2209,Consumer Defensive,Confectioners
+8088,Industrials,Conglomerates
+7011,Industrials,Specialty Industrial Machinery
+7615,Consumer Cyclical,Apparel Retail
+2935,Consumer Defensive,Packaged Foods
+5801,Industrials,Electrical Equipment & Parts
+7699,Industrials,Industrial Distribution
+4875,Healthcare,Biotechnology
+485A,Industrials,Electrical Equipment & Parts
+4373,Technology,Information Technology Services
+6574,Consumer Cyclical,Personal Services
+7685,Consumer Cyclical,Internet Retail
+4062,Technology,Electronic Components
+9257,Financial Services,Asset Management
+4385,Consumer Cyclical,Internet Retail
+8050,Consumer Cyclical,Footwear & Accessories
+5711,Basic Materials,Other Industrial Metals & Mining
+3962,Technology,Information Technology Services
+6269,Energy,Oil & Gas Equipment & Services
+2353,Industrials,Conglomerates
+8015,Industrials,Conglomerates
+9083,Industrials,Integrated Freight & Logistics
+186A,Industrials,Aerospace & Defense
+3905,Technology,Software - Application
+9067,Industrials,Trucking
+6993,Financial Services,Credit Services
+9059,Industrials,Trucking
+4307,Technology,Information Technology Services
+6634,Technology,Information Technology Services
+9074,Industrials,Railroads
+7897,Basic Materials,Lumber & Wood Production
+5742,Basic Materials,Aluminum
+3083,Consumer Cyclical,Apparel Retail
+4784,Technology,Software - Infrastructure
+7220,Consumer Cyclical,Auto Parts
+9533,Utilities,Utilities - Regulated Gas
+3491,Communication Services,Internet Content & Information
+4202,Basic Materials,Specialty Chemicals
+7280,Consumer Cyclical,Auto Parts
+2195,Industrials,Waste Management
+4613,Basic Materials,Specialty Chemicals
+9565,Communication Services,Electronic Gaming & Multimedia
+7383,Financial Services,Credit Services
+9348,Technology,Computer Hardware
+9301,Industrials,Integrated Freight & Logistics
+3241,Real Estate,Real Estate Services
+4935,Consumer Defensive,Household & Personal Products
+5016,Technology,Semiconductor Equipment & Materials
+2897,Consumer Defensive,Packaged Foods
+2705,Consumer Cyclical,Restaurants
+9672,Consumer Cyclical,Gambling
+6501,Industrials,Conglomerates
+2226,Consumer Defensive,Packaged Foods
+3547,Consumer Cyclical,Restaurants
+4483,Healthcare,Health Information Services
+3157,Basic Materials,Building Materials
+7554,Consumer Cyclical,Restaurants
+8207,Consumer Cyclical,Restaurants
+6703,Technology,Communication Equipment
+2923,Consumer Defensive,Packaged Foods
+6999,Technology,Electronic Components
+6059,Healthcare,Medical Care Facilities
+5026,Technology,Information Technology Services
+6533,Communication Services,Advertising Agencies
+7412,Consumer Cyclical,Restaurants
+4494,Technology,Software - Infrastructure
+6787,Technology,Electronic Components
+3154,Healthcare,Medical Instruments & Supplies
+2281,Consumer Defensive,Packaged Foods
+7085,Consumer Cyclical,Leisure
+6469,Industrials,Specialty Industrial Machinery
+7245,Consumer Cyclical,Auto Parts
+4432,Technology,Software - Application
+319A,Financial Services,Asset Management
+2181,Industrials,Staffing & Employment Services
+9110,Industrials,Marine Shipping
+3955,Basic Materials,Paper & Paper Products
+2323,Technology,Information Technology Services
+175A,Technology,Software - Application
+9338,Industrials,Specialty Business Services
+4960,Basic Materials,Chemicals
+4492,Technology,Software - Application
+268A,Technology,Scientific & Technical Instruments
+9831,Consumer Cyclical,Specialty Retail
+7003,Industrials,Aerospace & Defense
+7075,Industrials,Consulting Services
+6085,Industrials,Engineering & Construction
+2752,Consumer Cyclical,Restaurants
+3193,Consumer Cyclical,Restaurants
+9769,Consumer Defensive,Education & Training Services
+7409,Industrials,Aerospace & Defense
+9235,Communication Services,Advertising Agencies
+9090,Industrials,Integrated Freight & Logistics
+6958,Technology,Electronic Components
+2802,Consumer Defensive,Packaged Foods
+5618,Communication Services,Advertising Agencies
+3436,Technology,Semiconductor Equipment & Materials
+6977,Technology,Electronic Components
+6521,Technology,Electronic Components
+3753,Technology,Software - Infrastructure
+7030,Consumer Defensive,Education & Training Services
+9828,Consumer Cyclical,Restaurants
+9336,Industrials,Waste Management
+4367,Basic Materials,Specialty Chemicals
+9073,Industrials,Trucking
+2204,Consumer Defensive,Packaged Foods
+3186,Consumer Cyclical,Auto & Truck Dealerships
+2587,Consumer Defensive,Beverages - Non-Alcoholic
+5632,Basic Materials,Steel
+8255,Consumer Defensive,Grocery Stores
+281A,Technology,Software - Infrastructure
+2769,Consumer Cyclical,Specialty Retail
+3300,Real Estate,Real Estate Services
+4060,Technology,Software - Application
+7273,Consumer Cyclical,Auto Parts
+1946,Industrials,Engineering & Construction
+5110,Consumer Cyclical,Auto Parts
+2914,Consumer Defensive,Tobacco
+4593,Healthcare,Biotechnology
+1773,Utilities,Utilities - Diversified
+6343,Industrials,Specialty Industrial Machinery
+3878,Basic Materials,Paper & Paper Products
+2683,Consumer Defensive,Food Distribution
+6224,Industrials,Specialty Industrial Machinery
+9304,Industrials,Integrated Freight & Logistics
+7709,Technology,Computer Hardware
+5892,Consumer Cyclical,Apparel Manufacturing
+2768,Industrials,Conglomerates
+2198,Consumer Cyclical,Personal Services
+8996,Real Estate,Real Estate Services
+2607,Consumer Defensive,Packaged Foods
+5609,Basic Materials,Steel
+3401,Industrials,Conglomerates
+7508,Consumer Defensive,Grocery Stores
+504A,Healthcare,Biotechnology
+9853,Consumer Cyclical,Restaurants
+8596,Industrials,Rental & Leasing Services
+3774,Communication Services,Telecom Services
+2818,Consumer Defensive,Packaged Foods
+2344,Consumer Cyclical,Personal Services
+6564,Industrials,Waste Management
+5401,Basic Materials,Steel
+2820,Consumer Defensive,Packaged Foods
+9861,Consumer Cyclical,Restaurants
+2932,Consumer Defensive,Packaged Foods
+6380,Industrials,Tools & Accessories
+197A,Healthcare,Medical Instruments & Supplies
+5724,Basic Materials,Other Industrial Metals & Mining
+4011,Technology,Software - Application
+3391,Healthcare,Pharmaceutical Retailers
+2579,Consumer Defensive,Beverages - Non-Alcoholic
+5301,Basic Materials,Specialty Chemicals
+7090,Healthcare,Medical Care Facilities
+3097,Consumer Cyclical,Restaurants
+4901,Industrials,Conglomerates
+9037,Industrials,Integrated Freight & Logistics
+2730,Consumer Cyclical,Specialty Retail
+7509,Industrials,Conglomerates
+2816,Consumer Defensive,Food Distribution
+2585,Consumer Defensive,Beverages - Non-Alcoholic
+2698,Consumer Defensive,Discount Stores
+141A,Consumer Defensive,Discount Stores
+6997,Technology,Electronic Components
+9163,Industrials,Engineering & Construction
+2872,Consumer Defensive,Packaged Foods
+3778,Technology,Information Technology Services
+9310,Industrials,Integrated Freight & Logistics
+9252,Industrials,Specialty Business Services
+8252,Financial Services,Credit Services
+7914,Industrials,Specialty Business Services
+9143,Industrials,Integrated Freight & Logistics
+8214,Consumer Cyclical,Apparel Retail
+3793,Communication Services,Electronic Gaming & Multimedia
+3350,Consumer Cyclical,Restaurants
+7674,Consumer Cyclical,Restaurants
+9279,Consumer Cyclical,Restaurants
+6549,Communication Services,Advertising Agencies
+4023,Basic Materials,Specialty Chemicals
+2903,Consumer Defensive,Packaged Foods
+2224,Consumer Defensive,Packaged Foods
+7012,Industrials,Specialty Industrial Machinery
+5216,Technology,Electronic Components
+6752,Technology,Consumer Electronics
+2393,Industrials,Rental & Leasing Services
+2170,Industrials,Consulting Services
+5194,Consumer Defensive,Household & Personal Products
+3184,Consumer Cyclical,Auto & Truck Dealerships
+3927,Technology,Software - Infrastructure
+3096,Consumer Defensive,Grocery Stores
+6326,Industrials,Farm & Heavy Construction Machinery
+7421,Consumer Cyclical,Restaurants
+5858,Industrials,Metal Fabrication
+8769,Healthcare,Medical Care Facilities
+5036,Technology,Software - Infrastructure
+3407,Industrials,Conglomerates
+5101,Consumer Cyclical,Auto Parts
+2501,Consumer Defensive,Beverages - Brewers
+6966,Technology,Semiconductors
+436A,Technology,Information Technology Services
+6627,Technology,Semiconductor Equipment & Materials
+2264,Consumer Defensive,Packaged Foods
+3673,Technology,Software - Application
+4911,Consumer Defensive,Household & Personal Products
+4183,Basic Materials,Specialty Chemicals
+9270,Consumer Cyclical,Specialty Retail
+3178,Consumer Cyclical,Restaurants
+6078,Healthcare,Health Information Services
+8174,Utilities,Utilities - Regulated Gas
+7462,Energy,Oil & Gas Refining & Marketing
+3041,Consumer Cyclical,Personal Services
+2673,Consumer Cyclical,Internet Retail
+5019,Energy,Oil & Gas Refining & Marketing
+7746,Technology,Electronic Components
+9072,Industrials,Integrated Freight & Logistics
+8798,Financial Services,Insurance - Diversified
+7361,Industrials,Staffing & Employment Services
+7915,Technology,Electronic Components
+6723,Technology,Semiconductors
+2395,Healthcare,Diagnostics & Research
+1925,Real Estate,Real Estate - Development
+2721,Real Estate,Real Estate Services
+8848,Real Estate,Real Estate Services
+1379,Consumer Defensive,Farm Products
+4061,Basic Materials,Chemicals
+7135,Consumer Cyclical,Apparel Retail
+5406,Basic Materials,Steel
+7458,Consumer Cyclical,Leisure
+3205,Consumer Cyclical,Apparel Manufacturing
+7771,Consumer Cyclical,Luxury Goods
+9661,Real Estate,Real Estate Services
+3951,Consumer Cyclical,Packaging & Containers
+4260,Technology,Information Technology Services
+3082,Consumer Cyclical,Restaurants
+160A,Industrials,Conglomerates
+6005,Industrials,Specialty Industrial Machinery
+9532,Utilities,Utilities - Regulated Gas
+9029,Industrials,Integrated Freight & Logistics
+3877,Basic Materials,Paper & Paper Products
+6264,Industrials,Specialty Industrial Machinery
+4970,Basic Materials,Chemicals
+4544,Healthcare,Diagnostics & Research
+7532,Consumer Defensive,Discount Stores
+3628,Healthcare,Health Information Services
+9896,Industrials,Conglomerates
+7888,Technology,Semiconductor Equipment & Materials
+523A,Industrials,Specialty Business Services
+4410,Basic Materials,Specialty Chemicals
+7013,Industrials,Specialty Industrial Machinery
+9450,Communication Services,Telecom Services
+6495,Industrials,Specialty Industrial Machinery
+4503,Healthcare,Drug Manufacturers - General
+9278,Consumer Cyclical,Specialty Retail
+4902,Industrials,Business Equipment & Supplies
+5201,Industrials,Conglomerates
+4125,Industrials,Waste Management
+8058,Industrials,Conglomerates
+9843,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7318,Industrials,Specialty Business Services
+2798,Consumer Cyclical,Restaurants
+7022,Industrials,Aerospace & Defense
+7366,Consumer Defensive,Education & Training Services
+7363,Healthcare,Medical Care Facilities
+9076,Industrials,Trucking
+9057,Industrials,Trucking
+6096,Consumer Defensive,Education & Training Services
+7018,Industrials,Aerospace & Defense
+2776,Consumer Cyclical,Apparel Manufacturing
+8133,Industrials,Conglomerates
+7780,Healthcare,Medical Instruments & Supplies
+7682,Consumer Cyclical,Restaurants
+7004,Industrials,Pollution & Treatment Controls
+4004,Basic Materials,Chemicals
+6561,Consumer Cyclical,Travel Services
+2934,Healthcare,Pharmaceutical Retailers
+9678,Industrials,Rental & Leasing Services
+8002,Industrials,Conglomerates
+8039,Consumer Defensive,Food Distribution
+7571,Industrials,Conglomerates
+6197,Healthcare,Medical Care Facilities
+5199,Basic Materials,Specialty Chemicals
+5232,Basic Materials,Building Materials
+8200,Consumer Cyclical,Restaurants
+8142,Consumer Defensive,Food Distribution
+4480,Healthcare,Health Information Services
+3910,Technology,Software - Application
+7947,Consumer Cyclical,Packaging & Containers
+7047,Communication Services,Internet Content & Information
+469A,Consumer Cyclical,Leisure
+3563,Consumer Cyclical,Restaurants
+3196,Consumer Cyclical,Restaurants
+6547,Consumer Cyclical,Lodging
+8876,Industrials,Specialty Business Services
+3058,Consumer Cyclical,Specialty Retail
+6740,Technology,Electronic Components
+2462,Industrials,Conglomerates
+3549,Healthcare,Pharmaceutical Retailers
+5952,Industrials,Tools & Accessories
+2931,Consumer Defensive,Household & Personal Products
+8053,Industrials,Conglomerates
+3551,Industrials,Specialty Business Services
+9360,Technology,Information Technology Services
+3418,Consumer Cyclical,Restaurants
+7585,Consumer Cyclical,Restaurants
+6062,Healthcare,Medical Care Facilities
+5255,Technology,Information Technology Services
+9218,Healthcare,Medical Care Facilities
+5981,Industrials,Specialty Industrial Machinery
+7603,Consumer Cyclical,Apparel Retail
+8030,Consumer Defensive,Food Distribution
+9145,Industrials,Integrated Freight & Logistics
+9322,Industrials,Specialty Business Services
+7201,Consumer Cyclical,Auto Manufacturers
+8914,Real Estate,Real Estate Services
+9633,Industrials,Conglomerates
+9976,Consumer Cyclical,Home Improvement Retail
+3480,Real Estate,Real Estate - Diversified
+2469,Technology,Consumer Electronics
+9302,Industrials,Integrated Freight & Logistics
+339A,Technology,Information Technology Services
+6089,Industrials,Staffing & Employment Services
+9636,Communication Services,Entertainment
+3187,Consumer Cyclical,Internet Retail
+3387,Consumer Cyclical,Restaurants
+9064,Industrials,Trucking
+8166,Consumer Cyclical,Apparel Manufacturing
+6071,Consumer Cyclical,Personal Services
+2762,Consumer Cyclical,Restaurants
+1383,Consumer Defensive,Farm Products
+1407,Utilities,Utilities - Renewable
+2694,Consumer Cyclical,Restaurants
+7520,Consumer Defensive,Food Distribution
+9306,Industrials,Integrated Freight & Logistics
+4777,Communication Services,Electronic Gaming & Multimedia
+3099,Consumer Cyclical,Department Stores
+8163,Consumer Cyclical,Restaurants
+262A,Healthcare,Medical Instruments & Supplies
+7074,Consumer Cyclical,Personal Services
+3349,Healthcare,Pharmaceutical Retailers
+414A,Communication Services,Entertainment
+6472,Industrials,Tools & Accessories
+8031,Industrials,Conglomerates
+2157,Consumer Cyclical,Leisure
+7367,Industrials,Staffing & Employment Services
+4098,Basic Materials,Specialty Chemicals
+7238,Consumer Cyclical,Auto Parts
+2695,Consumer Cyclical,Restaurants
+5491,Basic Materials,Steel
+8001,Industrials,Conglomerates
+195A,Technology,Software - Infrastructure
+8585,Financial Services,Credit Services
+9010,Industrials,Conglomerates
+5480,Basic Materials,Steel
+4222,Consumer Cyclical,Auto Parts
+6039,Consumer Cyclical,Personal Services
+9104,Industrials,Marine Shipping
+3190,Consumer Cyclical,Textile Manufacturing
+7126,Consumer Cyclical,Apparel Manufacturing
+8793,Industrials,Rental & Leasing Services
+1820,Industrials,Engineering & Construction
+3976,Technology,Software - Application
+7524,Consumer Cyclical,Restaurants
+9308,Industrials,Marine Shipping
+194A,Healthcare,Medical Care Facilities
+4631,Basic Materials,Specialty Chemicals
+9433,Communication Services,Telecom Services
+7162,Financial Services,Asset Management
+7850,Industrials,Specialty Business Services
+7886,Basic Materials,Specialty Chemicals
+3454,Financial Services,Asset Management
+3946,Consumer Cyclical,Packaging & Containers
+5020,Energy,Oil & Gas Refining & Marketing
+4801,Consumer Cyclical,Leisure
+7354,Communication Services,Advertising Agencies
+211A,Industrials,Engineering & Construction
+9887,Consumer Cyclical,Restaurants
+3133,Consumer Cyclical,Restaurants
+9601,Communication Services,Entertainment
+409A,Consumer Defensive,Beverages - Brewers
+7550,Consumer Cyclical,Restaurants
+7475,Consumer Defensive,Packaged Foods
+3484,Real Estate,Real Estate Services
+5889,Healthcare,Medical Instruments & Supplies
+7359,Communication Services,Advertising Agencies
+3474,Real Estate,Real Estate Services
+3067,Consumer Cyclical,Restaurants
+7084,Consumer Cyclical,Personal Services
+8944,Real Estate,Real Estate Services
+2882,Consumer Cyclical,Restaurants
+245A,Consumer Cyclical,Restaurants
+4553,Healthcare,Drug Manufacturers - Specialty & Generic
+9722,Consumer Cyclical,Lodging
+9535,Energy,Oil & Gas Integrated
+9539,Utilities,Utilities - Regulated Gas
+9979,Consumer Cyclical,Restaurants
+2384,Industrials,Integrated Freight & Logistics
+9973,Consumer Cyclical,Restaurants
+5741,Basic Materials,Aluminum
+8194,Consumer Defensive,Grocery Stores
+2164,Communication Services,Publishing
+2404,Consumer Cyclical,Lodging
+6147,Industrials,Specialty Industrial Machinery
+9706,Industrials,Airports & Air Services
+3556,Consumer Cyclical,Internet Retail
+417A,Consumer Defensive,Grocery Stores
+9221,Industrials,Waste Management
+9249,Communication Services,Entertainment
+4565,Healthcare,Biotechnology
+7119,Industrials,Conglomerates
+8920,Industrials,Conglomerates
+3543,Consumer Cyclical,Restaurants
+9627,Healthcare,Pharmaceutical Retailers
+2884,Consumer Defensive,Packaged Foods
+9327,Industrials,Integrated Freight & Logistics
+9969,Consumer Cyclical,Restaurants
+3864,Basic Materials,Paper & Paper Products
+2742,Consumer Defensive,Grocery Stores
+7133,Healthcare,Medical Care Facilities
+4091,Basic Materials,Chemicals
+9720,Consumer Cyclical,Lodging
+9699,Industrials,Rental & Leasing Services
+463A,Real Estate,Real Estate - Diversified
+3546,Consumer Cyclical,Home Improvement Retail
+8892,Real Estate,Real Estate - Development
+3068,Consumer Cyclical,Restaurants
+8179,Consumer Cyclical,Restaurants
+9365,Industrials,Marine Shipping
+9267,Healthcare,Pharmaceutical Retailers
+3967,Technology,Software - Application
+4088,Basic Materials,Specialty Chemicals
+2340,Consumer Cyclical,Leisure
+4026,Industrials,Building Products & Equipment
+5571,Technology,Software - Application
+6141,Industrials,Specialty Industrial Machinery
+1375,Consumer Defensive,Packaged Foods
+7919,Industrials,Specialty Business Services
+9997,Consumer Cyclical,Specialty Retail
+9984,Communication Services,Telecom Services
+9628,Consumer Cyclical,Personal Services
+8860,Real Estate,Real Estate Services
+9274,Basic Materials,Paper & Paper Products
+3050,Consumer Cyclical,Home Improvement Retail
+7241,Consumer Cyclical,Auto Parts
+8237,Consumer Cyclical,Department Stores
+9733,Consumer Defensive,Education & Training Services
+7097,Healthcare,Medical Care Facilities
+3750,Healthcare,Biotechnology
+2293,Consumer Defensive,Packaged Foods
+9034,Industrials,Integrated Freight & Logistics
+4681,Consumer Cyclical,Resorts & Casinos
+3447,Industrials,Metal Fabrication
+9247,Industrials,Waste Management
+2734,Industrials,Conglomerates
+6428,Communication Services,Electronic Gaming & Multimedia
+9959,Consumer Defensive,Beverages - Non-Alcoholic
+4666,Industrials,Infrastructure Operations
+3167,Industrials,Conglomerates
+5076,Industrials,Engineering & Construction
+543A,Industrials,Farm & Heavy Construction Machinery
+6565,Consumer Cyclical,Lodging
+9531,Utilities,Utilities - Regulated Gas
+9890,Consumer Defensive,Grocery Stores
+2503,Consumer Defensive,Beverages - Brewers
+9264,Industrials,Specialty Industrial Machinery
+7247,Consumer Cyclical,Auto Parts
+7203,Consumer Cyclical,Auto Manufacturers
+7562,Consumer Cyclical,Restaurants
+4337,Communication Services,Internet Content & Information
+3395,Consumer Cyclical,Restaurants
+9147,Industrials,Integrated Freight & Logistics
+6758,Technology,Consumer Electronics
+6400,Industrials,Specialty Industrial Machinery
+7795,Industrials,Conglomerates
+3397,Consumer Cyclical,Restaurants
+1605,Energy,Oil & Gas E&P
+3222,Consumer Cyclical,Department Stores
+4612,Basic Materials,Specialty Chemicals
+6570,Consumer Cyclical,Leisure
+5902,Consumer Cyclical,Packaging & Containers
+7271,Consumer Cyclical,Auto Parts
+386A,Consumer Cyclical,Apparel Manufacturing
+3045,Consumer Cyclical,Apparel Manufacturing
+6092,Industrials,Specialty Business Services
+2904,Consumer Defensive,Packaged Foods
+5391,Industrials,Building Products & Equipment
+4689,Consumer Cyclical,Internet Retail
+8276,Consumer Cyclical,Department Stores
+3197,Consumer Cyclical,Restaurants
+7375,Basic Materials,Chemicals
+9049,Industrials,Railroads
+2179,Consumer Defensive,Education & Training Services
+7698,Consumer Defensive,Food Distribution
+9075,Industrials,Trucking
+7679,Healthcare,Pharmaceutical Retailers
+4506,Healthcare,Drug Manufacturers - Specialty & Generic
+9211,Communication Services,Advertising Agencies
+2337,Real Estate,Real Estate Services
+9701,Consumer Cyclical,Restaurants
+3175,Consumer Cyclical,Restaurants
+3174,Consumer Cyclical,Specialty Retail
+2874,Consumer Defensive,Food Distribution
+3231,Real Estate,Real Estate Services
+298A,Technology,Information Technology Services
+6166,Industrials,Specialty Industrial Machinery
+2300,Consumer Cyclical,Personal Services
+5283,Basic Materials,Building Materials
+428A,Consumer Cyclical,Restaurants
+5989,Consumer Cyclical,Auto Parts
+9974,Consumer Defensive,Grocery Stores
+5380,Industrials,Building Products & Equipment
+6753,Technology,Consumer Electronics
+9220,Healthcare,Medical Care Facilities
+1447,Technology,Information Technology Services
+5870,Consumer Cyclical,Auto & Truck Dealerships
+2588,Utilities,Utilities - Regulated Water
+9171,Industrials,Marine Shipping
+9635,Real Estate,Real Estate Services
+3941,Consumer Cyclical,Packaging & Containers
+4657,Industrials,Waste Management
+1380,Consumer Defensive,Farm Products
+3063,Consumer Cyclical,Restaurants
+3199,Consumer Cyclical,Home Improvement Retail
+9557,Consumer Cyclical,Internet Retail
+9434,Communication Services,Telecom Services
+4241,Industrials,Conglomerates
+7901,Basic Materials,Paper & Paper Products
+6817,Technology,Electronic Components
+5998,Industrials,Tools & Accessories
+4409,Basic Materials,Specialty Chemicals
+5261,Consumer Cyclical,Resorts & Casinos
+4760,Communication Services,Advertising Agencies
+7646,Consumer Defensive,Discount Stores
+8244,Consumer Cyclical,Department Stores
+7063,Communication Services,Advertising Agencies
+2686,Consumer Cyclical,Apparel Retail
+3392,Consumer Defensive,Packaged Foods
+5233,Basic Materials,Building Materials
+4324,Communication Services,Advertising Agencies
+9362,Industrials,Marine Shipping
+9201,Industrials,Airlines
+9731,Consumer Cyclical,Personal Services
+6310,Industrials,Farm & Heavy Construction Machinery
+9351,Industrials,Integrated Freight & Logistics
+5021,Energy,Oil & Gas Integrated
+4680,Consumer Cyclical,Leisure
+9202,Industrials,Airlines
+5411,Basic Materials,Steel
+4679,Consumer Cyclical,Personal Services
+205A,Consumer Cyclical,Residential Construction
+8912,Real Estate,Real Estate Services
+7127,Consumer Cyclical,Personal Services
+4650,Communication Services,Entertainment
+2791,Consumer Defensive,Grocery Stores
+9206,Industrials,Airlines
+7502,Consumer Cyclical,Personal Services
+7320,Technology,Software - Application
+9616,Consumer Cyclical,Lodging
+9250,Technology,Information Technology Services
+4040,Basic Materials,Chemicals
+3034,Healthcare,Pharmaceutical Retailers
+352A,Consumer Cyclical,Leisure
+9850,Consumer Cyclical,Restaurants
+9978,Consumer Cyclical,Specialty Retail
+9009,Industrials,Railroads
+4228,Basic Materials,Specialty Chemicals
+4707,Industrials,Engineering & Construction
+9369,Industrials,Integrated Freight & Logistics
+1711,Utilities,Utilities - Renewable
+9761,Real Estate,Real Estate Services
+4502,Healthcare,Drug Manufacturers - Specialty & Generic
+7426,Basic Materials,Lumber & Wood Production
+8278,Consumer Cyclical,Department Stores
+9324,Industrials,Specialty Business Services
+6233,Industrials,Specialty Industrial Machinery
+6183,Industrials,Specialty Business Services
+6562,Communication Services,Internet Content & Information
+5532,Real Estate,Real Estate Services
+8802,Real Estate,Real Estate - Diversified
+6181,Consumer Cyclical,Personal Services
+3479,Real Estate,Real Estate Services
+7494,Consumer Cyclical,Apparel Retail
+8801,Real Estate,Real Estate - Diversified
+9823,Consumer Defensive,Grocery Stores
+3286,Industrials,Specialty Business Services
+2789,Consumer Cyclical,Restaurants
+7616,Consumer Cyclical,Restaurants
+9119,Industrials,Marine Shipping
+367A,Consumer Cyclical,Luxury Goods
+5248,Technology,Software - Application
+7601,Consumer Cyclical,Department Stores
+3160,Consumer Defensive,Food Distribution
+4381,Technology,Software - Application
+8242,Consumer Defensive,Grocery Stores
+3557,Consumer Cyclical,Restaurants
+6571,Consumer Cyclical,Personal Services
+8025,Consumer Cyclical,Apparel Retail
+9878,Consumer Cyclical,Apparel Retail
+7918,Consumer Cyclical,Restaurants
+6189,Industrials,Specialty Business Services
+3010,Consumer Cyclical,Lodging
+9679,Financial Services,Insurance - Diversified
+2162,Technology,Electronic Components
+1873,Consumer Cyclical,Residential Construction
+4005,Basic Materials,Chemicals
+286A,Healthcare,Medical Care Facilities
+9361,Industrials,Marine Shipping
+8217,Consumer Cyclical,Department Stores
+3238,Real Estate,Real Estate Services
+2666,Consumer Cyclical,Specialty Retail
+7512,Consumer Cyclical,Department Stores
+7791,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+7369,Industrials,Specialty Business Services
+3103,Basic Materials,Specialty Chemicals
+7625,Consumer Cyclical,Restaurants
+3101,Basic Materials,Specialty Chemicals
+9313,Industrials,Specialty Business Services
+9311,Industrials,Integrated Freight & Logistics
+8818,Real Estate,Real Estate Services
+2918,Consumer Defensive,Packaged Foods
+8233,Consumer Cyclical,Department Stores
+7071,Healthcare,Medical Care Facilities
+9380,Industrials,Marine Shipping
+9778,Consumer Defensive,Education & Training Services
+9069,Industrials,Integrated Freight & Logistics
+9956,Consumer Cyclical,Department Stores
+9432,Communication Services,Telecom Services
+3192,Consumer Cyclical,Internet Retail
+4691,Consumer Cyclical,Lodging
+9366,Industrials,Integrated Freight & Logistics
+3021,Technology,Computer Hardware
+3612,Consumer Cyclical,Department Stores
+7083,Healthcare,Medical Care Facilities
+9534,Utilities,Utilities - Regulated Gas
+9704,Consumer Cyclical,Lodging
+9399,Technology,Software - Application
+2778,Consumer Cyclical,Apparel Retail
+8107,Consumer Cyclical,Apparel Manufacturing
+3182,Consumer Cyclical,Internet Retail
+9619,Industrials,Rental & Leasing Services
+9326,Industrials,Integrated Freight & Logistics
+9502,Utilities,Utilities - Diversified
+9251,Consumer Cyclical,Personal Services
+7686,Consumer Defensive,Food Distribution
+2933,Consumer Defensive,Packaged Foods
+8273,Consumer Cyclical,Department Stores
+4343,Consumer Cyclical,Leisure
+4615,Basic Materials,Specialty Chemicals
+4245,Industrials,Waste Management
+4720,Consumer Defensive,Education & Training Services
+8181,Consumer Cyclical,Restaurants
+7743,Healthcare,Medical Instruments & Supplies
+2502,Consumer Defensive,Beverages - Brewers
+9142,Industrials,Conglomerates
+3086,Consumer Cyclical,Department Stores
+9846,Consumer Defensive,Grocery Stores
+9166,Consumer Cyclical,Leisure
+3326,Consumer Cyclical,Leisure
+3861,Basic Materials,Paper & Paper Products
+8830,Real Estate,Real Estate Services
+549A,Industrials,Security & Protection Services
+3289,Real Estate,Real Estate - Diversified
+7814,Industrials,Specialty Business Services
+9045,Industrials,Conglomerates
+7065,Industrials,Rental & Leasing Services
+8267,Consumer Cyclical,Department Stores
+2653,Consumer Cyclical,Department Stores
+3382,Consumer Defensive,Grocery Stores
+2927,Consumer Defensive,Packaged Foods
+4235,Consumer Cyclical,Textile Manufacturing
+5074,Utilities,Utilities - Renewable
+6217,Industrials,Specialty Industrial Machinery
+7037,Healthcare,Medical Care Facilities
+9008,Industrials,Conglomerates
+9052,Industrials,Railroads
+4188,Basic Materials,Specialty Chemicals
+4100,Basic Materials,Specialty Chemicals
+9051,Industrials,Integrated Freight & Logistics
+9903,Consumer Cyclical,Home Improvement Retail
+7215,Consumer Cyclical,Auto Parts
+5938,Industrials,Building Products & Equipment
+9173,Industrials,Marine Shipping
+5852,Industrials,Metal Fabrication
+6625,Technology,Semiconductors
+7111,Industrials,Specialty Business Services
+8086,Healthcare,Medical Instruments & Supplies
+9006,Industrials,Conglomerates
+9842,Consumer Cyclical,Specialty Retail
+3293,Real Estate,Real Estate - Development
+4436,Communication Services,Internet Content & Information
+477A,Industrials,Specialty Business Services
+2138,Technology,Software - Application
+9022,Industrials,Railroads
+8289,Consumer Cyclical,Specialty Retail
+7593,Consumer Cyclical,Auto & Truck Dealerships
+7267,Consumer Cyclical,Auto Manufacturers
+9063,Industrials,Trucking
+8804,Real Estate,Real Estate Services
+5204,Consumer Cyclical,Packaging & Containers
+3370,Consumer Cyclical,Restaurants
+5707,Basic Materials,Other Industrial Metals & Mining
+6557,Healthcare,Medical Care Facilities
+7130,Industrials,Conglomerates
+9042,Industrials,Conglomerates
+4651,Industrials,Conglomerates
+3137,Communication Services,Publishing
+6218,Industrials,Specialty Industrial Machinery
+9007,Industrials,Railroads
+8203,Consumer Defensive,Discount Stores
+5940,Industrials,Building Products & Equipment
+7199,Financial Services,Credit Services
+7091,Healthcare,Medical Care Facilities
+3069,Consumer Cyclical,Restaurants
+9023,Industrials,Railroads
+9223,Industrials,Rental & Leasing Services
+9024,Industrials,Conglomerates
+7808,Basic Materials,Lumber & Wood Production
+3003,Real Estate,Real Estate Services
+8897,Real Estate,Real Estate - Development
+4809,Industrials,Specialty Business Services
+8143,Consumer Cyclical,Apparel Manufacturing
+3121,Financial Services,Asset Management
+2471,Industrials,Specialty Business Services
+3232,Industrials,Conglomerates
+7516,Consumer Cyclical,Home Improvement Retail
+4712,Communication Services,Entertainment
+3544,Healthcare,Pharmaceutical Retailers
+9031,Industrials,Railroads
+9993,Consumer Defensive,Grocery Stores
+7129,Healthcare,Pharmaceutical Retailers
+4645,Consumer Defensive,Education & Training Services
+168A,Communication Services,Advertising Agencies
+9005,Consumer Cyclical,Department Stores
+9723,Consumer Cyclical,Lodging
+3123,Consumer Cyclical,Textile Manufacturing
+2445,Industrials,Rental & Leasing Services
+2485,Consumer Cyclical,Personal Services
+9656,Consumer Cyclical,Resorts & Casinos
+372A,Industrials,Rental & Leasing Services
+7578,Consumer Cyclical,Personal Services
+3524,Consumer Cyclical,Textile Manufacturing
+9158,Healthcare,Medical Care Facilities
+6982,Consumer Cyclical,Auto Parts
+3607,Consumer Cyclical,Apparel Retail
+3536,Consumer Defensive,Household & Personal Products
+8803,Real Estate,Real Estate - Diversified
+7561,Consumer Cyclical,Restaurants
+9081,Industrials,Railroads
+9021,Industrials,Railroads
+3315,Basic Materials,Coking Coal
+9020,Industrials,Railroads
+4678,Consumer Defensive,Education & Training Services
+6523,Healthcare,Medical Devices
+9204,Industrials,Airports & Air Services
+6074,Consumer Cyclical,Leisure
+2424,Consumer Cyclical,Personal Services
+9268,Consumer Cyclical,Auto & Truck Dealerships
+9305,Industrials,Marine Shipping
+2984,Real Estate,Real Estate - Development
+9503,Utilities,Utilities - Renewable
+9041,Industrials,Conglomerates
+9044,Real Estate,Real Estate - Development
+5010,Energy,Oil & Gas Refining & Marketing
+6464,Industrials,Tools & Accessories
+2378,Communication Services,Entertainment
+5271,Industrials,Building Products & Equipment
+3204,Industrials,Conglomerates
+3856,Technology,Software - Application
+9048,Industrials,Conglomerates
+3011,Consumer Cyclical,Auto & Truck Dealerships
+9001,Industrials,Railroads
+2687,Consumer Defensive,Grocery Stores
+9603,Consumer Cyclical,Travel Services
+7062,Consumer Cyclical,Personal Services
+3880,Basic Materials,Paper & Paper Products
+9003,Industrials,Conglomerates
+9519,Utilities,Utilities - Renewable
+6615,Technology,Electronic Components
+3109,Consumer Cyclical,Textile Manufacturing
+8835,Industrials,Conglomerates
+3422,Consumer Cyclical,Auto Parts
+7604,Consumer Cyclical,Restaurants
+8424,Industrials,Rental & Leasing Services
+2747,Consumer Defensive,Grocery Stores
+8425,Financial Services,Credit Services
+9446,Communication Services,Telecom Services
+7362,Healthcare,Medical Care Facilities
+5994,Industrials,Metal Fabrication
+7640,Consumer Cyclical,Specialty Retail
+6444,Consumer Cyclical,Auto Parts
+9082,Consumer Cyclical,Auto & Truck Dealerships
+2796,Healthcare,Pharmaceutical Retailers
+8439,Industrials,Rental & Leasing Services
+297A,Industrials,Conglomerates
+7061,Healthcare,Medical Care Facilities
+7212,Consumer Cyclical,Auto Parts
+9033,Industrials,Railroads
+2291,Consumer Defensive,Packaged Foods
+4350,Healthcare,Pharmaceutical Retailers
+9536,Utilities,Utilities - Regulated Gas
+4331,Consumer Cyclical,Personal Services
+8593,Financial Services,Credit Services
+9513,Utilities,Utilities - Renewable
+9355,Industrials,Integrated Freight & Logistics
+7515,Consumer Defensive,Grocery Stores
+2373,Healthcare,Medical Care Facilities
+2418,Consumer Cyclical,Personal Services
+5932,Industrials,Building Products & Equipment
+7040,Consumer Cyclical,Personal Services
+7831,Industrials,Specialty Business Services
+9835,Consumer Cyclical,Home Improvement Retail
+8894,Real Estate,Real Estate Services
+9514,Utilities,Utilities - Renewable
+3896,Basic Materials,Paper & Paper Products
+6425,Consumer Cyclical,Leisure
+6186,Consumer Cyclical,Personal Services
+4920,Consumer Defensive,Household & Personal Products
+7256,Consumer Cyclical,Auto Parts
+9507,Utilities,Utilities - Regulated Electric
+9060,Industrials,Trucking
+6699,Consumer Cyclical,Auto Parts
+3202,Consumer Cyclical,Textile Manufacturing
+4755,Consumer Cyclical,Internet Retail
+9160,Consumer Cyclical,Personal Services
+3863,Basic Materials,Paper & Paper Products
+8473,Financial Services,Financial Conglomerates
+3248,Real Estate,Real Estate - Diversified
+7898,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+9012,Industrials,Railroads
+7372,Consumer Cyclical,Personal Services
+9046,Industrials,Railroads
+9115,Industrials,Integrated Freight & Logistics
+6412,Consumer Cyclical,Leisure
+9229,Healthcare,Medical Care Facilities
+6173,Industrials,Specialty Business Services
+9130,Industrials,Marine Shipping
+9017,Industrials,Railroads
+3494,Real Estate,Real Estate Services
+4735,Consumer Defensive,Education & Training Services
+2993,Real Estate,Real Estate Services
+9508,Utilities,Utilities - Independent Power Producers
+9812,Basic Materials,Building Materials
+8260,Consumer Cyclical,Department Stores
+2435,Healthcare,Medical Care Facilities
+9505,Utilities,Utilities - Regulated Electric
+9511,Utilities,Utilities - Renewable
+9506,Utilities,Utilities - Renewable
+8254,Consumer Cyclical,Department Stores
+3681,Technology,Software - Application
+7815,Basic Materials,Lumber & Wood Production
+9509,Utilities,Utilities - Renewable
+5202,Consumer Cyclical,Auto Parts
+9501,Utilities,Utilities - Renewable
+9504,Utilities,Utilities - Renewable
+3111,Consumer Cyclical,Textile Manufacturing
+8247,Consumer Cyclical,Department Stores
+9444,Consumer Cyclical,Specialty Retail
