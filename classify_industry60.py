@@ -90,14 +90,17 @@ def apply(args):
     d = d.drop(columns=["_code4"])
 
     # 業種別PER中央値・PER乖離率を新業種(67分類)で再計算する。
+    # PER>300は業績急減/データ異常で意味を成さないため、中央値・乖離率の対象外。
+    PER_CAP = 300
     if "PER" in d.columns and "新業種" in d.columns:
         per = pd.to_numeric(d["PER"], errors="coerce")
-        valid = d[per.notna() & (per > 0)]
-        med = valid.groupby("新業種")["PER"].apply(
-            lambda s: pd.to_numeric(s, errors="coerce").median())
+        meaningful = per.where((per > 0) & (per <= PER_CAP))
+        valid = d[meaningful.notna()]
+        med = valid.assign(_p=meaningful[meaningful.notna()]).groupby("新業種")["_p"].median()
         d["業種PER中央値"] = d["新業種"].map(med).round(1)
-        d["PER乖離率"] = ((per / d["業種PER中央値"]) - 1).round(3)
-        print("業種PER中央値/PER乖離率を新業種(67分類)で再計算")
+        # 乖離率は意味のあるPER(0〜300)のみ算出。それ以外はNaN。
+        d["PER乖離率"] = ((meaningful / d["業種PER中央値"]) - 1).round(3)
+        print(f"業種PER中央値/PER乖離率を新業種(67分類)で再計算(PER>{PER_CAP}は除外)")
 
     d.to_csv(args.results, index=False, encoding="utf-8-sig")
     got = d["新業種"].notna().sum()

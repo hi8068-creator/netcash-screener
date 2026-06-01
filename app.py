@@ -428,7 +428,9 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
               else pd.Series([float("nan")] * len(d), index=d.index))
         disp_per = []
         for p, n in zip(per_n, ni):
-            if pd.notna(p):
+            if pd.notna(p) and p > 300:
+                disp_per.append("300超")  # 業績急減/データ異常で実質意味なし
+            elif pd.notna(p):
                 disp_per.append(f"{p:.1f}")
             elif pd.notna(n) and n <= 0:
                 disp_per.append("赤字")
