@@ -358,7 +358,7 @@ COLUMN_CONFIG = {
         "PER(倍)", format="%.1f",
         help="時価総額÷純利益(黒字のみ)。一般に15倍前後が標準、低いほど割安(業種差大)。"),
     "業種PER中央値": st.column_config.NumberColumn(
-        "業種PER中央値", format="%.1f", help="同じ33業種の黒字銘柄のPER中央値＝その業種の目安。"),
+        "業種PER中央値", format="%.1f", help="同じ業種(67分類)の黒字銘柄のPER中央値＝その業種の目安。"),
     "PER乖離率": st.column_config.NumberColumn(
         "PER乖離率", format="percent",
         help="PER÷業種PER中央値−1。マイナス=同業比で割安。"),
@@ -767,17 +767,18 @@ with tab_screen:
             mime="text/csv",
         )
 
-    # 業種別PER中央値の一覧
+    # 業種別PER中央値の一覧(67分類ベース)
     base = st.session_state.df
-    if "業種" in base.columns and "PER" in base.columns:
-        with st.expander("📚 業種別(33業種)PER中央値ランキング", expanded=False):
+    if "新業種" in base.columns and "PER" in base.columns:
+        with st.expander("📚 業種別(67分類)PER中央値ランキング", expanded=False):
             per = pd.to_numeric(base["PER"], errors="coerce")
             v = base[per.notna() & (per > 0)].copy()
             v["PER"] = pd.to_numeric(v["PER"], errors="coerce")
             agg = (
-                v.groupby("業種")["PER"]
+                v.groupby("新業種")["PER"]
                 .agg(銘柄数="count", PER中央値="median")
                 .reset_index()
+                .rename(columns={"新業種": "業種(67)"})
                 .sort_values("PER中央値")
             )
             agg["PER中央値"] = agg["PER中央値"].round(1)

@@ -88,6 +88,17 @@ def apply(args):
     d["新業種"] = d["_code4"].map(amap)
     d["業種根拠"] = d["_code4"].map(smap)
     d = d.drop(columns=["_code4"])
+
+    # 業種別PER中央値・PER乖離率を新業種(67分類)で再計算する。
+    if "PER" in d.columns and "新業種" in d.columns:
+        per = pd.to_numeric(d["PER"], errors="coerce")
+        valid = d[per.notna() & (per > 0)]
+        med = valid.groupby("新業種")["PER"].apply(
+            lambda s: pd.to_numeric(s, errors="coerce").median())
+        d["業種PER中央値"] = d["新業種"].map(med).round(1)
+        d["PER乖離率"] = ((per / d["業種PER中央値"]) - 1).round(3)
+        print("業種PER中央値/PER乖離率を新業種(67分類)で再計算")
+
     d.to_csv(args.results, index=False, encoding="utf-8-sig")
     got = d["新業種"].notna().sum()
     print(f"新業種付与: {got}社 / 全{len(d)}社  業種数: {d['新業種'].nunique()}")
