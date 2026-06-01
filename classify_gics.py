@@ -87,6 +87,18 @@ GICS_MAP = [
     ("Gambling", "ホテル・旅行・レジャー"),
     ("Waste Management", "環境・リサイクル・ビル管理"),
     ("Pollution & Treatment Controls", "環境・リサイクル・ビル管理"),
+    # 追加7業種
+    ("Auto & Truck Dealership", "自動車・バイク販売／整備"),
+    ("Auto Dealership", "自動車・バイク販売／整備"),
+    ("Auto - Dealerships", "自動車・バイク販売／整備"),
+    ("Medical Devices", "医療機器・ヘルスケア機器"),
+    ("Medical Instruments", "医療機器・ヘルスケア機器"),
+    ("Medical Distribution", "医療機器・ヘルスケア機器"),
+    ("Diagnostics & Research", "医療機器・ヘルスケア機器"),
+    ("Apparel Manufacturing", "繊維・アパレル・服飾"),
+    ("Textile Manufacturing", "繊維・アパレル・服飾"),
+    ("Footwear & Accessories", "繊維・アパレル・服飾"),
+    ("Rental & Leasing", "レンタル・リース"),
     # その他製品
     ("Furnishings", "住宅設備・家具・生活用品"),
     ("Packaging & Containers", "住宅設備・家具・生活用品"),

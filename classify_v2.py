@@ -22,6 +22,26 @@ from classify_gics import GICS_MAP, CONTEXT
 # ---- 事業説明文(英語, 小文字化して照合) -> 60業種 ----
 # (keywords, bucket)。具体的なものを先に。候補に含まれる場合のみ採用。
 SUMMARY_RULES = [
+    # ---- 追加7業種(優先) ----
+    (["car dealer", "automobile dealer", "automobile dealership", "car dealership",
+      "used cars", "used and new car", "new and used car", "sale of new and used",
+      "automobile sales", "vehicle dealer", "motorcycle", "auto repair",
+      "automobile maintenance", "car and motorcycle", "service station"],
+     "自動車・バイク販売／整備"),
+    (["printing", "printing business", "printing services", "commercial printing",
+      "gravure printing", "offset"], "印刷・紙加工"),
+    (["funeral", "cemetery", "wedding", "bridal", "ceremony hall", "guesthouse"],
+     "冠婚葬祭・セレモニー"),
+    (["hair salon", "beauty salon", "hairdressing", "barber", "hair and beauty",
+      "hair and make"], "美容・理容・パーソナルケア"),
+    (["rental and sale", "rents and sells", "rental of", "leasing of", "rental business",
+      "rents and leases", "equipment rental"], "レンタル・リース"),
+    (["medical device", "medical instrument", "medical equipment", "diagnostic instrument",
+      "diagnostic", "surgical", "dental", "cardiac", "orthodontic", "regenerative medicine"],
+     "医療機器・ヘルスケア機器"),
+    (["apparel", "clothing", "footwear", "jewelry", "garment", "textile product",
+      "kimono", "socks", "underwear", "shoes", "fashion product", "accent fashion",
+      "bags and wallets", "gemstone"], "繊維・アパレル・服飾"),
     # 化学
     (["paint", "coating", "cosmetic", "toiletr", "detergent", "adhesive",
       "printing ink", "fragrance", "soap", " dye"], "日用化学品・化粧品"),
