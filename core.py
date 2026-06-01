@@ -186,7 +186,9 @@ def fetch_jpx_universe(markets=None, exclude_etf=True) -> pd.DataFrame:
         "業種大分類": col(sec17_col),
         "規模": col(size_col),
     })
-    out = out[out["コード"].str.fullmatch(r"\d{4}")]
+    # 2024年以降の英数字コード(例: 285A キオクシア)も含める。
+    # TSEコードは4文字で先頭が数字、以降は数字または英大文字。
+    out = out[out["コード"].str.fullmatch(r"[0-9][0-9A-Z]{3}")]
     return out.reset_index(drop=True)
 
 

@@ -63,8 +63,9 @@ def main():
         .str.strip()
         .str.replace(r"\.0$", "", regex=True)
     )
-    # 4桁数字の証券コードのみ採用
-    codes = [c for c in codes if c.isdigit() and len(c) == 4]
+    # 4文字コード(先頭数字＋数字/英大文字)。2024年以降の英数字コードも採用。
+    import re as _re
+    codes = [c for c in codes if _re.fullmatch(r"[0-9][0-9A-Z]{3}", c)]
 
     with open(args.out, "w", encoding="utf-8") as f:
         f.write("# JPX上場銘柄一覧から生成\n")
