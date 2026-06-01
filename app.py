@@ -141,7 +141,7 @@ def with_desc_row(disp_view: pd.DataFrame):
 
 # 表(HTML描画)用のヘッダー表記とリンク文言
 HEADER_LABELS = {
-    "来期見通し(短信抜粋)": "来期見通し", "短信PDF": "短信PDF(公式)", "新業種": "業種",
+    "来期見通し(短信抜粋)": "来期見通し", "短信PDF": "短信PDF(公式)", "新業種": "業種(67)",
     "PER": "PER(倍)", "PBR": "PBR(倍)", "前日終値": "前日終値(円)", "配当": "配当(円)",
     "予想PER": "予想PER(倍)", "forwardEPS": "予想EPS(円)", "目標株価": "目標株価(円)",
     "財務(株探)": "財務(株探)", "優待": "優待(みんかぶ)",
@@ -236,7 +236,7 @@ LEGEND = {
     "銘柄名": "**銘柄名** … 会社名",
     "市場": "**市場** … 上場区分。プライム=大型・安定 / スタンダード=中堅 / グロース=新興。小型ほど割安が放置されやすい",
     "業種": "**業種** … 東証33業種の分類",
-    "新業種": "**業種(新67)** … 独自の細分類(67業種)。確からしさは「業種根拠」で確認",
+    "新業種": "**業種(67)** … 独自の細分類(67業種)。確からしさは「業種根拠」で確認",
     "業種根拠": "**業種根拠** … 新67業種の分類の信頼度",
     "規模": "**規模** … TOPIX規模区分(会社の大きさの目安)",
     "ネットキャッシュ比率": "**ネットキャッシュ比率** … 割安度の中心指標。1.0以上で「実質タダ」級に割安",
@@ -345,7 +345,7 @@ COLUMN_CONFIG = {
     "ネットキャッシュ比率": st.column_config.NumberColumn(
         format="%.2f", help="1.0以上＝理屈上は現金等で時価総額をまかなえる割安の目安。"),
     "新業種": st.column_config.TextColumn(
-        "業種(新67)",
+        "業種(67)",
         help="ユーザー定義の新67業種。事業説明文(英語)を最優先に、GICS業種・社名で自動分類。"
         "「業種根拠」列で信頼度が分かります。",
     ),
@@ -826,7 +826,7 @@ with tab_corr:
         peers = peers_adj if mode == "市場調整後" else peers_raw
         sub = peers[peers["コード"] == sel].head(15).copy()
 
-        # メタ情報(連動分析では 60業種・PER・配当利回り・時価総額 のみ。ネットキャッシュ比率/PBRは出さない)
+        # メタ情報(連動分析では 67業種・PER・配当利回り・時価総額 のみ。ネットキャッシュ比率/PBRは出さない)
         META = [c for c in ["新業種", "PER", "配当利回り(%)", "時価総額(億円)"]
                 if c in base.columns]
         bmeta = base.set_index("コード")
@@ -848,7 +848,7 @@ with tab_corr:
             mcols[0].metric("時価総額", _fmt(si.get("時価総額(億円)"), "{:,.0f}億"))
             mcols[1].metric("PER", _fmt(si.get("PER"), "{:.1f}"))
             mcols[2].metric("配当利回り", _fmt(si.get("配当利回り(%)"), "{:.2f}%"))
-            mcols[3].metric("業種(60)", str(si.get("新業種", "—")))
+            mcols[3].metric("業種(67)", str(si.get("新業種", "—")))
 
         with st.expander("📈 リアルタイム株価チャート（TradingView）", expanded=False):
             tradingview_chart(sel)
@@ -870,8 +870,8 @@ with tab_corr:
             for c in META:
                 sel_row[c] = bmeta.loc[sel, c]
         comp = pd.concat([pd.DataFrame([sel_row]), sub], ignore_index=True)
-        comp = comp.rename(columns={"新業種": "業種(60)"})
-        order = [c for c in ["銘柄名", "相関", "先行/遅行", "業種(60)",
+        comp = comp.rename(columns={"新業種": "業種(67)"})
+        order = [c for c in ["銘柄名", "相関", "先行/遅行", "業種(67)",
                              "PER", "配当利回り(%)", "時価総額(億円)"]
                  if c in comp.columns]
 
@@ -917,6 +917,6 @@ with tab_help:
         f"- 出典: **Yahoo Finance（無料）**　／　データ取得日（目安）: **{data_updated_str()}**\n"
         "- 株価は前営業日終値ベース、財務は直近の決算（数か月前のことがあります）。\n"
         "- PERは黒字企業のみ算出（赤字は空欄）。\n"
-        "- 金額は百万円表示（決算短信の一般的な単位）。業種(新67)は事業説明文ベースで分類。"
+        "- 金額は百万円表示（決算短信の一般的な単位）。業種(67)は事業説明文ベースで分類。"
     )
     st.caption("※ データ取得日はファイル更新日が目安です（配備環境によりズレる場合があります）。")
