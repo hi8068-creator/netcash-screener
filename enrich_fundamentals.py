@@ -33,13 +33,18 @@ def fetch_one(code: str) -> dict:
         info = {}
     if out["前日終値"] is None:
         out["前日終値"] = info.get("previousClose")
+    # 配当は「企業予測の年間配当(1株)」を優先(dividendRate)。無ければ実績(trailing)。
     out["配当"] = info.get("dividendRate") or info.get("trailingAnnualDividendRate")
-    dy = info.get("dividendYield")
-    if dy is None:
-        dy = info.get("trailingAnnualDividendYield")
-    # yfinanceは利回りを比率(0.025)で返す版と%(2.5)で返す版があるため正規化
-    if dy is not None:
-        out["配当利回り(%)"] = round(dy * 100, 2) if dy < 1 else round(dy, 2)
+    # 配当利回りは yfinance の dividendYield を使わず、終値ベースで自前計算する。
+    #   (dividendYield は銘柄により 0.69 が「0.69%」だったり比率だったりブレ、低利回り銘柄で誤りが出るため)
+    #   配当利回り(%) = 予想年間配当 ÷ 前日終値 × 100
+    px = out.get("前日終値")
+    haito = out["配当"]
+    if haito is not None and px not in (None, 0):
+        try:
+            out["配当利回り(%)"] = round(float(haito) / float(px) * 100, 2)
+        except Exception:
+            pass
     out["forwardEPS"] = info.get("forwardEps")
     out["予想PER"] = info.get("forwardPE")
     out["目標株価"] = info.get("targetMeanPrice")
