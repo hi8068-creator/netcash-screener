@@ -386,25 +386,57 @@ if _CORR_OK:
     peers = peers_adj if mode == "市場調整後" else peers_raw
     sub = peers[peers["コード"] == sel].head(15).copy()
 
-    # ピアの業種・ネットキャッシュ比率・PERを付与
-    meta_cols = [c for c in ["業種", "ネットキャッシュ比率", "PER", "配当利回り(%)"] if c in base.columns]
-    meta = base.set_index("コード")[meta_cols] if meta_cols else None
-    if meta is not None:
-        sub = sub.merge(meta, left_on="連動銘柄", right_index=True, how="left")
+    # メタ情報(60業種・ネットキャッシュ比率・PER・配当利回り・PBR・時価総額)
+    META = [c for c in ["新業種", "ネットキャッシュ比率", "PER", "配当利回り(%)", "PBR", "時価総額(億円)"]
+            if c in base.columns]
+    bmeta = base.set_index("コード")
 
-    # リードラグ
-    sub["先行/遅行"] = sub["連動銘柄"].map(
+    # 選択銘柄の情報を上部に表示
+    if sel in bmeta.index:
+        si = bmeta.loc[sel]
+        st.markdown(f"### {code_name.get(sel, sel)}")
+        cols = st.columns(5)
+        def _fmt(v, f):
+            try:
+                return f.format(float(v))
+            except Exception:
+                return "—"
+        cols[0].metric("時価総額", _fmt(si.get("時価総額(億円)"), "{:.0f}億"))
+        cols[1].metric("ネットキャッシュ比率", _fmt(si.get("ネットキャッシュ比率"), "{:.2f}"))
+        cols[2].metric("PER", _fmt(si.get("PER"), "{:.1f}"))
+        cols[3].metric("配当利回り", _fmt(si.get("配当利回り(%)"), "{:.2f}%"))
+        cols[4].metric("業種(60)", str(si.get("新業種", "—")))
+
+    # 比較表: 1行目に選択銘柄、続けて連動上位
+    sub = sub.rename(columns={"連動銘柄": "コード2", "連動銘柄名": "銘柄名"})
+    sub["先行/遅行"] = sub["コード2"].map(
         lambda p: (lambda d: "—" if d is None else
                    ("選択銘柄が先行" if d > 0.02 else ("相手が先行" if d < -0.02 else "ほぼ同時")))(
             lead_lag(ret, sel, p)))
+    sub = sub.merge(bmeta[META], left_on="コード2", right_index=True, how="left")
+    sub = sub.rename(columns={"コード2": "コード"}).drop(columns=["コード"], errors="ignore")
 
-    st.markdown(f"**{code_name.get(sel, sel)}** と連動する銘柄（{mode}・上位15）")
+    sel_row = {"銘柄名": f"★{bmeta.loc[sel, '銘柄名'] if sel in bmeta.index else sel}",
+               "相関": None, "先行/遅行": "(選択銘柄)"}
+    if sel in bmeta.index:
+        for c in META:
+            sel_row[c] = bmeta.loc[sel, c]
+    comp = pd.concat([pd.DataFrame([sel_row]), sub], ignore_index=True)
+    comp = comp.rename(columns={"新業種": "業種(60)"})
+    order = [c for c in ["銘柄名", "相関", "先行/遅行", "業種(60)",
+                         "ネットキャッシュ比率", "PER", "配当利回り(%)", "PBR", "時価総額(億円)"]
+             if c in comp.columns]
+
+    st.markdown(f"**連動する銘柄（{mode}・上位15）** ＋ 先頭は選択銘柄（並べて比較）")
     st.dataframe(
-        sub.drop(columns=["コード"]), width="stretch", hide_index=True,
+        comp[order], width="stretch", hide_index=True,
         column_config={
             "相関": st.column_config.NumberColumn(format="%.3f"),
             "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
             "PER": st.column_config.NumberColumn(format="%.1f"),
+            "PBR": st.column_config.NumberColumn(format="%.2f"),
+            "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
+            "時価総額(億円)": st.column_config.NumberColumn(format="%.0f"),
         },
     )
 
