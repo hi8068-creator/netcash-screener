@@ -700,8 +700,8 @@ def lead_lag(ret, a, b):
 
 
 # ============================ タブ構成 ============================
-tab_screen, tab_corr, tab_help = st.tabs(
-    ["🔍 スクリーニング", "🔗 連動分析", "❓ 使い方・用語"]
+tab_screen, tab_corr, tab_watch, tab_help = st.tabs(
+    ["🔍 スクリーニング", "🔗 連動分析", "⭐ ウォッチリスト", "❓ 使い方・用語"]
 )
 
 # ---- タブ1: スクリーニング ----
@@ -892,7 +892,123 @@ with tab_corr:
             st.dataframe(cross, width="stretch", hide_index=True,
                          column_config={"相関": st.column_config.NumberColumn(format="%.3f")})
 
-# ---- タブ3: 使い方・用語 ----
+# ---- タブ3: ウォッチリスト(備忘) ----
+with tab_watch:
+    st.subheader("⭐ ウォッチリスト（備忘）")
+    st.caption(
+        "気になる銘柄をメモ付きで記録できます。最新の指標は results データから自動表示。"
+        "※共有サーバー上ではブラウザを閉じると消えるため、「💾 保存(CSV)」で書き出し、"
+        "次回「読み込み」で復元してください（自分専用の備忘ファイルになります）。"
+    )
+
+    if "watch" not in st.session_state:
+        st.session_state.watch = {}  # コード(7203.T) -> メモ
+
+    wbase = st.session_state.df
+    if "コード" not in wbase.columns:
+        st.info("銘柄データが読み込まれていません。")
+    else:
+        wname = dict(zip(wbase["コード"].astype(str), wbase.get("銘柄名", "")))
+        wopts = list(wbase["コード"].astype(str))
+
+        def _wlabel(c):
+            return f"{c}　{wname.get(c, '')}"
+
+        # 追加 + 読み込み
+        c1, c2, c3 = st.columns([3, 4, 1.2])
+        add_code = c1.selectbox("銘柄を追加", wopts, format_func=_wlabel, key="wl_add")
+        add_memo = c2.text_input("メモ(任意)", key="wl_memo",
+                                 placeholder="例: 決算後に再確認 / 配当目当て など")
+        if c3.button("➕ 追加", use_container_width=True):
+            if add_code:
+                st.session_state.watch[add_code] = add_memo or ""
+                st.rerun()
+
+        up = st.file_uploader("保存したウォッチリスト(CSV)を読み込み", type="csv", key="wl_up")
+        if up is not None:
+            try:
+                wdf_up = pd.read_csv(up, dtype=str)
+                n = 0
+                for _, r in wdf_up.iterrows():
+                    code = str(r.get("コード", "")).strip()
+                    if code:
+                        st.session_state.watch[code] = str(r.get("メモ", "") or "")
+                        n += 1
+                st.success(f"{n}件を読み込みました。")
+            except Exception as e:
+                st.error(f"読み込みに失敗しました: {e}")
+
+        watch = st.session_state.watch
+        st.divider()
+        if not watch:
+            st.info("まだ登録がありません。上の「銘柄を追加」から登録してください。")
+        else:
+            METAW = [c for c in ["新業種", "ネットキャッシュ比率", "PER", "PER乖離率",
+                                 "配当利回り(%)", "時価総額(億円)", "来期見通し(短信抜粋)",
+                                 "短信PDF直URL"] if c in wbase.columns]
+            wmeta = wbase.set_index("コード")
+            rows = []
+            for code, memo in watch.items():
+                r = wmeta.loc[code] if code in wmeta.index else None
+                row = {"削除": False, "コード": code, "銘柄名": wname.get(code, ""),
+                       "メモ": memo}
+                for m in METAW:
+                    row[m] = (r.get(m) if r is not None else None)
+                rows.append(row)
+            wview = pd.DataFrame(rows)
+            wview = wview.rename(columns={"新業種": "業種(67)",
+                                          "来期見通し(短信抜粋)": "来期見通し"})
+            # 短信PDFリンク列(直URLが無ければ適時開示一覧)
+            if "短信PDF直URL" in wview.columns:
+                disc = YAHOO_DISCLOSURE_BASE + wview["コード"].astype(str) + "/disclosure"
+                direct = wview["短信PDF直URL"].fillna("").astype(str)
+                wview["短信PDF"] = [d if d.strip() else s for d, s in zip(direct, disc)]
+                wview = wview.drop(columns=["短信PDF直URL"])
+            order = [c for c in ["削除", "コード", "銘柄名", "業種(67)", "メモ",
+                                 "ネットキャッシュ比率", "PER", "PER乖離率", "配当利回り(%)",
+                                 "時価総額(億円)", "来期見通し", "短信PDF"] if c in wview.columns]
+
+            edited = st.data_editor(
+                wview[order], hide_index=True, use_container_width=True,
+                column_config={
+                    "削除": st.column_config.CheckboxColumn("削除", help="チェックで削除"),
+                    "コード": st.column_config.TextColumn("コード", disabled=True),
+                    "銘柄名": st.column_config.TextColumn("銘柄名", disabled=True),
+                    "業種(67)": st.column_config.TextColumn("業種(67)", disabled=True),
+                    "メモ": st.column_config.TextColumn("メモ", width="large"),
+                    "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f", disabled=True),
+                    "PER": st.column_config.NumberColumn(format="%.1f", disabled=True),
+                    "PER乖離率": st.column_config.NumberColumn(format="percent", disabled=True),
+                    "配当利回り(%)": st.column_config.NumberColumn(format="%.2f", disabled=True),
+                    "時価総額(億円)": st.column_config.NumberColumn(format="localized", disabled=True),
+                    "来期見通し": st.column_config.TextColumn("来期見通し", width="large", disabled=True),
+                    "短信PDF": st.column_config.LinkColumn("短信PDF", display_text="開く", disabled=True),
+                },
+                key="wl_editor",
+            )
+
+            # 編集(メモ)を保持しつつ、削除チェックの行を除外
+            new_watch = {}
+            deleted = False
+            for _, r in edited.iterrows():
+                if r.get("削除"):
+                    deleted = True
+                    continue
+                new_watch[str(r["コード"])] = str(r.get("メモ", "") or "")
+            st.session_state.watch = new_watch
+            if deleted:
+                st.rerun()
+
+            save_df = pd.DataFrame(
+                [{"コード": c, "メモ": m} for c, m in st.session_state.watch.items()])
+            st.download_button(
+                "💾 保存(CSV)", save_df.to_csv(index=False).encode("utf-8-sig"),
+                file_name="watchlist.csv", mime="text/csv")
+            st.caption(f"登録数: {len(st.session_state.watch)}件。"
+                       "メモ欄はその場で編集できます（編集後は念のため保存を）。")
+
+
+# ---- タブ4: 使い方・用語 ----
 with tab_help:
     st.subheader("使い方（3ステップ）")
     st.markdown(
