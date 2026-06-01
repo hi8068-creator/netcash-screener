@@ -7,13 +7,30 @@ CLI(screen.py)と Web アプリ(app.py)の両方から使う。
 比率 >= 1.0 で「会社がただで買えるほど割安」(清原達郎氏の基準)。
 """
 
+import csv
 import io
+import os
 from dataclasses import dataclass, asdict
 from typing import Optional, Callable
 
 import pandas as pd
 import requests
 import yfinance as yf
+
+# 手動の時価総額上書き(Yahooの発行株数破損などで時価総額が壊れる銘柄の救済)。
+# marketcap_overrides.csv: コード,時価総額円,メモ
+_MC_OVERRIDES = {}
+_mc_path = os.path.join(os.path.dirname(__file__), "marketcap_overrides.csv")
+if os.path.exists(_mc_path):
+    try:
+        with open(_mc_path, encoding="utf-8-sig") as _f:
+            for _row in csv.DictReader(_f):
+                _code = str(_row.get("コード", "")).strip().zfill(4)
+                _val = str(_row.get("時価総額円", "")).strip()
+                if _code and _val:
+                    _MC_OVERRIDES[_code] = float(_val)
+    except Exception:
+        pass
 
 JPX_XLS_URL = (
     "https://www.jpx.co.jp/markets/statistics-equities/misc/"
@@ -111,14 +128,20 @@ def evaluate(code: str) -> Optional[Result]:
     if current_assets is None or total_liabilities is None:
         return None
     inv = _bs_value(bs, col, INVESTMENT_SECURITY_KEYS) or 0.0
-    market_cap, name = _market_cap_and_name(t)
-    if not market_cap:
-        return None
-    # 時価総額データの健全性チェック。
-    # Yahooがまれに発行済株式数を壊れた値(例: 3株)で返し、時価総額が極端に小さくなる。
-    # 実在の上場企業で時価総額が流動資産の1%未満はあり得ないため、壊れデータとして除外する。
-    if market_cap < 1e7 or (current_assets > 0 and market_cap < current_assets * 0.01):
-        return None
+    code4 = ticker.replace(".T", "")
+    override_mc = _MC_OVERRIDES.get(code4)
+    if override_mc:
+        market_cap, name = override_mc, ""
+    else:
+        market_cap, name = _market_cap_and_name(t)
+        if not market_cap:
+            return None
+        # 時価総額データの健全性チェック。
+        # Yahooがまれに発行済株式数を壊れた値(例: 3株)で返し、時価総額が極端に小さくなる。
+        # 実在の上場企業で時価総額が流動資産の1%未満はあり得ないため、壊れデータとして除外する
+        # (marketcap_overrides.csv で正しい値を与えれば救済できる)。
+        if market_cap < 1e7 or (current_assets > 0 and market_cap < current_assets * 0.01):
+            return None
     net_cash = current_assets + inv * 0.7 - total_liabilities
     return Result(
         code=ticker,
