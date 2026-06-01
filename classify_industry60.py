@@ -60,31 +60,33 @@ def apply(args):
     d = pd.read_csv(args.results, dtype={"コード": str})
     d["_code4"] = d["コード"].astype(str).str.replace(".T", "", regex=False)
 
-    assigned = pd.read_csv("industry60_assigned.csv", dtype={"コード": str})
-    amap = {str(r["コード"]).zfill(4): r["新業種"] for _, r in assigned.iterrows()
-            if str(r.get("新業種", "")).strip() and str(r["新業種"]) != "nan"}
+    LABEL = {"det": "確定", "summary": "説明文", "gics": "GICS",
+             "keyword": "社名", "default": "既定(要確認)"}
+    amap, smap = {}, {}  # コード -> 新業種, 業種根拠
 
-    # AI判定結果で上書き/補完
-    if os.path.exists("industry60_decisions.csv"):
-        dec = pd.read_csv("industry60_decisions.csv", dtype={"コード": str})
-        for _, r in dec.iterrows():
-            v = str(r.get("新業種", "")).strip()
-            if v and v != "nan":
-                amap[str(r["コード"]).zfill(4)] = v
-        print(f"AI判定 {len(dec)}件を取り込み")
-
-    # 手動上書き(最優先)。誤分類の個別修正用。
-    if os.path.exists("industry60_overrides.csv"):
-        ov = pd.read_csv("industry60_overrides.csv", dtype={"コード": str})
+    def _load(path, src_label, col_src=False):
+        if not os.path.exists(path):
+            return 0
+        df = pd.read_csv(path, dtype={"コード": str})
         n = 0
-        for _, r in ov.iterrows():
+        for _, r in df.iterrows():
             v = str(r.get("新業種", "")).strip()
             if v and v != "nan":
-                amap[str(r["コード"]).zfill(4)] = v
+                c = str(r["コード"]).zfill(4)
+                amap[c] = v
+                smap[c] = LABEL.get(str(r.get("source", "")), "") if col_src else src_label
                 n += 1
-        print(f"手動上書き {n}件を適用")
+        return n
+
+    _load("industry60_assigned.csv", "確定")
+    n_dec = _load("industry60_decisions.csv", None, col_src=True)
+    print(f"AI判定 {n_dec}件を取り込み")
+    n_man = _load("industry60_manual.csv", "精査")      # 説明文精査(532社)
+    n_ov = _load("industry60_overrides.csv", "手動")    # 個別上書き(最優先)
+    print(f"精査 {n_man}件 / 手動上書き {n_ov}件を適用")
 
     d["新業種"] = d["_code4"].map(amap)
+    d["業種根拠"] = d["_code4"].map(smap)
     d = d.drop(columns=["_code4"])
     d.to_csv(args.results, index=False, encoding="utf-8-sig")
     got = d["新業種"].notna().sum()
