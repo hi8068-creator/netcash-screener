@@ -67,6 +67,63 @@ def tradingview_grid(codes, labels=None, ncols=2, height=380, interval="D") -> N
                 st.markdown(f"**{labels.get(c, c)}**")
                 tradingview_chart(c, height=height, interval=interval)
 
+
+@st.cache_data(show_spinner=False)
+def load_prices():
+    """同梱の日次終値(prices.parquet)を読み込む。無ければ None。"""
+    p = os.path.join(os.path.dirname(__file__), "prices.parquet")
+    if not os.path.exists(p):
+        return None
+    df = pd.read_parquet(p)
+    try:
+        df.index = pd.to_datetime(df.index)
+    except Exception:
+        pass
+    return df.sort_index()
+
+
+def price_chart(codes, names=None, normalize=True, height=440) -> None:
+    """選択銘柄の日次終値を1枚のチャートに重ねて表示する。
+
+    normalize=True で各銘柄を期間先頭=100に基準化(値動きの比較・連動の確認向け)。
+    自前データなので全銘柄で確実に描画でき、日付軸も明示される。
+    """
+    px = load_prices()
+    names = names or {}
+    if px is None:
+        st.info("価格データ(prices.parquet)が見つかりません。")
+        return
+    cols = [c for c in codes if c in px.columns]
+    if not cols:
+        st.info("選択した銘柄の価格データがありません(新規上場などで未取得の場合があります)。")
+        return
+    sub = px[cols].dropna(how="all").copy()
+    if normalize:
+        for c in cols:
+            s = sub[c].dropna()
+            base = s.iloc[0] if len(s) else None
+            if base:
+                sub[c] = sub[c] / base * 100
+    sub = sub.rename(columns={c: names.get(c, c) for c in cols})
+    st.line_chart(sub, height=height)
+    if len(sub.index):
+        lo, hi = sub.index.min(), sub.index.max()
+        unit = "（100基準＝期間先頭を100に揃えた比較）" if normalize else "（実株価・円）"
+        st.caption(f"📅 期間: {lo:%Y-%m-%d} 〜 {hi:%Y-%m-%d}　日次終値{unit}")
+
+
+def tv_links(codes, names=None) -> None:
+    """TradingViewの個別ページ(リアルタイム/高機能)への外部リンクを並べる。"""
+    names = names or {}
+    parts = []
+    for c in codes:
+        c4 = str(c).replace(".T", "")
+        parts.append(f'<a href="https://jp.tradingview.com/symbols/TSE-{c4}/" '
+                     f'target="_blank" rel="noopener">{names.get(c, c)} ↗</a>')
+    if parts:
+        st.markdown("リアルタイム/高機能チャートはこちら: " + " ・ ".join(parts),
+                    unsafe_allow_html=True)
+
 st.set_page_config(page_title="ネットキャッシュ比率スクリーニング", layout="wide")
 
 RESULTS_CSV = os.path.join(os.path.dirname(__file__), "results.csv")
@@ -820,27 +877,24 @@ with tab_screen:
     else:
         st.info("条件に合う銘柄がありません。フィルタを緩めてください。")
 
-    with st.expander("📈 リアルタイム株価チャート（TradingView・複数並べて比較可）", expanded=False):
+    with st.expander("📈 株価チャート（複数を重ねて比較）", expanded=False):
         if len(df):
             chart_codes = df["コード"].astype(str).tolist()
             chart_names = {str(r["コード"]): f"{r.get('銘柄名', '')}（{r['コード']}）"
                            for _, r in df.iterrows()}
+            short_names = {str(r["コード"]): str(r.get("銘柄名", r["コード"]))
+                           for _, r in df.iterrows()}
             picks = st.multiselect(
-                "銘柄を選ぶ（複数可・並べて表示）", chart_codes,
+                "銘柄を選ぶ（複数可・1枚に重ねて表示）", chart_codes,
                 default=chart_codes[:2],
                 format_func=lambda c: chart_names.get(c, c), key="screen_chart")
-            cc1, cc2 = st.columns(2)
-            iv_label = cc1.radio("足", ["日足", "週足", "月足", "60分"], horizontal=True,
-                                 key="screen_iv")
-            ncol = cc2.radio("列数", [1, 2, 3], index=1, horizontal=True, key="screen_ncol")
-            iv = {"日足": "D", "週足": "W", "月足": "M", "60分": "60"}[iv_label]
+            norm = st.radio("表示", ["比較(100基準)", "実株価"], horizontal=True,
+                            key="screen_norm") == "比較(100基準)"
             if picks:
-                h = 520 if len(picks) == 1 else (420 if ncol == 1 else 380)
-                tradingview_grid(picks, labels=chart_names, ncols=ncol, height=h, interval=iv)
+                price_chart(picks, names=short_names, normalize=norm)
+                tv_links(picks, names=short_names)
             else:
                 st.info("上で銘柄を選ぶとチャートが表示されます。")
-            st.caption("TradingViewの埋め込み。取引所により表示が遅延する場合があり、"
-                       "一部の小型株は未対応のことがあります。")
         else:
             st.info("該当銘柄がありません。")
 
@@ -977,24 +1031,17 @@ with tab_corr:
             mcols[2].metric("配当利回り", _fmt(si.get("配当利回り(%)"), "{:.2f}%"))
             mcols[3].metric("業種(67)", str(si.get("新業種", "—")))
 
-        with st.expander("📈 リアルタイム株価チャート（選択銘柄＋連動銘柄を並べて比較）",
-                         expanded=False):
+        with st.expander("📈 株価チャート（選択銘柄＋連動銘柄を重ねて比較）", expanded=True):
             peer_codes = sub["連動銘柄"].astype(str).tolist()
             chart_opts = [sel] + [c for c in peer_codes if c != sel]
-            default_pick = chart_opts[:4]
+            scode = {c: code_name.get(c, c).split("（")[0] for c in chart_opts}
             cpicks = st.multiselect(
-                "並べる銘柄（既定=選択銘柄＋連動上位）", chart_opts, default=default_pick,
+                "重ねる銘柄（既定=選択銘柄＋連動上位）", chart_opts, default=chart_opts[:4],
                 format_func=lambda c: code_name.get(c, c), key="corr_chart")
-            cc1, cc2 = st.columns(2)
-            iv_label = cc1.radio("足", ["日足", "週足", "月足", "60分"], horizontal=True,
-                                 key="corr_iv")
-            ncol = cc2.radio("列数", [1, 2, 3], index=1, horizontal=True, key="corr_ncol")
-            iv = {"日足": "D", "週足": "W", "月足": "M", "60分": "60"}[iv_label]
             if cpicks:
-                h = 520 if len(cpicks) == 1 else 380
-                tradingview_grid(cpicks, labels=code_name, ncols=ncol, height=h, interval=iv)
-            st.caption("同じ足で並べると“連動して動いているか”を目で確認できます。"
-                       "取引所により表示遅延・小型株は未対応のことがあります。")
+                price_chart(cpicks, names=scode, normalize=True)
+                st.caption("100基準で重ねると、連動して動いているかが一目で分かります。")
+                tv_links(cpicks, names=scode)
 
         # 比較表: 1行目に選択銘柄、続けて連動上位
         sub = sub.rename(columns={"連動銘柄": "コード2", "連動銘柄名": "銘柄名"})
