@@ -66,20 +66,20 @@ MINKABU_YUTAI_BASE = "https://minkabu.jp/stock/"
 # 並びは「指標を前に」: 識別 → 割安指標 → 株価・配当 → アナリスト予想 → 文脈(市場・業種・分類)
 #   → 財務内訳 → 決算期・見通し・リンク。主役のネットキャッシュ比率を銘柄名の直後に置く。
 DISPLAY_ORDER = [
-    "コード", "銘柄名",
+    "コード", "銘柄名", "新業種",
     "ネットキャッシュ比率", "ネットキャッシュ(億円)", "時価総額(億円)",
     "PER", "業種PER中央値", "PER乖離率", "PBR", "自己資本比率(%)",
     "配当利回り(%)", "配当", "配当性向(%)", "増収増益(年)", "前日終値",
     "予想PER", "forwardEPS", "目標株価",
-    "市場", "業種", "新業種", "業種根拠", "規模",
+    "市場", "業種根拠", "規模",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)", "売上トレンド",
     "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF", "優待",
 ]
 
 # 初心者向け「主要列のみ」表示の列(存在する列のみ採用)。同じく指標を前に。
 BEGINNER_COLUMNS = [
-    "コード", "銘柄名", "ネットキャッシュ比率", "時価総額(億円)", "PER", "自己資本比率(%)",
-    "配当利回り(%)", "配当性向(%)", "増収増益(年)", "市場", "業種", "来期見通し(短信抜粋)", "短信PDF",
+    "コード", "銘柄名", "新業種", "ネットキャッシュ比率", "時価総額(億円)", "PER", "自己資本比率(%)",
+    "配当利回り(%)", "配当性向(%)", "増収増益(年)", "市場", "来期見通し(短信抜粋)", "短信PDF",
 ]
 
 # 表示しない内部列(算出の元データ)
@@ -141,7 +141,7 @@ def with_desc_row(disp_view: pd.DataFrame):
 
 # 表(HTML描画)用のヘッダー表記とリンク文言
 HEADER_LABELS = {
-    "来期見通し(短信抜粋)": "来期見通し", "短信PDF": "短信PDF(公式)", "新業種": "業種(新67)",
+    "来期見通し(短信抜粋)": "来期見通し", "短信PDF": "短信PDF(公式)", "新業種": "業種",
     "PER": "PER(倍)", "PBR": "PBR(倍)", "前日終値": "前日終値(円)", "配当": "配当(円)",
     "予想PER": "予想PER(倍)", "forwardEPS": "予想EPS(円)", "目標株価": "目標株価(円)",
     "財務(株探)": "財務(株探)", "優待": "優待(みんかぶ)",
@@ -165,7 +165,8 @@ def build_html_table(disp_view: pd.DataFrame, show_desc: bool = False, height: i
     cols = list(disp_view.columns)
 
     def cell_stick(i):
-        return "stick0" if i == 0 else ("stick1" if i == 1 else "")
+        return ("stick0" if i == 0 else "stick1" if i == 1
+                else "stick2" if i == 2 else "")
 
     ths = "".join(
         f'<th class="{cell_stick(i)}">{htmllib.escape(HEADER_LABELS.get(c, c))}</th>'
@@ -214,14 +215,16 @@ table.nc thead th{position:sticky;top:0;background:#eef1f6;font-weight:600;z-ind
 table.nc tr.descrow td{position:sticky;top:33px;background:#f4f7ff;color:#555;font-size:12px;white-space:normal;min-width:120px;line-height:1.4;z-index:3;}
 table.nc .stick0{position:sticky;left:0;z-index:2;}
 table.nc .stick1{position:sticky;left:64px;z-index:2;}
-table.nc th.stick0,table.nc th.stick1{z-index:6;background:#eef1f6;}
-table.nc tr.descrow td.stick0,table.nc tr.descrow td.stick1{z-index:4;background:#f4f7ff;}
-table.nc td.stick0,table.nc td.stick1{background:#fff;}
+table.nc .stick2{position:sticky;left:214px;z-index:2;}
+table.nc th.stick0,table.nc th.stick1,table.nc th.stick2{z-index:6;background:#eef1f6;}
+table.nc tr.descrow td.stick0,table.nc tr.descrow td.stick1,table.nc tr.descrow td.stick2{z-index:4;background:#f4f7ff;}
+table.nc td.stick0,table.nc td.stick1,table.nc td.stick2{background:#fff;}
 table.nc th.stick0,table.nc td.stick0,table.nc tr.descrow td.stick0{min-width:64px;max-width:64px;}
-table.nc th.stick1,table.nc td.stick1,table.nc tr.descrow td.stick1{min-width:150px;max-width:170px;white-space:normal;}
+table.nc th.stick1,table.nc td.stick1,table.nc tr.descrow td.stick1{min-width:150px;max-width:150px;white-space:normal;}
+table.nc th.stick2,table.nc td.stick2,table.nc tr.descrow td.stick2{min-width:140px;max-width:140px;white-space:normal;border-right:2px solid #d7dbe3;}
 table.nc a{color:#1a73e8;text-decoration:none;}
 table.nc tbody tr:hover td{background:#fbfcff;}
-table.nc tbody tr:hover td.stick0,table.nc tbody tr:hover td.stick1{background:#fbfcff;}
+table.nc tbody tr:hover td.stick0,table.nc tbody tr:hover td.stick1,table.nc tbody tr:hover td.stick2{background:#fbfcff;}
 </style>
 """.replace("__H__", str(max(200, height - 12)))
     components.html(css + f'<div class="twrap"><table class="nc">{thead}{tbody}</table></div>',
@@ -509,17 +512,11 @@ with st.sidebar:
     sort_asc = False
 
     with st.expander("詳細フィルタ", expanded=False):
-        sectors_all = sorted(
-            s for s in st.session_state.df.get("業種", pd.Series(dtype=str)).dropna().unique()
-            if str(s).strip() and str(s) != "nan"
-        ) if "業種" in st.session_state.df.columns else []
-        sel_sectors = st.multiselect("業種(33業種)", sectors_all, default=[])
-
         sectors60_all = sorted(
             s for s in st.session_state.df.get("新業種", pd.Series(dtype=str)).dropna().unique()
             if str(s).strip() and str(s) != "nan"
         ) if "新業種" in st.session_state.df.columns else []
-        sel_sectors60 = st.multiselect("業種(新67業種)", sectors60_all, default=[])
+        sel_sectors60 = st.multiselect("業種(67分類)", sectors60_all, default=[])
 
         if "PER乖離率" in st.session_state.df.columns:
             cheap_only = st.checkbox(
