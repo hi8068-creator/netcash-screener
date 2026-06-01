@@ -24,6 +24,8 @@ RESULTS_CSV = os.path.join(os.path.dirname(__file__), "results.csv")
 KABUTAN_BASE = "https://kabutan.jp/stock/finance?code="
 # 公式の決算短信PDFへの経路(Yahoo!ファイナンス適時開示。TDnet掲載の公式PDFにリンク)
 YAHOO_DISCLOSURE_BASE = "https://finance.yahoo.co.jp/quote/"
+# 株主優待の確認先(みんかぶ優待ページ)。無料の一括取得は精度難のためリンク提供に留める。
+MINKABU_YUTAI_BASE = "https://minkabu.jp/stock/"
 
 # 表示時の列順(存在する列のみ採用)。金額は百万円表示にして決算短信と突き合わせやすくする。
 DISPLAY_ORDER = [
@@ -32,7 +34,7 @@ DISPLAY_ORDER = [
     "PER", "業種PER中央値", "PER乖離率", "PBR",
     "前日終値", "配当利回り(%)", "配当", "予想PER", "forwardEPS", "目標株価",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)",
-    "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF",
+    "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF", "優待",
 ]
 
 # 表示しない内部列(算出の元データ)
@@ -57,6 +59,7 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
         code = d["コード"].astype(str)
         code4 = code.str.replace(".T", "", regex=False)
         d["財務(株探)"] = KABUTAN_BASE + code4
+        d["優待"] = MINKABU_YUTAI_BASE + code4 + "/yutai"
         disclosure = YAHOO_DISCLOSURE_BASE + code + "/disclosure"
         if "短信PDF直URL" in d.columns:
             direct = d["短信PDF直URL"].fillna("").astype(str)
@@ -132,6 +135,24 @@ with st.sidebar:
     if "PER" in st.session_state.df.columns:
         max_per = st.number_input("PER上限(0=制限なし)", 0, 200, 0, 5)
 
+    max_pbr = 0.0
+    if "PBR" in st.session_state.df.columns:
+        max_pbr = st.number_input("PBR上限(0=制限なし)", 0.0, 20.0, 0.0, 0.5)
+
+    # 時価総額(億円)レンジ。小型株(清原流)に絞りやすく。
+    max_cap = 0
+    if "時価総額(億円)" in st.session_state.df.columns:
+        cap_series = pd.to_numeric(st.session_state.df["時価総額(億円)"], errors="coerce")
+        cap_hi = int(min(5000, (cap_series.max() if cap_series.notna().any() else 1000)))
+        max_cap = st.number_input("時価総額の上限(億円, 0=制限なし)", 0, cap_hi, 0, 50,
+                                  help="小型株に絞るなら例: 300")
+
+    sort_key = "ネットキャッシュ比率"
+    sort_opts = [c for c in ["ネットキャッシュ比率", "配当利回り(%)", "PER乖離率", "PER", "時価総額(億円)"]
+                 if c in st.session_state.df.columns]
+    sort_key = st.selectbox("並び替え", sort_opts, index=0)
+    sort_asc = st.checkbox("昇順", value=(sort_key in ("PER", "PER乖離率")))
+
     st.divider()
     st.header("最新データで再計算")
     st.warning(
@@ -200,7 +221,17 @@ if min_yield > 0 and "配当利回り(%)" in df.columns:
 if max_per and "PER" in df.columns:
     per_v = pd.to_numeric(df["PER"], errors="coerce")
     df = df[(per_v > 0) & (per_v <= max_per)]
-df = df.sort_values("ネットキャッシュ比率", ascending=False).reset_index(drop=True)
+if max_pbr and "PBR" in df.columns:
+    pbr_v = pd.to_numeric(df["PBR"], errors="coerce")
+    df = df[(pbr_v > 0) & (pbr_v <= max_pbr)]
+if max_cap and "時価総額(億円)" in df.columns:
+    cap_v = pd.to_numeric(df["時価総額(億円)"], errors="coerce")
+    df = df[cap_v <= max_cap]
+if sort_key in df.columns:
+    df = df.sort_values(sort_key, ascending=sort_asc,
+                        key=lambda s: pd.to_numeric(s, errors="coerce")).reset_index(drop=True)
+else:
+    df = df.sort_values("ネットキャッシュ比率", ascending=False).reset_index(drop=True)
 
 c1, c2, c3 = st.columns(3)
 c1.metric("該当銘柄数", f"{len(df)} 件")
@@ -225,6 +256,11 @@ st.dataframe(
             help="公式の決算短信PDF(TDnet掲載)。比率1.0以上の銘柄は個別PDFへ直リンク、"
             "それ以外はYahoo!ファイナンスの適時開示一覧へ。",
             display_text="開く",
+        ),
+        "優待": st.column_config.LinkColumn(
+            "優待(みんかぶ)",
+            help="株主優待の確認先(みんかぶ)。無料の一括取得は精度が低いため、内容はリンク先で確認。",
+            display_text="確認",
         ),
         "来期見通し(短信抜粋)": st.column_config.TextColumn(
             "来期見通し(要約)",
