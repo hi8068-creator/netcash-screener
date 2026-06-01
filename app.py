@@ -862,6 +862,39 @@ with tab_screen:
                 column_config={"PER中央値": st.column_config.NumberColumn(format="%.1f")},
             )
 
+            st.divider()
+            st.markdown("**業種を選ぶと、その中の銘柄が見られます（PERの低い＝割安な順）。**")
+            sec_pick = st.selectbox(
+                "業種(67分類)", ["—"] + agg["業種(67)"].tolist(), key="per_drill")
+            if sec_pick and sec_pick != "—":
+                mem = base[base["新業種"] == sec_pick].copy()
+                cols = [c for c in ["コード", "銘柄名", "PER", "PER乖離率", "ネットキャッシュ比率",
+                                    "配当利回り(%)", "時価総額(億円)", "短信PDF直URL"]
+                        if c in mem.columns]
+                memv = mem[cols].copy()
+                memv["_p"] = pd.to_numeric(memv.get("PER"), errors="coerce")
+                memv = memv.sort_values("_p", na_position="last").drop(columns=["_p"])
+                if "短信PDF直URL" in memv.columns:
+                    disc = YAHOO_DISCLOSURE_BASE + memv["コード"].astype(str) + "/disclosure"
+                    direct = memv["短信PDF直URL"].fillna("").astype(str)
+                    memv["短信PDF"] = [d if d.strip() else s for d, s in zip(direct, disc)]
+                    memv = memv.drop(columns=["短信PDF直URL"])
+                med = agg.loc[agg["業種(67)"] == sec_pick, "PER中央値"]
+                st.caption(f"{sec_pick}: {len(memv)}社"
+                           + (f"（PER中央値 {med.iloc[0]:.1f}倍）" if len(med) else "")
+                           + "／黒字はPERの低い順、赤字・PER無しは末尾。")
+                st.dataframe(
+                    memv, width="stretch", hide_index=True,
+                    column_config={
+                        "PER": st.column_config.NumberColumn(format="%.1f"),
+                        "PER乖離率": st.column_config.NumberColumn(format="percent"),
+                        "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
+                        "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
+                        "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
+                        "短信PDF": st.column_config.LinkColumn("短信PDF", display_text="開く"),
+                    },
+                )
+
 # ---- タブ2: 連動分析 ----
 with tab_corr:
     if not _CORR_OK:
