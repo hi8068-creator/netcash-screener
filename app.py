@@ -179,6 +179,7 @@ DISPLAY_ORDER = [
     "PER", "業種PER中央値", "PER乖離率", "PBR", "自己資本比率(%)",
     "配当利回り(%)", "配当", "配当性向(%)", "増収増益(年)", "前日終値",
     "予想PER", "forwardEPS", "目標株価",
+    "テクニカル", "RSI", "ストキャスK", "ストキャスD",
     "市場", "業種根拠", "規模",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)", "売上トレンド",
     "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF", "優待",
@@ -214,6 +215,9 @@ SHORT_DESC = {
     "負債(百万円)": "総負債", "決算期": "基準の決算期末",
     "来期見通し(短信抜粋)": "短信の次期見通し", "売上トレンド": "年次売上(古→新)",
     "短信PDF": "公式決算短信", "財務(株探)": "財務ページ", "優待": "株主優待",
+    "テクニカル": "RSI×ストキャスの売買サイン",
+    "RSI": "30以下=売られすぎ/70以上=買われすぎ",
+    "ストキャスK": "%K(20以下=売られすぎ)", "ストキャスD": "%D(%Kの平滑線)",
 }
 NUM_FMT = {
     "ネットキャッシュ比率": "{:.2f}", "PBR": "{:.2f}", "配当利回り(%)": "{:.2f}",
@@ -223,6 +227,7 @@ NUM_FMT = {
     "時価総額(億円)": "{:,.1f}", "ネットキャッシュ(億円)": "{:,.1f}",
     "前日終値": "{:,.0f}", "forwardEPS": "{:,.1f}", "目標株価": "{:,.0f}",
     "流動資産(百万円)": "{:,.0f}", "投資有価証券(百万円)": "{:,.0f}", "負債(百万円)": "{:,.0f}",
+    "RSI": "{:.1f}", "ストキャスK": "{:.1f}", "ストキャスD": "{:.1f}",
 }
 LINK_COLS = ["短信PDF", "財務(株探)", "優待"]
 
@@ -300,7 +305,12 @@ def build_html_table(disp_view: pd.DataFrame, show_desc: bool = False, height: i
                 tds.append(f'<td class="{stk}">{inner}</td>')
             elif c in NUM_FMT:
                 x = pd.to_numeric(pd.Series([v]), errors="coerce").iloc[0]
-                txt = "" if pd.isna(x) else NUM_FMT[c].format(x)
+                if pd.notna(x):
+                    txt = NUM_FMT[c].format(x)
+                else:
+                    # 非数値の表示語(赤字/—など)はそのまま見せる
+                    sv = "" if pd.isna(v) else str(v)
+                    txt = sv if sv not in ("", "nan", "None") else ""
                 tds.append(f'<td class="num {stk}">{txt}</td>')
             elif c == "来期見通し(短信抜粋)":
                 txt = "" if pd.isna(v) else str(v)
@@ -411,6 +421,21 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
             d = d.drop(columns=["短信PDF直URL"])
         else:
             d["短信PDF"] = disclosure
+    # PERは「数値 / 赤字 / —(データなし)」で表示(純利益で区別)。元dfは数値のまま=並べ替え可。
+    if "PER" in d.columns:
+        per_n = pd.to_numeric(d["PER"], errors="coerce")
+        ni = (pd.to_numeric(d["純利益"], errors="coerce") if "純利益" in d.columns
+              else pd.Series([float("nan")] * len(d), index=d.index))
+        disp_per = []
+        for p, n in zip(per_n, ni):
+            if pd.notna(p):
+                disp_per.append(f"{p:.1f}")
+            elif pd.notna(n) and n <= 0:
+                disp_per.append("赤字")
+            else:
+                disp_per.append("—")
+        d["PER"] = disp_per
+
     d = d.drop(columns=[c for c in HIDE_COLS if c in d.columns])
     ordered = [c for c in DISPLAY_ORDER if c in d.columns]
     rest = [c for c in d.columns if c not in ordered]
@@ -637,6 +662,8 @@ with st.sidebar:
     min_equity = 0
     max_payout = 0
     min_growth = 0
+    max_rsi = 0
+    tech_buy = False
     sort_key = "ネットキャッシュ比率"
     sort_asc = False
 
@@ -697,6 +724,18 @@ with st.sidebar:
                 help="例:3で「直近3期連続の増収増益」に絞る。データは比率1.0以上の銘柄に付与。",
             )
 
+        if "RSI" in st.session_state.df.columns:
+            st.caption("テクニカル（タイミング）")
+            max_rsi = st.number_input(
+                "RSI上限(0=制限なし。例:30で売られすぎ＝押し目候補)", 0, 100,
+                min(100, Q("rsimax", 0, int)), 5,
+                help="RSIが低い＝売られすぎ。割安(ファンダ)×売られすぎ(タイミング)の合わせ技に。",
+            )
+            tech_buy = st.checkbox(
+                "反転サインのみ(買い検討)", value=Q("techbuy", False, bool),
+                help="RSI≤30かつストキャスが下→上にクロスした「売られすぎ＋反転」銘柄に絞る。",
+            )
+
         sort_opts = [c for c in ["ネットキャッシュ比率", "配当利回り(%)", "配当性向(%)",
                                  "自己資本比率(%)", "増収増益(年)", "PER乖離率", "PER", "時価総額(億円)"]
                      if c in st.session_state.df.columns]
@@ -733,6 +772,10 @@ with st.sidebar:
         _params["paymax"] = str(max_payout)
     if min_growth:
         _params["grow"] = str(min_growth)
+    if max_rsi:
+        _params["rsimax"] = str(max_rsi)
+    if tech_buy:
+        _params["techbuy"] = "1"
     if sort_opts and sort_key != sort_opts[0]:
         _params["sort"] = sort_key
     if sort_asc:
@@ -832,6 +875,11 @@ if max_payout and "配当性向(%)" in df.columns:
 if min_growth and "増収増益(年)" in df.columns:
     g_v = pd.to_numeric(df["増収増益(年)"], errors="coerce")
     df = df[g_v.notna() & (g_v >= min_growth)]
+if max_rsi and "RSI" in df.columns:
+    rsi_v = pd.to_numeric(df["RSI"], errors="coerce")
+    df = df[rsi_v.notna() & (rsi_v <= max_rsi)]
+if tech_buy and "テクニカル" in df.columns:
+    df = df[df["テクニカル"].astype(str).str.contains("反転\\(買い", na=False)]
 if min_cap and "時価総額(億円)" in df.columns:
     cap_lo = pd.to_numeric(df["時価総額(億円)"], errors="coerce")
     df = df[cap_lo >= min_cap]

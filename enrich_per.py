@@ -63,6 +63,8 @@ def main():
     ap.add_argument("--cache", default="per_raw.csv", help="純利益・純資産の取得キャッシュ")
     ap.add_argument("--sleep", type=float, default=0.4)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--retry-empty", action="store_true",
+                    help="純利益が欠損(NaN)の銘柄だけ再取得する")
     ap.add_argument("--save-every", type=int, default=25)
     args = ap.parse_args()
 
@@ -72,13 +74,21 @@ def main():
 
     # キャッシュ(レジューム)
     cache = {}
-    if args.resume and os.path.exists(args.cache):
+    if (args.resume or args.retry_empty) and os.path.exists(args.cache):
         prev = pd.read_csv(args.cache, dtype={"コード": str})
         for _, r in prev.iterrows():
             cache[str(r["コード"]).zfill(4)] = (r.get("純利益"), r.get("純資産"))
         print(f"キャッシュ {len(cache)} 件を読み込み")
 
-    todo = [c for c in codes if c not in cache]
+    def _empty_ni(c):
+        v = cache.get(c, (None, None))[0]
+        return v is None or (isinstance(v, float) and v != v)  # None/NaN
+
+    if args.retry_empty:
+        # 純利益が欠損(NaN)の銘柄だけ再取得
+        todo = [c for c in codes if c not in cache or _empty_ni(c)]
+    else:
+        todo = [c for c in codes if c not in cache]
     print(f"財務取得対象 {len(todo)} 社(全{len(codes)})...")
 
     def flush_cache():
