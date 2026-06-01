@@ -1033,29 +1033,39 @@ with tab_screen:
                 "業種(67分類)", ["—"] + agg["業種(67)"].tolist(), key="per_drill")
             if sec_pick and sec_pick != "—":
                 mem = base[base["新業種"] == sec_pick].copy()
-                cols = [c for c in ["コード", "銘柄名", "PER", "PER乖離率", "ネットキャッシュ比率",
-                                    "配当利回り(%)", "時価総額(億円)", "短信PDF直URL"]
-                        if c in mem.columns]
-                memv = mem[cols].copy()
-                memv["_p"] = pd.to_numeric(memv.get("PER"), errors="coerce")
-                memv = memv.sort_values("_p", na_position="last").drop(columns=["_p"])
-                if "短信PDF直URL" in memv.columns:
-                    disc = YAHOO_DISCLOSURE_BASE + memv["コード"].astype(str) + "/disclosure"
-                    direct = memv["短信PDF直URL"].fillna("").astype(str)
-                    memv["短信PDF"] = [d if d.strip() else s for d, s in zip(direct, disc)]
-                    memv = memv.drop(columns=["短信PDF直URL"])
+                mem["_p"] = pd.to_numeric(mem.get("PER"), errors="coerce")
+                mem = mem.sort_values("_p", na_position="last")
+                ni = pd.to_numeric(mem.get("純利益"), errors="coerce") if "純利益" in mem.columns \
+                    else pd.Series([float("nan")] * len(mem), index=mem.index)
+
+                def _num(v, f):
+                    v = pd.to_numeric(pd.Series([v]), errors="coerce").iloc[0]
+                    return "—" if pd.isna(v) else f.format(v)
+
+                rows = []
+                for (_, r), n in zip(mem.iterrows(), ni):
+                    p = r["_p"]
+                    per_s = ("300超" if pd.notna(p) and p > 300 else
+                             f"{p:.1f}" if pd.notna(p) else
+                             ("赤字" if pd.notna(n) and n <= 0 else "—"))
+                    c4 = str(r["コード"]).replace(".T", "")
+                    direct = str(r.get("短信PDF直URL", "") or "")
+                    rows.append({
+                        "コード": r["コード"], "銘柄名": r.get("銘柄名", ""), "PER": per_s,
+                        "PER乖離率": _num(r.get("PER乖離率"), "{:.1%}"),
+                        "ネットキャッシュ比率": _num(r.get("ネットキャッシュ比率"), "{:.2f}"),
+                        "配当利回り(%)": _num(r.get("配当利回り(%)"), "{:.2f}"),
+                        "時価総額(億円)": _num(r.get("時価総額(億円)"), "{:,.0f}"),
+                        "短信PDF": direct if direct.strip() else f"{YAHOO_DISCLOSURE_BASE}{r['コード']}/disclosure",
+                    })
+                memv = pd.DataFrame(rows)
                 med = agg.loc[agg["業種(67)"] == sec_pick, "PER中央値"]
                 st.caption(f"{sec_pick}: {len(memv)}社"
                            + (f"（PER中央値 {med.iloc[0]:.1f}倍）" if len(med) else "")
-                           + "／黒字はPERの低い順、赤字・PER無しは末尾。")
+                           + "／黒字はPERの低い順、赤字・PER無しは末尾。空欄は「—」。")
                 st.dataframe(
                     memv, width="stretch", hide_index=True,
                     column_config={
-                        "PER": st.column_config.NumberColumn(format="%.1f"),
-                        "PER乖離率": st.column_config.NumberColumn(format="percent"),
-                        "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
-                        "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
-                        "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
                         "短信PDF": st.column_config.LinkColumn("短信PDF", display_text="開く"),
                     },
                 )
