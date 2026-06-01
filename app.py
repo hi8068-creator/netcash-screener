@@ -82,16 +82,49 @@ def load_prices():
     return df.sort_index()
 
 
-def price_chart(codes, names=None, normalize=True, height=440) -> None:
+@st.cache_data(show_spinner=False, ttl=1800)
+def fetch_recent_prices(codes_tuple, period="1y"):
+    """選択した数銘柄ぶんの最新日次終値をその場で取得(30分キャッシュ)。
+
+    チャート対象は数銘柄なので軽い。全銘柄の同梱データ(相関分析用)とは別系統。
+    取得失敗(レート制限等)は None を返し、呼び出し側で同梱データにフォールバック。
+    """
+    import yfinance as yf
+    tickers = [str(c) for c in codes_tuple if c]
+    if not tickers:
+        return None
+    try:
+        data = yf.download(tickers, period=period, interval="1d",
+                           auto_adjust=True, progress=False, threads=True)
+        close = data["Close"] if "Close" in data else data
+        if isinstance(close, pd.Series):
+            close = close.to_frame(name=tickers[0])
+        close.index = pd.to_datetime(close.index)
+        close = close.dropna(how="all")
+        return close if len(close) else None
+    except Exception:
+        return None
+
+
+def price_chart(codes, names=None, normalize=True, height=440, live=True) -> None:
     """選択銘柄の日次終値を1枚のチャートに重ねて表示する。
 
+    live=True なら対象銘柄の最新株価をその場取得(失敗時は同梱データ)。
     normalize=True で各銘柄を期間先頭=100に基準化(値動きの比較・連動の確認向け)。
-    自前データなので全銘柄で確実に描画でき、日付軸も明示される。
     """
-    px = load_prices()
     names = names or {}
+    px, src = None, "同梱データ"
+    if live:
+        with st.spinner("最新の株価を取得中…"):
+            px = fetch_recent_prices(tuple(sorted(str(c) for c in codes)))
+        if px is not None and any(c in px.columns for c in codes):
+            src = "最新(自動取得)"
+        else:
+            px = None
     if px is None:
-        st.info("価格データ(prices.parquet)が見つかりません。")
+        px = load_prices()
+    if px is None:
+        st.info("価格データが見つかりません。")
         return
     cols = [c for c in codes if c in px.columns]
     if not cols:
@@ -108,8 +141,9 @@ def price_chart(codes, names=None, normalize=True, height=440) -> None:
     st.line_chart(sub, height=height)
     if len(sub.index):
         lo, hi = sub.index.min(), sub.index.max()
-        unit = "（100基準＝期間先頭を100に揃えた比較）" if normalize else "（実株価・円）"
-        st.caption(f"📅 期間: {lo:%Y-%m-%d} 〜 {hi:%Y-%m-%d}　日次終値{unit}")
+        unit = "（100基準で比較）" if normalize else "（実株価・円）"
+        note = "（取引時間中は当日値が反映、〜15分程度遅延の場合あり）" if src.startswith("最新") else "（最終取得時点まで）"
+        st.caption(f"📅 {lo:%Y-%m-%d} 〜 **{hi:%Y-%m-%d}**　日次終値{unit}・出典:{src}{note}")
 
 
 def tv_links(codes, names=None) -> None:
