@@ -712,8 +712,20 @@ def merge_trend(df: pd.DataFrame) -> pd.DataFrame:
     return d.merge(tr, on="コード", how="left")
 
 
+def _data_stamp() -> str:
+    """データファイルの更新時刻。キャッシュの鍵に含め、GitHub経由の
+    データ更新(git pull)後にプロセス再起動が無くても新データを読ませる。"""
+    out = []
+    for p in (RESULTS_CSV, QUOTES_CSV, TREND_CSV):
+        try:
+            out.append(str(os.path.getmtime(p)))
+        except OSError:
+            out.append("0")
+    return "|".join(out)
+
+
 @st.cache_data(show_spinner=False)
-def load_bundled() -> pd.DataFrame:
+def load_bundled(stamp: str = "") -> pd.DataFrame:
     if os.path.exists(RESULTS_CSV):
         # 毎日の終値→株価依存指標の引き直し→派生指標→業績トレンド の順で組み立てる
         return merge_trend(add_derived(merge_daily(pd.read_csv(RESULTS_CSV))))
@@ -728,7 +740,7 @@ def evaluate_cached(code: str):
 
 
 if "df" not in st.session_state:
-    st.session_state.df = load_bundled()
+    st.session_state.df = load_bundled(_data_stamp())
 
 st.title("📊 ネットキャッシュ比率スクリーニング")
 _qd = quotes_date_str()
