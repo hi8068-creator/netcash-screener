@@ -170,6 +170,8 @@ KABUTAN_BASE = "https://kabutan.jp/stock/finance?code="
 YAHOO_DISCLOSURE_BASE = "https://finance.yahoo.co.jp/quote/"
 # 株主優待の確認先(みんかぶ優待ページ)。無料の一括取得は精度難のためリンク提供に留める。
 MINKABU_YUTAI_BASE = "https://minkabu.jp/stock/"
+# 四季報オンラインの銘柄ページ(記者の2期予想・コメント・大株主・長期業績。閲覧は会員ログイン)
+SHIKIHO_BASE = "https://shikiho.toyokeizai.net/stocks/"
 
 # 表示時の列順(存在する列のみ採用)。金額は百万円表示にして決算短信と突き合わせやすくする。
 # 並びは「指標を前に」: 識別 → 割安指標 → 株価・配当 → アナリスト予想 → 文脈(市場・業種・分類)
@@ -183,13 +185,14 @@ DISPLAY_ORDER = [
     "テクニカル", "RSI", "ストキャスK", "ストキャスD",
     "市場", "業種根拠", "規模",
     "流動資産(百万円)", "投資有価証券(百万円)", "負債(百万円)", "売上トレンド",
-    "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF", "優待",
+    "決算期", "来期見通し(短信抜粋)", "財務(株探)", "短信PDF", "四季報", "優待",
 ]
 
 # 初心者向け「主要列のみ」表示の列(存在する列のみ採用)。同じく指標を前に。
 BEGINNER_COLUMNS = [
     "コード", "銘柄名", "新業種", "ネットキャッシュ比率", "時価総額(億円)", "PER", "自己資本比率(%)",
     "配当利回り(%)", "配当性向(%)", "増収増益(年)", "市場", "来期見通し(短信抜粋)", "短信PDF",
+    "四季報",
 ]
 
 # 表示しない内部列(算出の元データ)
@@ -216,6 +219,7 @@ SHORT_DESC = {
     "負債(百万円)": "総負債", "決算期": "基準の決算期末",
     "来期見通し(短信抜粋)": "短信の次期見通し", "売上トレンド": "年次売上(古→新)",
     "短信PDF": "公式決算短信", "財務(株探)": "財務ページ", "優待": "株主優待",
+    "四季報": "記者予想・大株主(要ログイン)",
     "テクニカル": "RSI×ストキャスの売買サイン",
     "RSI": "30以下=売られすぎ/70以上=買われすぎ",
     "ストキャスK": "%K(20以下=売られすぎ)", "ストキャスD": "%D(%Kの平滑線)",
@@ -230,7 +234,7 @@ NUM_FMT = {
     "流動資産(百万円)": "{:,.0f}", "投資有価証券(百万円)": "{:,.0f}", "負債(百万円)": "{:,.0f}",
     "RSI": "{:.1f}", "ストキャスK": "{:.1f}", "ストキャスD": "{:.1f}",
 }
-LINK_COLS = ["短信PDF", "財務(株探)", "優待"]
+LINK_COLS = ["短信PDF", "財務(株探)", "優待", "四季報"]
 
 
 def with_desc_row(disp_view: pd.DataFrame):
@@ -260,7 +264,7 @@ HEADER_LABELS = {
     "予想PER": "予想PER(倍)", "forwardEPS": "予想EPS(円)", "目標株価": "目標株価(円)",
     "財務(株探)": "財務(株探)", "優待": "優待(みんかぶ)",
 }
-LINK_TEXT = {"財務(株探)": "開く", "短信PDF": "開く", "優待": "確認"}
+LINK_TEXT = {"財務(株探)": "開く", "短信PDF": "開く", "優待": "確認", "四季報": "開く"}
 
 
 def _full_desc(c: str) -> str:
@@ -438,6 +442,7 @@ LEGEND = {
     "来期見通し(短信抜粋)": "**来期見通し(要約)** … 決算短信から抜粋した次期の見通し",
     "短信PDF": "**短信PDF(公式)** … 公式の決算短信PDF(中身を確認)",
     "財務(株探)": "**財務(株探)** … 株探の財務ページ(数値の照合に便利)",
+    "四季報": "**四季報** … 四季報オンラインの銘柄ページ(記者の2期予想・コメント・大株主・長期業績。要ログイン)",
     "優待": "**優待(みんかぶ)** … 株主優待の確認先",
 }
 
@@ -527,6 +532,7 @@ def to_display(df: pd.DataFrame) -> pd.DataFrame:
         code4 = code.str.replace(".T", "", regex=False)
         d["財務(株探)"] = KABUTAN_BASE + code4
         d["優待"] = MINKABU_YUTAI_BASE + code4 + "/yutai"
+        d["四季報"] = SHIKIHO_BASE + code4
         disclosure = YAHOO_DISCLOSURE_BASE + code + "/disclosure"
         if "短信PDF直URL" in d.columns:
             direct = d["短信PDF直URL"].fillna("").astype(str)
@@ -580,6 +586,11 @@ COLUMN_CONFIG = {
         "短信PDF(公式)",
         help="公式の決算短信PDF(TDnet掲載)。比率1.0以上の銘柄は個別PDFへ直リンク、"
         "それ以外はYahoo!ファイナンスの適時開示一覧へ。",
+        display_text="開く",
+    ),
+    "四季報": st.column_config.LinkColumn(
+        "四季報",
+        help="四季報オンラインの銘柄ページ。記者の2期予想・コメント・大株主・長期業績(閲覧は会員ログイン)。",
         display_text="開く",
     ),
     "優待": st.column_config.LinkColumn(
@@ -1470,9 +1481,11 @@ with tab_watch:
                 direct = wview["短信PDF直URL"].fillna("").astype(str)
                 wview["短信PDF"] = [d if d.strip() else s for d, s in zip(direct, disc)]
                 wview = wview.drop(columns=["短信PDF直URL"])
+            wview["四季報"] = SHIKIHO_BASE + wview["コード"].astype(str).str.replace(
+                ".T", "", regex=False)
             order = [c for c in ["削除", "コード", "銘柄名", "業種(67)", "メモ", "事業内容",
                                  "ネットキャッシュ比率", "PER", "PER乖離率", "配当利回り(%)",
-                                 "時価総額(億円)", "来期見通し", "短信PDF"] if c in wview.columns]
+                                 "時価総額(億円)", "来期見通し", "短信PDF", "四季報"] if c in wview.columns]
 
             edited = st.data_editor(
                 wview[order], hide_index=True, use_container_width=True,
@@ -1492,6 +1505,9 @@ with tab_watch:
                     "時価総額(億円)": st.column_config.NumberColumn(format="localized", disabled=True),
                     "来期見通し": st.column_config.TextColumn("来期見通し", width="large", disabled=True),
                     "短信PDF": st.column_config.LinkColumn("短信PDF", display_text="開く", disabled=True),
+                    "四季報": st.column_config.LinkColumn(
+                        "四季報", display_text="開く", disabled=True,
+                        help="記者の2期予想・コメント・大株主(要ログイン)。"),
                 },
                 key="wl_editor",
             )
@@ -1555,7 +1571,8 @@ with tab_watch:
                     code = str(it.get("コード", ""))
                     r = wmeta_c.loc[code] if code in wmeta_c.index else None
                     crow = {"コード": code, "銘柄名": wname.get(code, ""),
-                            "メモ": it.get("メモ", ""), "事業内容": bizja.get(code, "")}
+                            "メモ": it.get("メモ", ""), "事業内容": bizja.get(code, ""),
+                            "四季報": SHIKIHO_BASE + code.replace(".T", "")}
                     for m in ["新業種", "前日終値", "ネットキャッシュ比率", "PER",
                               "配当利回り(%)", "時価総額(億円)"]:
                         if m in wbase.columns:
@@ -1572,6 +1589,9 @@ with tab_watch:
                         "PER": st.column_config.NumberColumn("PER(倍)", format="%.1f"),
                         "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
                         "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
+                        "四季報": st.column_config.LinkColumn(
+                            "四季報", display_text="開く",
+                            help="記者の2期予想・コメント・大株主(要ログイン)。"),
                     },
                 )
                 ci1, ci2 = st.columns([1.4, 2.6])
