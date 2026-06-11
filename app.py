@@ -1125,7 +1125,9 @@ def cloud_save(user: str, watch: dict):
         return False, "名前を入力してください。"
     api = f"https://api.github.com/repos/{GH_REPO}/contents/{quote(f'watchlists/{user}.json')}"
     headers = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
-    payload = {"updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
+    from datetime import timedelta, timezone
+    jst = timezone(timedelta(hours=9))
+    payload = {"updated": datetime.now(jst).strftime("%Y-%m-%d %H:%M"),
                "items": [{"コード": c, "メモ": m} for c, m in watch.items()]}
     body = jsonlib.dumps(payload, ensure_ascii=False, indent=1)
     data = {"message": f"ウォッチリスト保存: {user}",
