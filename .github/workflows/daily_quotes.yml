@@ -1,0 +1,46 @@
+name: 毎日の終値更新
+
+# 平日の引け後に全銘柄の終値だけを取得して daily_quotes.csv を更新する軽量ジョブ。
+# アプリは起動時にこのファイルを読み、時価総額・比率・PER等を最新終値で引き直す。
+# (週次のフル更新は update.yml が担当)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 7 * * 1-5"   # 平日 7:30 UTC = 16:30 JST (大引け後)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-quotes
+  cancel-in-progress: false
+
+jobs:
+  quotes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 依存をインストール
+        run: pip install yfinance pandas
+
+      - name: 終値を取得
+        run: python fetch_daily_quotes.py
+
+      - name: コミット＆プッシュ
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily_quotes.csv
+          if git diff --cached --quiet; then
+            echo "変更なし。"
+          else
+            git commit -m "終値を自動更新 ($(date -u +%Y-%m-%d))"
+            git push
+          fi

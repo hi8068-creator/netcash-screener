@@ -1,0 +1,66 @@
+name: データ更新
+
+# 「Run workflow」ボタン(手動)＋ 毎週日曜の自動実行。
+# 実行するとパイプラインを回して results.csv 等を最新化し、コミット＝公開アプリへ自動反映。
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "更新範囲"
+        type: choice
+        default: standard
+        options:
+          - standard   # 株価/テクニカル/相関・ファンダ・短信見通し・業種PER中央値
+          - full       # さらに 全社スクリーニング＋PER/PBR 再取得(重い)
+      skip_prices:
+        description: "株価/テクニカル/相関をスキップ"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "0 21 * * 0"   # 毎週日曜 21:00 UTC (= 月曜 6:00 JST)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 依存をインストール
+        run: pip install -r requirements.txt
+
+      - name: 更新を実行
+        run: |
+          ARGS=""
+          if [ "${{ inputs.scope }}" = "full" ]; then ARGS="$ARGS --full"; fi
+          if [ "${{ inputs.skip_prices }}" = "true" ]; then ARGS="$ARGS --skip-prices"; fi
+          python update.py $ARGS
+
+      - name: 変更をコミット＆プッシュ
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add results.csv results_all.csv technical.csv prices.parquet returns.parquet \
+                  peers_adj.csv peers_raw.csv cross_industry.csv \
+                  outlook_raw.csv outlook_full.csv outlook_summary.csv \
+                  per_raw.csv fund_raw.csv industry_raw.csv summary_raw.csv \
+                  industry60_decisions.csv 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "変更なし(更新差分なし)。"
+          else
+            git commit -m "データ自動更新 ($(date -u +%Y-%m-%d) / scope=${{ inputs.scope }})"
+            git push
+            echo "更新をpushしました。Streamlitが自動再デプロイします。"
+          fi
