@@ -42,6 +42,13 @@ def main():
         run("PER/PBR再取得", ["enrich_per.py", "--results", "results.csv",
                             "--cache", "per_raw.csv", "--retry-empty", "--sleep", s])
 
+    if not args.full:
+        # 表示対象になりやすい銘柄のみ、新計算式(非支配株主持分控除)でネットキャッシュを再計算
+        # (--full は build_results が全銘柄を新式で取り直すため不要)
+        run("ネットキャッシュ再計算(非支配株主持分控除)",
+            ["recompute_netcash.py", "--results", "results.csv",
+             "--min-ratio", "0.8", "--sleep", s])
+
     # ファンダ(前日終値・配当・予想PER・目標株価)を最新化(resume=既存は保持、不足を補完)
     run("ファンダ更新", ["enrich_fundamentals.py", "--results", "results.csv",
                     "--cache", "fund_raw.csv", "--resume", "--sleep", s])
@@ -73,6 +80,10 @@ def main():
 
     # 60業種の付与＋業種PER中央値/乖離率を再計算
     run("業種(67)・PER中央値の再計算", ["classify_industry60.py", "apply", "--results", "results.csv"])
+
+    # 監理・整理銘柄(JPX公式)と暗号資産保有の「注意」フラグを付与
+    run("監理・整理銘柄の取得", ["fetch_alerts.py"])
+    run("注意フラグ付与", ["compute_flags.py", "--results", "results.csv"])
 
     # results_all を同期
     run("results_all 同期", ["-c", "import shutil; shutil.copy('results.csv','results_all.csv')"])

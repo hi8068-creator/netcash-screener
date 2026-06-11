@@ -3,8 +3,12 @@
 ネットキャッシュ比率スクリーニングの共通ロジック。
 CLI(screen.py)と Web アプリ(app.py)の両方から使う。
 
-ネットキャッシュ比率 = (流動資産 + 投資有価証券*0.7 - 負債) / 時価総額
+ネットキャッシュ比率 = (流動資産 + 投資有価証券*0.7 - 負債 - 非支配株主持分) / 時価総額
 比率 >= 1.0 で「会社がただで買えるほど割安」(清原達郎氏の基準)。
+
+非支配株主持分(連結子会社・連結ファンドのうち他人の取り分)を控除するのは、
+ファンド運営会社などで「連結BS上の現金は潤沢だが大半が出資者のもの」というケースが
+比率を過大に見せるため(例: コンサル＋ファンド連結の企業)。
 """
 
 import csv
@@ -47,7 +51,7 @@ INVESTMENT_SECURITY_KEYS = [
 COLUMNS_JP = [
     "コード", "銘柄名", "ネットキャッシュ比率",
     "ネットキャッシュ(億円)", "時価総額(億円)",
-    "流動資産", "投資有価証券", "負債", "決算期",
+    "流動資産", "投資有価証券", "負債", "非支配株主持分", "決算期",
 ]
 
 
@@ -62,6 +66,7 @@ class Result:
     net_cash: float
     ratio: float
     fiscal_date: str
+    minority_interest: float = 0.0
 
 
 def to_ticker(code: str) -> str:
@@ -142,7 +147,10 @@ def evaluate(code: str) -> Optional[Result]:
         # (marketcap_overrides.csv で正しい値を与えれば救済できる)。
         if market_cap < 1e7 or (current_assets > 0 and market_cap < current_assets * 0.01):
             return None
-    net_cash = current_assets + inv * 0.7 - total_liabilities
+    # "Total Liabilities Net Minority Interest" は非支配株主持分を含まない負債のため、
+    # 別途控除しないとファンド連結企業等で他人の取り分を自社の現金と数えてしまう
+    minority = _bs_value(bs, col, "Minority Interest") or 0.0
+    net_cash = current_assets + inv * 0.7 - total_liabilities - minority
     return Result(
         code=ticker,
         name=name,
@@ -153,6 +161,7 @@ def evaluate(code: str) -> Optional[Result]:
         net_cash=net_cash,
         ratio=net_cash / market_cap,
         fiscal_date=str(col.date()) if hasattr(col, "date") else str(col),
+        minority_interest=minority,
     )
 
 
@@ -260,6 +269,7 @@ def results_to_df(results) -> pd.DataFrame:
             "流動資産": round(r.current_assets),
             "投資有価証券": round(r.investment_securities),
             "負債": round(r.total_liabilities),
+            "非支配株主持分": round(r.minority_interest),
             "決算期": r.fiscal_date,
         })
     return pd.DataFrame(rows, columns=COLUMNS_JP)
