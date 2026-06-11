@@ -1046,6 +1046,105 @@ def lead_lag(ret, a, b):
     return a_leads - b_leads
 
 
+# ---- クラウドウォッチリスト(GitHub保存) ----
+# 保存先は main ではなく専用ブランチ(watchlists)。main に書くと保存のたびに
+# Streamlit Cloud の再デプロイが走ってしまうため分離している。
+GH_REPO = "hi8068-creator/netcash-screener"
+WL_BRANCH = "watchlists"
+BIZJA_CSV = os.path.join(os.path.dirname(__file__), "business_ja.csv")
+
+
+def _gh_token() -> str:
+    """保存用トークン。Streamlit Secrets か環境変数 GITHUB_TOKEN から取得。"""
+    try:
+        tok = st.secrets.get("GITHUB_TOKEN", "")
+        if tok:
+            return tok
+    except Exception:
+        pass
+    return os.environ.get("GITHUB_TOKEN", "")
+
+
+@st.cache_data(show_spinner=False)
+def load_bizja() -> dict:
+    """日本語の事業内容(事前生成 business_ja.csv)。コード→説明文。"""
+    if os.path.exists(BIZJA_CSV):
+        try:
+            b = pd.read_csv(BIZJA_CSV, dtype={"コード": str})
+            return dict(zip(b["コード"], b["事業内容"].fillna("")))
+        except Exception:
+            pass
+    return {}
+
+
+@st.cache_data(show_spinner=False, ttl=60)
+def cloud_list_users() -> list:
+    """クラウド保存済みのユーザー名一覧(公開リポジトリのため認証不要)。"""
+    import requests
+    try:
+        r = requests.get(
+            f"https://api.github.com/repos/{GH_REPO}/contents/watchlists",
+            params={"ref": WL_BRANCH}, timeout=10)
+        if r.status_code != 200:
+            return []
+        return sorted(f["name"][:-5] for f in r.json()
+                      if isinstance(f, dict) and f.get("name", "").endswith(".json"))
+    except Exception:
+        return []
+
+
+@st.cache_data(show_spinner=False, ttl=60)
+def cloud_load(user: str):
+    """指定ユーザーのウォッチリストを読み込む。{updated, items:[{コード,メモ}]}"""
+    import requests
+    from urllib.parse import quote
+    try:
+        url = (f"https://raw.githubusercontent.com/{GH_REPO}/{WL_BRANCH}"
+               f"/watchlists/{quote(user)}.json")
+        r = requests.get(url, timeout=10)
+        if r.status_code != 200:
+            return None
+        return r.json()
+    except Exception:
+        return None
+
+
+def cloud_save(user: str, watch: dict):
+    """ウォッチリストを watchlists ブランチに保存。戻り値 (成功?, メッセージ)。"""
+    import base64
+    import json as jsonlib
+
+    import requests
+    from urllib.parse import quote
+    tok = _gh_token()
+    if not tok:
+        return False, ("保存用トークンが未設定です。Streamlit Cloud の "
+                       "App settings → Secrets に GITHUB_TOKEN を設定してください。")
+    user = user.strip().replace("/", "／")
+    if not user:
+        return False, "名前を入力してください。"
+    api = f"https://api.github.com/repos/{GH_REPO}/contents/{quote(f'watchlists/{user}.json')}"
+    headers = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
+    payload = {"updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
+               "items": [{"コード": c, "メモ": m} for c, m in watch.items()]}
+    body = jsonlib.dumps(payload, ensure_ascii=False, indent=1)
+    data = {"message": f"ウォッチリスト保存: {user}",
+            "content": base64.b64encode(body.encode("utf-8")).decode(),
+            "branch": WL_BRANCH}
+    try:
+        r = requests.get(api, params={"ref": WL_BRANCH}, headers=headers, timeout=10)
+        if r.status_code == 200:
+            data["sha"] = r.json().get("sha")
+        r = requests.put(api, json=data, headers=headers, timeout=15)
+        if r.status_code in (200, 201):
+            cloud_list_users.clear()
+            cloud_load.clear()
+            return True, f"クラウドに保存しました（{user}）。"
+        return False, f"保存に失敗しました (HTTP {r.status_code})。"
+    except Exception as e:
+        return False, f"保存に失敗しました: {e}"
+
+
 # ============================ タブ構成 ============================
 tab_screen, tab_corr, tab_watch, tab_help = st.tabs(
     ["🔍 スクリーニング", "🔗 連動分析", "⭐ ウォッチリスト", "❓ 使い方・用語"]
@@ -1351,11 +1450,12 @@ with tab_watch:
                                  "配当利回り(%)", "時価総額(億円)", "来期見通し(短信抜粋)",
                                  "短信PDF直URL"] if c in wbase.columns]
             wmeta = wbase.set_index("コード")
+            _bizja = load_bizja()
             rows = []
             for code, memo in watch.items():
                 r = wmeta.loc[code] if code in wmeta.index else None
                 row = {"削除": False, "コード": code, "銘柄名": wname.get(code, ""),
-                       "メモ": memo}
+                       "メモ": memo, "事業内容": _bizja.get(code, "")}
                 for m in METAW:
                     row[m] = (r.get(m) if r is not None else None)
                 rows.append(row)
@@ -1368,7 +1468,7 @@ with tab_watch:
                 direct = wview["短信PDF直URL"].fillna("").astype(str)
                 wview["短信PDF"] = [d if d.strip() else s for d, s in zip(direct, disc)]
                 wview = wview.drop(columns=["短信PDF直URL"])
-            order = [c for c in ["削除", "コード", "銘柄名", "業種(67)", "メモ",
+            order = [c for c in ["削除", "コード", "銘柄名", "業種(67)", "メモ", "事業内容",
                                  "ネットキャッシュ比率", "PER", "PER乖離率", "配当利回り(%)",
                                  "時価総額(億円)", "来期見通し", "短信PDF"] if c in wview.columns]
 
@@ -1379,6 +1479,9 @@ with tab_watch:
                     "コード": st.column_config.TextColumn("コード", disabled=True),
                     "銘柄名": st.column_config.TextColumn("銘柄名", disabled=True),
                     "業種(67)": st.column_config.TextColumn("業種(67)", disabled=True),
+                    "事業内容": st.column_config.TextColumn(
+                        "事業内容", width="large", disabled=True,
+                        help="何の会社か(日本語要約)。比率0.9以上の銘柄に付与。"),
                     "メモ": st.column_config.TextColumn("メモ", width="large"),
                     "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f", disabled=True),
                     "PER": st.column_config.NumberColumn(format="%.1f", disabled=True),
@@ -1410,6 +1513,82 @@ with tab_watch:
                 file_name="watchlist.csv", mime="text/csv")
             st.caption(f"登録数: {len(st.session_state.watch)}件。"
                        "メモ欄はその場で編集できます（編集後は念のため保存を）。")
+
+        # ---- ☁️ みんなのウォッチリスト(クラウド保存・共有) ----
+        st.divider()
+        st.subheader("☁️ みんなのウォッチリスト")
+        st.caption(
+            "名前を付けて保存すると、別の端末・別の日でも呼び出せます。"
+            "保存したリストは**公開**され、人を選んでお互いのリストを見られます（見せ合い用）。"
+        )
+        bizja = load_bizja()
+        wmeta_c = wbase.set_index("コード")
+
+        cs1, cs2 = st.columns([2, 1.2])
+        save_name = cs1.text_input("名前(ニックネーム)", key="wl_cloud_name",
+                                   placeholder="例: じょー")
+        if cs2.button("☁️ いまのリストをクラウドに保存", use_container_width=True):
+            if not st.session_state.watch:
+                st.warning("ウォッチリストが空です。先に上で銘柄を追加してください。")
+            else:
+                ok, msg = cloud_save(save_name, st.session_state.watch)
+                (st.success if ok else st.error)(msg)
+
+        users = cloud_list_users()
+        if not users:
+            st.info("まだクラウドに保存されたリストはありません。最初の1人になりましょう。")
+        else:
+            cu1, cu2 = st.columns([2, 1.2])
+            view_user = cu1.selectbox("人を選んで閲覧", users, key="wl_cloud_user")
+            if cu2.button("🔄 一覧を更新", use_container_width=True):
+                cloud_list_users.clear()
+                cloud_load.clear()
+                st.rerun()
+            cdata = cloud_load(view_user) if view_user else None
+            if cdata and cdata.get("items"):
+                st.markdown(f"**{view_user} さんのウォッチリスト**　"
+                            f"(更新: {cdata.get('updated', '—')}・{len(cdata['items'])}銘柄)")
+                crows = []
+                for it in cdata["items"]:
+                    code = str(it.get("コード", ""))
+                    r = wmeta_c.loc[code] if code in wmeta_c.index else None
+                    crow = {"コード": code, "銘柄名": wname.get(code, ""),
+                            "メモ": it.get("メモ", ""), "事業内容": bizja.get(code, "")}
+                    for m in ["新業種", "前日終値", "ネットキャッシュ比率", "PER",
+                              "配当利回り(%)", "時価総額(億円)"]:
+                        if m in wbase.columns:
+                            crow[m] = (r.get(m) if r is not None else None)
+                    crows.append(crow)
+                cdf = pd.DataFrame(crows).rename(columns={"新業種": "業種(67)"})
+                st.dataframe(
+                    cdf, hide_index=True, use_container_width=True,
+                    column_config={
+                        "事業内容": st.column_config.TextColumn("事業内容", width="large"),
+                        "メモ": st.column_config.TextColumn("メモ", width="medium"),
+                        "前日終値": st.column_config.NumberColumn("前日終値(円)", format="localized"),
+                        "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f"),
+                        "PER": st.column_config.NumberColumn("PER(倍)", format="%.1f"),
+                        "配当利回り(%)": st.column_config.NumberColumn(format="%.2f"),
+                        "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
+                    },
+                )
+                ci1, ci2 = st.columns([1.4, 2.6])
+                if ci1.button("⬇️ このリストを自分に取り込む",
+                              help="自分のウォッチリストに追加します(同じ銘柄は上書きしません)"):
+                    n_add = 0
+                    for it in cdata["items"]:
+                        code = str(it.get("コード", ""))
+                        if code and code not in st.session_state.watch:
+                            st.session_state.watch[code] = str(it.get("メモ", "") or "")
+                            n_add += 1
+                    st.success(f"{n_add}件を取り込みました。")
+                    st.rerun()
+                ccodes = [str(it.get("コード", "")) for it in cdata["items"]][:8]
+                with st.expander("📈 このリストの銘柄を重ねて比較（株価・100基準）", expanded=False):
+                    price_chart(ccodes, names={c: wname.get(c, c) for c in ccodes},
+                                normalize=True)
+            else:
+                st.info("このリストはまだ空か、読み込みに失敗しました。")
 
 
 # ---- タブ4: 使い方・用語 ----
