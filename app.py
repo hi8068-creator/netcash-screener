@@ -1092,6 +1092,8 @@ def lead_lag(ret, a, b):
 GH_REPO = "hi8068-creator/netcash-screener"
 WL_BRANCH = "watchlists"
 BIZJA_CSV = os.path.join(os.path.dirname(__file__), "business_ja.csv")
+# 四季報のローカル取り込み(著作権保護のため公開リポには含めない。.gitignore登録)
+SHIKIHO_LOCAL_CSV = os.path.join(os.path.dirname(__file__), "shikiho_local.csv")
 
 
 def _gh_token() -> str:
@@ -1112,6 +1114,18 @@ def load_bizja() -> dict:
         try:
             b = pd.read_csv(BIZJA_CSV, dtype={"コード": str})
             return dict(zip(b["コード"], b["事業内容"].fillna("")))
+        except Exception:
+            pass
+    return {}
+
+
+@st.cache_data(show_spinner=False)
+def load_shikiho() -> dict:
+    """四季報のローカル取り込みデータ(あれば)。コード→行dict。"""
+    if os.path.exists(SHIKIHO_LOCAL_CSV):
+        try:
+            s = pd.read_csv(SHIKIHO_LOCAL_CSV, dtype={"コード": str})
+            return {r["コード"]: r.to_dict() for _, r in s.iterrows()}
         except Exception:
             pass
     return {}
@@ -1479,11 +1493,18 @@ with tab_watch:
                                  "短信PDF直URL"] if c in wbase.columns]
             wmeta = wbase.set_index("コード")
             _bizja = load_bizja()
+            _shik = load_shikiho()
             rows = []
             for code, memo in watch.items():
                 r = wmeta.loc[code] if code in wmeta.index else None
                 row = {"削除": False, "コード": code, "銘柄名": wname.get(code, ""),
                        "メモ": memo, "事業内容": _bizja.get(code, "")}
+                if _shik:
+                    sk = _shik.get(code, {})
+                    row["四季報矢印"] = sk.get("矢印", "")
+                    row["四季報乖離(%)"] = sk.get("乖離率(%)")
+                    row["特定株(%)"] = sk.get("特定株(%)")
+                    row["四季報メモ"] = sk.get("コメント", "")
                 for m in METAW:
                     row[m] = (r.get(m) if r is not None else None)
                 rows.append(row)
@@ -1499,6 +1520,7 @@ with tab_watch:
             wview["四季報"] = SHIKIHO_BASE + wview["コード"].astype(str).str.replace(
                 ".T", "", regex=False)
             order = [c for c in ["削除", "コード", "銘柄名", "業種(67)", "メモ", "事業内容",
+                                 "四季報矢印", "四季報乖離(%)", "特定株(%)", "四季報メモ",
                                  "ネットキャッシュ比率", "PER", "PER乖離率", "配当利回り(%)",
                                  "時価総額(億円)", "来期見通し", "短信PDF", "四季報"] if c in wview.columns]
 
@@ -1512,6 +1534,18 @@ with tab_watch:
                     "事業内容": st.column_config.TextColumn(
                         "事業内容", width="large", disabled=True,
                         help="何の会社か(日本語要約)。比率0.9以上の銘柄に付与。"),
+                    "四季報矢印": st.column_config.TextColumn(
+                        "四季報", disabled=True,
+                        help="前号比の記者強気度(↑↗➡↘↓)。四季報インボックスから取り込んだ銘柄のみ。"),
+                    "四季報乖離(%)": st.column_config.NumberColumn(
+                        "乖離(%)", format="%.1f", disabled=True,
+                        help="(四季報予想営業利益−会社予想)÷会社予想。プラス=四季報が強気。"),
+                    "特定株(%)": st.column_config.NumberColumn(
+                        "特定株(%)", format="%.1f", disabled=True,
+                        help="大株主など固定株の比率。高い×現金潤沢はTOB/MBO候補の目安。"),
+                    "四季報メモ": st.column_config.TextColumn(
+                        "四季報メモ", width="large", disabled=True,
+                        help="記者コメントの要点(ローカル保存のみ・公開されません)。"),
                     "メモ": st.column_config.TextColumn("メモ", width="large"),
                     "ネットキャッシュ比率": st.column_config.NumberColumn(format="%.2f", disabled=True),
                     "PER": st.column_config.NumberColumn(format="%.1f", disabled=True),

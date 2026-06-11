@@ -6,3 +6,4 @@ build.log
 .venv/
 venv/
 .claude/
+shikiho_local.csv
