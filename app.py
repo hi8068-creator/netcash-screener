@@ -1410,11 +1410,11 @@ with tab_corr:
 
 # ---- タブ3: ウォッチリスト(備忘) ----
 with tab_watch:
-    st.subheader("⭐ ウォッチリスト（備忘）")
+    st.subheader("⭐ ウォッチリスト")
     st.caption(
-        "気になる銘柄をメモ付きで記録できます。最新の指標は results データから自動表示。"
-        "※共有サーバー上ではブラウザを閉じると消えるため、「💾 保存(CSV)」で書き出し、"
-        "次回「読み込み」で復元してください（自分専用の備忘ファイルになります）。"
+        "使い方は3ステップ: **① 銘柄を追加** → **② 名前を付けて☁️保存** → "
+        "**③ 次回は同じ名前で📥呼び出し**（別の端末・別の日でもOK）。"
+        "指標・事業内容は自動で付きます。"
     )
 
     if "watch" not in st.session_state:
@@ -1439,20 +1439,6 @@ with tab_watch:
             if add_code:
                 st.session_state.watch[add_code] = add_memo or ""
                 st.rerun()
-
-        up = st.file_uploader("保存したウォッチリスト(CSV)を読み込み", type="csv", key="wl_up")
-        if up is not None:
-            try:
-                wdf_up = pd.read_csv(up, dtype=str)
-                n = 0
-                for _, r in wdf_up.iterrows():
-                    code = str(r.get("コード", "")).strip()
-                    if code:
-                        st.session_state.watch[code] = str(r.get("メモ", "") or "")
-                        n += 1
-                st.success(f"{n}件を読み込みました。")
-            except Exception as e:
-                st.error(f"読み込みに失敗しました: {e}")
 
         watch = st.session_state.watch
         st.divider()
@@ -1524,40 +1510,73 @@ with tab_watch:
             if deleted:
                 st.rerun()
 
-            save_df = pd.DataFrame(
-                [{"コード": c, "メモ": m} for c, m in st.session_state.watch.items()])
-            st.download_button(
-                "💾 保存(CSV)", save_df.to_csv(index=False).encode("utf-8-sig"),
-                file_name="watchlist.csv", mime="text/csv")
             st.caption(f"登録数: {len(st.session_state.watch)}件。"
-                       "メモ欄はその場で編集できます（編集後は念のため保存を）。")
+                       "メモ欄はその場で編集、「削除」チェックで外せます。")
 
-        # ---- ☁️ みんなのウォッチリスト(クラウド保存・共有) ----
+        with st.expander("📦 CSVでバックアップ（任意）", expanded=False):
+            st.caption("ファイルでも残したい方向け。ふだんは下の☁️クラウド保存だけで十分です。")
+            if st.session_state.watch:
+                save_df = pd.DataFrame(
+                    [{"コード": c, "メモ": m} for c, m in st.session_state.watch.items()])
+                st.download_button(
+                    "💾 CSVを書き出す", save_df.to_csv(index=False).encode("utf-8-sig"),
+                    file_name="watchlist.csv", mime="text/csv")
+            up = st.file_uploader("CSVを読み込み(取り込み)", type="csv", key="wl_up")
+            if up is not None:
+                try:
+                    wdf_up = pd.read_csv(up, dtype=str)
+                    n = 0
+                    for _, r in wdf_up.iterrows():
+                        code = str(r.get("コード", "")).strip()
+                        if code:
+                            st.session_state.watch[code] = str(r.get("メモ", "") or "")
+                            n += 1
+                    st.success(f"{n}件を読み込みました。")
+                except Exception as e:
+                    st.error(f"読み込みに失敗しました: {e}")
+
+        # ---- ☁️ クラウド保存・呼び出し ----
         st.divider()
-        st.subheader("☁️ みんなのウォッチリスト")
-        st.caption(
-            "名前を付けて保存すると、別の端末・別の日でも呼び出せます。"
-            "保存したリストは**公開**され、人を選んでお互いのリストを見られます（見せ合い用）。"
-        )
+        st.subheader("☁️ クラウドに保存・呼び出し")
+        st.caption("名前を付けて保存→次回は同じ名前で呼び出すだけ。"
+                   "※保存したリストは公開され、下の「みんなのリスト」にも並びます。")
         bizja = load_bizja()
         wmeta_c = wbase.set_index("コード")
 
-        cs1, cs2 = st.columns([2, 1.2])
+        cs1, cs2, cs3 = st.columns([2.2, 1.1, 1.1])
         save_name = cs1.text_input("名前(ニックネーム)", key="wl_cloud_name",
                                    placeholder="例: じょー")
-        if cs2.button("☁️ いまのリストをクラウドに保存", use_container_width=True):
+        if cs2.button("☁️ 保存", use_container_width=True,
+                      help="いまのウォッチリストをこの名前でクラウドに保存します。"):
             if not st.session_state.watch:
                 st.warning("ウォッチリストが空です。先に上で銘柄を追加してください。")
             else:
                 ok, msg = cloud_save(save_name, st.session_state.watch)
                 (st.success if ok else st.error)(msg)
+        if cs3.button("📥 呼び出す", use_container_width=True,
+                      help="この名前で保存したリストを呼び出します(いまの表示は置き換わります)。"):
+            nm = (save_name or "").strip().replace("/", "／")
+            data_my = cloud_load(nm) if nm else None
+            if not nm:
+                st.warning("名前を入力してください。")
+            elif not data_my or not data_my.get("items"):
+                st.error(f"「{nm}」の保存が見つかりません。")
+            else:
+                st.session_state.watch = {
+                    str(it.get("コード", "")): str(it.get("メモ", "") or "")
+                    for it in data_my["items"] if str(it.get("コード", ""))}
+                st.success(f"「{nm}」を呼び出しました（{len(st.session_state.watch)}銘柄）。")
+                st.rerun()
 
+        # ---- 👀 みんなのリストを見る ----
+        st.divider()
+        st.subheader("👀 みんなのリストを見る")
         users = cloud_list_users()
         if not users:
             st.info("まだクラウドに保存されたリストはありません。最初の1人になりましょう。")
         else:
             cu1, cu2 = st.columns([2, 1.2])
-            view_user = cu1.selectbox("人を選んで閲覧", users, key="wl_cloud_user")
+            view_user = cu1.selectbox("人を選ぶ", users, key="wl_cloud_user")
             if cu2.button("🔄 一覧を更新", use_container_width=True):
                 cloud_list_users.clear()
                 cloud_load.clear()
