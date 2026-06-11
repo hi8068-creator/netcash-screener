@@ -349,6 +349,62 @@ table.nc tbody tr:hover td.stick0,table.nc tbody tr:hover td.stick1,table.nc tbo
     components.html(css + f'<div class="twrap"><table class="nc">{thead}{tbody}</table></div>',
                     height=height, scrolling=False)
 
+
+# 連動分析の比較表: ヘッダー直下に★選択銘柄を貼り付け(リストをスクロールしても固定)
+CORR_HEADERS = {
+    "前日終値": "前日終値(円)", "業種(67)": "業種(67)", "PER": "PER(倍)",
+    "予想PER": "予想PER(倍)", "forwardEPS": "予想EPS(円)", "配当": "年間配当(円)",
+}
+CORR_FMT = {
+    "前日終値": "{:,.1f}", "相関": "{:.3f}", "PER": "{:.1f}", "予想PER": "{:.1f}",
+    "forwardEPS": "{:.1f}", "配当": "{:.1f}", "配当利回り(%)": "{:.2f}",
+    "時価総額(億円)": "{:,.1f}",
+}
+
+
+def render_corr_table(comp: pd.DataFrame, order, height: int = 520) -> None:
+    """連動する銘柄の比較表をHTMLで描画する。
+
+    1行目(★選択銘柄)を position:sticky でヘッダー直下に固定し、
+    連動リストをスクロールしても選択銘柄と常に並べて比較できるようにする。
+    """
+    def fmt(c, v):
+        if pd.isna(v):
+            return ""
+        if c in CORR_FMT:
+            try:
+                s = CORR_FMT[c].format(float(v))
+                return s[:-2] if s.endswith(".0") else s
+            except Exception:
+                return htmllib.escape(str(v))
+        return htmllib.escape(str(v))
+
+    num_cols = set(CORR_FMT)
+    ths = "".join(f"<th>{htmllib.escape(CORR_HEADERS.get(c, c))}</th>" for c in order)
+    body_rows = []
+    for i, (_, row) in enumerate(comp.iterrows()):
+        cls = ' class="selrow"' if i == 0 else ""
+        tds = "".join(
+            f'<td class="{"num" if c in num_cols else "txt"}">{fmt(c, row.get(c))}</td>'
+            for c in order)
+        body_rows.append(f"<tr{cls}>{tds}</tr>")
+
+    css = """
+<style>
+.cwrap{max-height:__H__px;overflow:auto;border:1px solid #e6e6e6;border-radius:6px;}
+table.cr{border-collapse:separate;border-spacing:0;font-family:-apple-system,'Hiragino Sans',Meiryo,sans-serif;font-size:13px;width:max-content;min-width:100%;}
+table.cr th,table.cr td{padding:6px 10px;border-bottom:1px solid #eee;border-right:1px solid #f2f2f2;text-align:left;white-space:nowrap;background:#fff;}
+table.cr td.num{text-align:right;font-variant-numeric:tabular-nums;}
+table.cr thead th{position:sticky;top:0;background:#eef1f6;font-weight:600;z-index:4;}
+table.cr tr.selrow td{position:sticky;top:32px;background:#fff8e1;font-weight:600;z-index:3;border-bottom:2px solid #e8c96a;}
+table.cr tbody tr:not(.selrow):hover td{background:#fbfcff;}
+</style>
+""".replace("__H__", str(max(200, height - 12)))
+    html = (css + f'<div class="cwrap"><table class="cr"><thead><tr>{ths}</tr></thead>'
+            f'<tbody>{"".join(body_rows)}</tbody></table></div>')
+    components.html(html, height=height, scrolling=False)
+
+
 # 列の凡例(表の上に「各列が何を見るためのものか」を表示する)。キーは内部列名。
 LEGEND = {
     "コード": "**コード** … 証券コード(東証の銘柄番号＋.T)",
@@ -1228,29 +1284,8 @@ with tab_corr:
                              "時価総額(億円)"]
                  if c in comp.columns]
 
-        st.markdown(f"**連動する銘柄（{mode}・上位15）** ＋ 先頭は★選択銘柄（並べて比較）")
-        st.dataframe(
-            comp[order], width="stretch", hide_index=True,
-            column_config={
-                "前日終値": st.column_config.NumberColumn(
-                    "前日終値(円)", format="localized",
-                    help="毎日の終値(daily_quotes.csv)。場中は追わず1日1回更新。"),
-                "相関": st.column_config.NumberColumn(format="%.3f"),
-                "PER": st.column_config.NumberColumn(
-                    "PER(倍)", format="%.1f", help="時価総額÷純利益(実績・黒字のみ)。"),
-                "予想PER": st.column_config.NumberColumn(
-                    "予想PER(倍)", format="%.1f", help="前日終値÷予想EPS。"),
-                "forwardEPS": st.column_config.NumberColumn(
-                    "予想EPS(円)", format="%.1f",
-                    help="予想1株利益。四半期決算ごとに更新され得る。小型株は欠損あり。"),
-                "配当": st.column_config.NumberColumn(
-                    "年間配当(円)", format="%.1f",
-                    help="企業予想の年間配当(1株)。四半期決算ごとに更新され得る。"),
-                "配当利回り(%)": st.column_config.NumberColumn(
-                    "配当利回り(%)", format="%.2f", help="年間配当÷前日終値×100。"),
-                "時価総額(億円)": st.column_config.NumberColumn(format="localized"),
-            },
-        )
+        st.markdown(f"**連動する銘柄（{mode}・上位15）** ＋ ★選択銘柄は最上段に固定（スクロールしても並べて比較）")
+        render_corr_table(comp, order, height=470)
         st.caption(
             "予想PER＝前日終値÷予想EPS、配当利回り＝年間配当÷前日終値。"
             "終値は1日1回更新（場中は追いません）。配当・予想EPSは四半期決算ごとに見直されます。"
